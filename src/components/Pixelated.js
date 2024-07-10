@@ -81,13 +81,17 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
     return 5;
   };
 
+
+
+
   const mapToDieBothIndex = (color) => {
-    const paletteSize = 12;
+    const paletteSize = 12; // 12 die total, there are 12 possible shades. 
     const redValue = parseInt(color.split(',')[0].slice(4), 10); // Get the red integer value of the color
-    const adjustedBrightness = (brightness + 100) / 200; // Normalize brightness to range 0-1
+    const adjustedBrightness = (brightness + 100) / 200; // Normalize brightness to range 0-1 //
     const rangeSize = Math.ceil(256 / paletteSize);
 
-    let adjustedRedValue = redValue * adjustedBrightness;
+
+    let adjustedRedValue = redValue * adjustedBrightness; // ratio between 0 and 1 that 
 
     const index = Math.floor(adjustedRedValue / rangeSize);
     return index;

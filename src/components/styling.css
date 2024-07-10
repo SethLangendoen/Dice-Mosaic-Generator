@@ -47,6 +47,10 @@
   font-size: 60px; 
 }
 
+
+
+
+
 .imageDiv img{
   max-width: 200px; /* 50% of the viewport width */
   height: auto; /* Automatically adjusts height to maintain aspect ratio */
@@ -105,10 +109,12 @@
 }
 
 
+
+/* This is for the increase and decrease dice size buttons */
 #imageControls button {
-  background-color: #4CAF50; /* Green */
+  background-color: #ffcc00; /* Green */
   border: none;
-  color: white;
+  color: black;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -122,7 +128,7 @@
 
 
 #imageControls button:hover {
-  background-color: #45a049;
+  background-color: #d2a802;
 }
 
 #imageControls label {
@@ -201,6 +207,38 @@
 }
 
 
+
+/** For the new radio buttons image: */ 
+
+
+/* Hide the default radio button */
+.radio-input {
+  display: none;
+}
+
+/* Style the label to display your custom images */
+.radio-label {
+  cursor: pointer;
+  display: inline-block;
+  margin: 10px;
+}
+
+/* Style for the images */
+.radio-image {
+  width: 50px;  /* Adjust the size as needed */
+  height: 50px; /* Adjust the size as needed */
+  transition: transform 0.2s;
+  border-radius: 8px; /* Optional: to give dice a rounded look */
+}
+
+/* Change the image appearance when the radio button is checked */
+.radio-input:checked + .radio-label .radio-image {
+  transform: scale(1.2); /* Example effect */
+  border: 2px solid #ffaa00; /* Example border color */
+}
+
+
+
 /** --------------------------------------------------- Upload Image Button --------------------------------------------------- */
 
 #imageInput{
@@ -263,3 +301,84 @@
 
 
 /* Navbar styling */
+/* Basic styling for the navbar */
+
+/* Basic styling for the navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: top 0.3s;
+  z-index: 1000;
+}
+
+.navbar-logo {
+  width: 50px;
+  height: 50px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+  background-color: #575757;
+  border-bottom: 2px solid #ffaa00;
+}
+
+.burger-menu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.burger-bar {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+/* Hide and show effects */
+.navbar-hide {
+  top: -60px; /* Adjust based on your navbar height */
+}
+
+.navbar-show {
+  top: 0;
+}
+
+/* Responsive styling for mobile view */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #333;
+    flex-direction: column;
+    width: 100%;
+  }
+  .nav-links.nav-links-mobile {
+    display: flex;
+  }
+  .burger-menu {
+    display: flex;
+  }
+}

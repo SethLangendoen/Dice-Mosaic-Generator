@@ -1,7 +1,13 @@
 import ImageUploader from "./ImageUploader";
+import Navbar from './Navbar'; 
 import { useEffect, useState } from "react";
 import './styling.css'
 // import Navbar from "./Navbar";
+
+// importing dice images for the radio button images. 
+import diceOneImage from '../Assets/dice-one.png';
+import whiteDiceOneImage from '../Assets/whitedice-one.png';
+import blackAndWhiteOneImage from '../Assets/blackAndWhiteDie.png'; 
 
 
 export default function DiceArtHomepage() {
@@ -108,7 +114,7 @@ export default function DiceArtHomepage() {
 
   return (
     <div>
-      {/* <Navbar/> */}
+      <Navbar/>
 
       <h1 id="title">Dice Mosaic Generator</h1>
 
@@ -123,12 +129,12 @@ export default function DiceArtHomepage() {
           />
         </label>
       </div>
-
-      {/** Render the image controls when the image has been selected.  */}
-
+      
       {controlsDisplayed && (
+
+        
         <div id='imageControls'>
-          <div>
+          {/* <div>
           <input 
             type="radio" 
             id="black" 
@@ -137,7 +143,10 @@ export default function DiceArtHomepage() {
             checked={radio === 'black'} 
             onChange={handleRadioChange}
           />
-          <label htmlFor="black">Black</label>
+          <label htmlFor="black">Black
+          
+          </label>
+
 
           <input 
             type="radio" 
@@ -149,6 +158,9 @@ export default function DiceArtHomepage() {
           />
           <label htmlFor="white">White</label>
 
+
+
+
           <input 
             type="radio" 
             id="both" 
@@ -159,11 +171,62 @@ export default function DiceArtHomepage() {
           />
           <label htmlFor="both">Both</label>
           </div>  
+      */}
 
-          <div>
-          <button onClick={handleIncreaseSize}>Increase size</button>
-          <button onClick={handleDecreaseSize}>Decrease size</button>
-          </div>
+
+      <div>
+        <input
+          type="radio"
+          id="black"
+          name="color"
+          value="black"
+          checked={radio === 'black'}
+          onChange={handleRadioChange}
+          className="radio-input"
+        />
+        <label htmlFor="black" className="radio-label">
+          <img src={diceOneImage} className="radio-image" alt="Black Dice" />
+        </label>
+
+        <input
+          type="radio"
+          id="white"
+          name="color"
+          value="white"
+          checked={radio === 'white'}
+          onChange={handleRadioChange}
+          className="radio-input"
+        />
+        <label htmlFor="white" className="radio-label">
+          <img src={whiteDiceOneImage} className="radio-image" alt="White Dice" />
+        </label>
+
+        <input
+          type="radio"
+          id="both"
+          name="color"
+          value="both"
+          checked={radio === 'both'}
+          onChange={handleRadioChange}
+          className="radio-input"
+        />
+        <label htmlFor="both" className="radio-label">
+          {/* You can use either image or a combination image for "both" */}
+          <img src={blackAndWhiteOneImage} className="radio-image" alt="Both Dice" />
+        </label>
+      </div>
+
+
+      <div>
+        <button onClick={handleIncreaseSize}>Increase size</button>
+        <button onClick={handleDecreaseSize}>Decrease size</button>
+      </div> 
+
+
+
+
+
+
 
           <div>
           <label>
