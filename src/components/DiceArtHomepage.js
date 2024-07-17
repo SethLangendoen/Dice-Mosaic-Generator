@@ -1,8 +1,18 @@
 import ImageUploader from "./ImageUploader";
+import HomeText from "./Home";
 import Navbar from './Navbar'; 
 import { useEffect, useState } from "react";
 import './styling.css'
 // import Navbar from "./Navbar";
+
+
+// to push changes without getting the permiissions error...
+// git remote set-url origin https://github.com/SethLangendoen/Dice-Mosaic-Generator.git
+// git branch
+// git checkout master
+// git add .
+// git commit -m "Added Navbar"     
+// git push -u origin master
 
 // importing dice images for the radio button images. 
 import diceOneImage from '../Assets/dice-one.png';
@@ -36,16 +46,19 @@ export default function DiceArtHomepage() {
 	var newDiceX; 
 	var newDiceY; 
 	if (width >= height){
-    newDiceX = Math.min(diceX + (width/height)*5); // Limit the maximum value to 160
-	newDiceY = Math.min(diceY + 5); // Limit the maximum value to 160
+    newDiceX = Math.min(parseInt(diceX) + parseInt((width/height)*5)); // Limit the maximum value to 160
+	  newDiceY = Math.min(parseInt(diceY) + parseInt(5)); // Limit the maximum value to 160
 	} else {
-		newDiceX = Math.min(diceX + 5); // Limit the maximum value to 160
-		newDiceY = Math.min(diceY + (height/width)*5); // Limit the maximum value to 160
+		newDiceX = Math.min(parseInt(diceX) + parseInt(5)); // Limit the maximum value to 160
+		newDiceY = Math.min(parseInt(diceY) + parseInt((height/width)*5)); // Limit the maximum value to 160
 	}
-
-
-    setDiceX(Math.round(newDiceX));
-	setDiceY(Math.round(newDiceY)); 
+    if(newDiceX > 5 && newDiceX < 130){
+      setDiceX(Math.round(newDiceX));
+    }
+    
+    if(newDiceY >5 && newDiceY <130){
+      setDiceY(Math.round(newDiceY)); 
+    }
 	
   }
 
@@ -114,9 +127,14 @@ export default function DiceArtHomepage() {
 
   return (
     <div>
+
+
       <Navbar/>
 
       <h1 id="title">Dice Mosaic Generator</h1>
+
+      <HomeText />
+
 
       <div>
         <label htmlFor="imageInput" className="imageInputButton">
@@ -271,6 +289,8 @@ export default function DiceArtHomepage() {
       selectedImage={selectedImage} 
       radio={radio} 
       brightness={brightness}/>
+
+
     </div>
   );
 }
