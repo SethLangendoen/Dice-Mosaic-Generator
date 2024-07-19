@@ -25,7 +25,13 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
   const [pixelColors, setPixelColors] = useState([]);
   const [brightness, setBrightness] = useState(bright);
   const [diceValues, setDiceValues] = useState([]);
+  // const [blackDiceCount, setBlackDiceCount] = useState(0); // used to let the user know how many dice are used in each generation. 
+  // const [whiteDiceCount, setWhiteDiceCount] = useState(0); // same thing but for white dice 
   
+  var blackDiceCount = 0; 
+  var whiteDiceCount = 0; 
+
+
   useEffect(() => {
     if (bwImage) {
       const img = new Image();
@@ -42,6 +48,15 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
         const pixelWidth = Math.floor(img.width / numPixelsX);
         const pixelHeight = Math.floor(img.height / numPixelsY);
 
+        // everytime that this is called we are re-creating the dice art image, therefore 
+        // we need to set the black and white die values to 0 as they will be reset in the double for loop. 
+        // setBlackDiceCount(0); 
+        // setWhiteDiceCount(0); 
+
+        blackDiceCount = 0; 
+        whiteDiceCount = 0; 
+
+        
         for (let y = 0; y < numPixelsY; y++) {
           const row = [];
           const diceRow = [];
@@ -53,9 +68,9 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
             const color = `rgb(${r}, ${g}, ${b})`;
             row.push(color);
             if (radio === 'both') {
-              diceRow.push(mapToDieBothIndex(color));
+              diceRow.push(mapToDieBothIndex(color)); // we need to count the number of white vs black die mapped here. 
             } else {
-              diceRow.push(mapToDieIndex(color));
+              diceRow.push(mapToDieIndex(color)); // We need to consider the colour type that is matched here. 
             }
           }
           colors.push(row);
@@ -72,6 +87,7 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
     const palette = ['#000000', '#333333', '#666666', '#999999', '#cccccc', '#ffffff'];
     const redValue = parseInt(color.split(',')[0].slice(4), 10);
     const rangeSize = Math.ceil((256 - brightness) / palette.length);
+
 
     if (redValue < rangeSize) return 0;
     if (redValue < rangeSize * 2) return 1;
@@ -94,6 +110,15 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
     let adjustedRedValue = redValue * adjustedBrightness; // ratio between 0 and 1 that 
 
     const index = Math.floor(adjustedRedValue / rangeSize);
+    console.log(index); 
+    // the index that is returned here is a value that is between 0-11. So, if the value is >=s 6, we have a white die. 
+    // if we have a value <6 we have a black die. 
+    // if (index >= 6){
+    //   // setWhiteDiceCount(whiteDiceCount + 1); // increment the die count by 1. 
+    // } else if (index < 6){
+    //   // setBlackDiceCount(blackDiceCount + 1); 
+    // }
+
     return index;
   };
 
@@ -108,11 +133,31 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
   const getDieImage = (dieIndex) => {
     if (radio === 'both') {
       if (dieIndex < 6) {
+        // setBlackDiceCount(blackDiceCount + 1); 
+        blackDiceCount += 1; 
         return diceImages[dieIndex];
       } else {
+        // setWhiteDiceCount(whiteDiceCount + 1); 
+        whiteDiceCount += 1; 
         return whiteDiceImages[dieIndex - 6];
       }
     } else {
+
+
+      /** This is to count the number of dice for strictly black or white photos, however
+       * The dice count can simply be calculated by multiplying the x value by the y value. 
+       */
+      // if(radio === 'white'){
+      //   setWhiteDiceCount(whiteDiceCount + 1); 
+      // } else if (radio === 'black'){
+      //   setBlackDiceCount(blackDiceCount + 1); 
+      // }
+      if (radio === 'white'){
+        whiteDiceCount += 1; 
+      } else {
+        blackDiceCount += 1; 
+      }
+
       return radio === 'white' ? whiteDiceImages[dieIndex] : diceImages[dieIndex];
     }
   };
@@ -156,6 +201,16 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
           ))}
         </div>
       )}
+
+      <p> Black dice used: {blackDiceCount}</p>
+      <p> White dice used: {whiteDiceCount}</p>
+
+
+
+
+      
+
+
     </div>
   );
 };

@@ -1,18 +1,21 @@
-import './styling.css'
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import './styling.css'; // Ensure your styling is imported
 
+const HomeText = () => {
+  useEffect(() => {
+    AOS.init(); // Initialize AOS
+  }, []);
 
-export default function HomeText() {
-
-	return(
-		<div id = 'homePageText'>
-			<h1>Dice mosaics just got easier</h1>
-			<div>
-				{/* <p id = 'mainParagraph'>Select your photo and watch your mosaic come to life! If you wish to 
-					make a mural out dice but find it difficult to hone your artistic side then this generator 
-					is perfect for you! Simply click choose photo and start working on your mosaic!
-				</p> */}
-				<img></img>
-			</div>
-		</div>
-	)
+  return (
+    <div id="homePageText">
+      <h1 data-aos="zoom-out">Dice mosaics just got easier</h1>
+      <div>
+        {/* Add your content here */}
+      </div>
+    </div>
+  );
 }
+
+export default HomeText;

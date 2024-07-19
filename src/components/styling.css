@@ -15,7 +15,12 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 20px;
+  padding: 10px;
+}
+
+.diceImageContainer > p {
+  padding-top: 10px; 
+  margin: 0; 
 }
 
 /* Everything to do with images:  */
@@ -42,8 +47,8 @@
  /** Website Title **/
 
 #title{
-  margin: 50px; 
-  margin-top: 250px; 
+  margin: 10px; 
+  margin-top: 20px; 
   font-size: 100px; 
   font-family: 'Dancing Script', 'Brush Script MT', cursive;
 }
@@ -58,7 +63,7 @@
   height: auto; /* Automatically adjusts height to maintain aspect ratio */
 }
 
-/* .diceSizeSetter{
+#diceSizeSetter{
   width: 200px;
   margin: 0px; 
   padding: 0px;
@@ -69,7 +74,15 @@
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   text-align: center;
-} */
+}
+
+#diceSizeSetterContainer{
+  margin: 20px; 
+  margin-bottom: 100px; 
+}
+
+
+
 
 .s::placeholder {
   color: #666;
@@ -86,7 +99,7 @@
 /** --------------------------------------------------- Image Uploader controls --------------------------------------------------- */
 
 #imageControls {
-  padding: 20px;
+  padding: 0px;
   border-radius: 10px;
   text-align: center;
   display: flex; 
@@ -96,7 +109,7 @@
 }
 
 #imageControls > div {
-  padding: 10px; 
+  padding: 0px; 
   width: 400px; 
   display: flex; 
   flex-direction: row;
@@ -144,6 +157,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   width: 50px;
+  background-color: #ffcc00;
 }
 
 .radio-group {
@@ -244,7 +258,7 @@
 .imageInputButton {
   display: inline-block;
   padding: 20px 40px;
-  margin: 50px; 
+  margin: 100px; 
   font-size: 24px;
   font-weight: bold;
   color: #fff;
@@ -285,23 +299,22 @@
 
 
 
-/* Navbar styling */
-/* Basic styling for the navbar */
+/* -------------------------------------------------- styling -------------------------------------------------- */
 
-/* Basic styling for the navbar */
 .navbar {
   position: fixed;
   top: 0;
   width: 100%;
   background-color: #333;
   color: #fff;
-  padding: 10px 0px;
+  padding: 10px 0px; /* Adjust padding as needed */
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: top 0.3s;
   z-index: 1000;
 }
+
 
 .navbar-logo {
   width: 50px;
@@ -375,7 +388,7 @@
 #mainParagraph {
   width: 600px; 
   display: inline-block; 
-  
+
 }
 
 
@@ -383,3 +396,131 @@
 #homePageText {
   font-family: Georgia, 'Times New Roman', Times, serif;
 } */
+
+/** --------------------------------------------------- About section styling --------------------------------------------------- */
+
+
+/* styling.css */
+
+/* Styling for the overall About component */
+
+
+#aboutBackground{
+  padding: 100px; 
+  background-color: rgb(156, 156, 156);
+}
+
+
+#About {
+  padding: 20px; /* Adjust padding as needed */
+  width: 70%; 
+  display: inline-block; 
+}
+
+#Features .mainText {
+  font-size: 20px;
+  font-weight: bold; 
+  color: #ffcc00; 
+
+}
+
+#CreatingTheArt .mainText {
+  font-size: 20px;
+  font-weight: bold; 
+  color: #ffcc00; 
+
+}
+
+/* Styling for the Features section */
+#Features {
+  background-color: #f2f2f2; /* Light gray background */
+  padding: 20px;
+  margin-bottom: 30px; /* Space between sections */
+  border-bottom: 2px solid #ccc; /* Line below section */
+  border-radius: 20px;
+}
+
+#Features h1 {
+  font-size: 28px; /* Larger font size for main headings */
+  color: #333; /* Dark text color */
+  border-bottom: 1px solid #999; /* Line under heading */
+  padding-bottom: 8px; /* Space below heading */
+  margin-bottom: 16px; /* Space below heading */
+  font-family: 'Georgia', sans-serif; /* Example of setting a font-family */
+}
+
+#Features h3 {
+  font-size: 20px; /* Larger font size for subheadings */
+  color: #555; /* Slightly darker text color */
+  margin-top: 24px; /* Space above each subheading */
+  font-family: 'Georgia', sans-serif; /* Example of setting a font-family */
+}
+
+#Features p {
+  font-size: 16px; /* Regular font size for paragraphs */
+  color: #666; /* Gray text color */
+  line-height: 1.6; /* Line height for readability */
+  margin-bottom: 16px; /* Space below each paragraph */
+}
+
+
+
+/* Styling for the CreatingTheArt section */
+#CreatingTheArt {
+  background-color: #e0e0e0; /* Lighter gray background */
+  padding: 20px;
+  border-bottom: 2px solid #ccc; /* Line below section */
+  border-radius: 20px;
+
+}
+
+#CreatingTheArt h1 {
+  font-size: 28px; /* Larger font size for main headings */
+  color: #333; /* Dark text color */
+  border-bottom: 1px solid #999; /* Line under heading */
+  padding-bottom: 8px; /* Space below heading */
+  margin-bottom: 16px; /* Space below heading */
+  font-family: 'Arial', sans-serif; /* Example of setting a font-family */
+}
+
+#CreatingTheArt p {
+  font-size: 16px; /* Regular font size for paragraphs */
+  color: #666; /* Gray text color */
+  line-height: 1.6; /* Line height for readability */
+  margin-bottom: 16px; /* Space below each paragraph */
+}
+
+
+
+/** -------------------------------- Donation link -------------------------------- */
+
+
+/* styling.css */
+
+/* styling.css */
+
+/* Styling for the support message and link */
+#support-message {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#support-message a {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: #ffcc00;
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+#support-message a:hover {
+  background-color: #e6b800;
+}
+
+#donationDiv{
+  margin: 100px; 
+}

@@ -2,17 +2,24 @@ import ImageUploader from "./ImageUploader";
 import HomeText from "./Home";
 import Navbar from './Navbar'; 
 import { useEffect, useState } from "react";
+import About from './About'; 
 import './styling.css'
+import Animation from './Animation.js'; 
+
+
+
+
+
 // import Navbar from "./Navbar";
 
 
-// to push changes without getting the permiissions error...
-// git remote set-url origin https://github.com/SethLangendoen/Dice-Mosaic-Generator.git
-// git branch
-// git checkout master
-// git add .
-// git commit -m "Added Navbar"     
-// git push -u origin master
+to push changes without getting the permiissions error...
+git remote set-url origin https://github.com/SethLangendoen/Dice-Mosaic-Generator.git
+git branch
+git checkout master
+git add .
+git commit -m "Added generator die counting functionality"     
+git push -u origin master
 
 // importing dice images for the radio button images. 
 import diceOneImage from '../Assets/dice-one.png';
@@ -52,14 +59,13 @@ export default function DiceArtHomepage() {
 		newDiceX = Math.min(parseInt(diceX) + parseInt(5)); // Limit the maximum value to 160
 		newDiceY = Math.min(parseInt(diceY) + parseInt((height/width)*5)); // Limit the maximum value to 160
 	}
-    if(newDiceX > 5 && newDiceX < 130){
+    if(newDiceX > 30 && newDiceX < 130){
       setDiceX(Math.round(newDiceX));
     }
     
-    if(newDiceY >5 && newDiceY <130){
+    if(newDiceY > 30 && newDiceY <130){
       setDiceY(Math.round(newDiceY)); 
     }
-	
   }
 
   function handleDecreaseSize() {
@@ -74,8 +80,13 @@ export default function DiceArtHomepage() {
 		newDiceX = Math.min(diceX - 5); // Limit the maximum value to 160
 		newDiceY = Math.min(diceY - (height/width)*5); // Limit the maximum value to 160
 	}
-    setDiceX(Math.round(newDiceX));
-	setDiceY(Math.round(newDiceY)); 
+    if(newDiceX > 30 && newDiceX < 130){
+      setDiceX(Math.round(newDiceX));
+    }
+
+    if(newDiceY > 30 && newDiceY < 130){
+      setDiceY(Math.round(newDiceY)); 
+    }
 	
   }
 
@@ -128,6 +139,7 @@ export default function DiceArtHomepage() {
   return (
     <div>
 
+      <Animation />
 
       <Navbar/>
 
@@ -136,7 +148,7 @@ export default function DiceArtHomepage() {
       <HomeText />
 
 
-      <div>
+      <div id = 'generator'>
         <label htmlFor="imageInput" className="imageInputButton">
           <span>Choose Image</span>
           <input 
@@ -251,9 +263,9 @@ export default function DiceArtHomepage() {
             Number of Dice X:
             <input
               type="number"
-              value={diceX}
+              value={Math.round(diceX)}
               min={30}
-              max={160}
+              max={130}
               onChange={handleNumPixelsXChange}
             />
           </label>
@@ -262,23 +274,14 @@ export default function DiceArtHomepage() {
             Number of Dice Y:
             <input
               type="number"
-              value={diceY}
+              value={Math.round(diceY)}
               min={30}
-              max={160}
+              max={130}
               onChange={handleNumPixelsYChange}
             />
           </label>
           </div>
 
-          <div>
-            <input id = 'diceSizeSetter' type = 'number' value={diceSize}
-            onChange={handleDiceSizeChange}
-            placeholder='Die Size'
-            step = '0.1'
-            /> 
-
-            <p>Dice Image Size: {(diceX * diceSize).toFixed(2)}cm x {(diceY * diceSize).toFixed(2)}cm</p>
-          </div>
       </div>
 
       )}
@@ -289,6 +292,33 @@ export default function DiceArtHomepage() {
       selectedImage={selectedImage} 
       radio={radio} 
       brightness={brightness}/>
+
+
+      {controlsDisplayed && (
+        <div id = 'diceSizeSetterContainer'>
+        <input id = 'diceSizeSetter' type = 'number' value={diceSize}
+        onChange={handleDiceSizeChange}
+        placeholder='Die Size'
+        step = '0.1'
+        /> 
+        <p>Dice Image Size: {(diceX * diceSize).toFixed(2)}cm x {(diceY * diceSize).toFixed(2)}cm</p>
+      </div>
+      )}
+
+
+      {/** This is where I will state how many dice of each colour were used.  */}
+
+
+      <div id = 'aboutBackground'>
+        <About />  
+      </div>
+     
+
+        <div data-aos='fade-up' data-aos-offset="100" id = 'donationDiv'>
+          <p id="support-message" >Did you find this generator helpful? If so, please support the developer <a href='https://buymeacoffee.com/sethlangendoen' target='_blank'>Buy me a coffee!</a></p>
+          <p id = 'contact' >Any other questions or concerns? Email us at <a href="mailto:youremail@example.com" target = '_blank'>youremail@example.com</a></p>
+        </div>
+
 
 
     </div>

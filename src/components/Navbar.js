@@ -33,10 +33,11 @@ function Navbar() {
     setActiveLink(section);
     const element = document.getElementById(section);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Ensure smooth scrolling
     }
     setMenuOpen(false); // Close menu after click
   };
+  
 
   return (
     <nav className={`navbar ${show ? 'navbar-show' : 'navbar-hide'}`}>
@@ -49,7 +50,7 @@ function Navbar() {
         >
           Generator
         </a>
-        <a 
+         <a 
           href="#shop" 
           className={activeLink === 'shop' ? 'active' : ''} 
           onClick={() => handleLinkClick('shop')}
@@ -57,12 +58,12 @@ function Navbar() {
           Shop
         </a>
         <a 
-          href="#about" 
+          href="#About" 
           className={activeLink === 'about' ? 'active' : ''} 
           onClick={() => handleLinkClick('about')}
         >
           About
-        </a>
+        </a> 
         <a 
           href="#contact" 
           className={activeLink === 'contact' ? 'active' : ''} 
