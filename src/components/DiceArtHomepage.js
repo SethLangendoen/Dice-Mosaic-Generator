@@ -1,3 +1,16 @@
+
+
+// to push changes without getting the permiissions error...
+// git remote set-url origin https://github.com/SethLangendoen/Dice-Mosaic-Generator.git
+// git branch
+// git checkout master
+// git add .
+// git commit -m "Added generator die counting functionality"     
+// git push -u origin master
+
+
+
+
 import ImageUploader from "./ImageUploader";
 import HomeText from "./Home";
 import Navbar from './Navbar'; 
@@ -6,25 +19,25 @@ import About from './About';
 import './styling.css'
 import Animation from './Animation.js'; 
 
-
-
-
-
-// import Navbar from "./Navbar";
-
-
-to push changes without getting the permiissions error...
-git remote set-url origin https://github.com/SethLangendoen/Dice-Mosaic-Generator.git
-git branch
-git checkout master
-git add .
-git commit -m "Added generator die counting functionality"     
-git push -u origin master
-
 // importing dice images for the radio button images. 
 import diceOneImage from '../Assets/dice-one.png';
 import whiteDiceOneImage from '../Assets/whitedice-one.png';
 import blackAndWhiteOneImage from '../Assets/blackAndWhiteDie.png'; 
+
+
+
+// Import preset images
+import presetImage1 from '../Assets/rubiks.gif';
+import presetImage2 from '../Assets/panda.png'; 
+import presetImage3 from '../Assets/guitar.jpg';
+
+const presetImages = [
+  { src: presetImage1, width: 800, height: 600 },
+  { src: presetImage2, width: 800, height: 600 },
+  { src: presetImage3, width: 800, height: 600 }
+];
+
+
 
 
 export default function DiceArtHomepage() {
@@ -38,6 +51,27 @@ export default function DiceArtHomepage() {
   const [brightness, setBrightness] = useState(1); 
   const [diceSize, setDiceSize] = useState(1.6); 
   const [controlsDisplayed, setControlsDisplayed] = useState(false); 
+
+
+
+  const handlePresetImageClick = (presetImage) => {
+    setSelectedImage(presetImage);
+    setWidth(presetImage.width);
+    setHeight(presetImage.height);
+  
+    if (presetImage.width >= presetImage.height) {
+      setDiceX(80);
+      setDiceY(80 * (presetImage.height / presetImage.width));
+    } else {
+      setDiceX(80 * (presetImage.width / presetImage.height));
+      setDiceY(80);
+    }
+  
+    // Render the controls
+    setControlsDisplayed(true);
+  };
+
+
 
   function handleNumPixelsXChange(event) {
     setDiceX(event.target.value); // Set the state with the new value of the input field
@@ -158,6 +192,22 @@ export default function DiceArtHomepage() {
             onChange={handleImageChange} 
           />
         </label>
+
+        <p>Or select one of our preset images </p>
+
+        <div className="preset-images">
+          {presetImages.map((image, index) => (
+            <img
+              key={index}
+              src={image.src}
+              alt={`Preset ${index + 1}`}
+              onClick={() => handlePresetImageClick(image)}
+              className="preset-thumbnail"
+            />
+          ))}
+        </div>
+
+
       </div>
       
       {controlsDisplayed && (

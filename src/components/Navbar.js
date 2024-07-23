@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './styling.css'; // Ensure this file exists for the styles
 import twoDiceLogoImage from '../Assets/twoDiceNavbar.png'; 
 
-
 function Navbar() {
   const [show, setShow] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -33,11 +32,10 @@ function Navbar() {
     setActiveLink(section);
     const element = document.getElementById(section);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Ensure smooth scrolling
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
     setMenuOpen(false); // Close menu after click
   };
-  
 
   return (
     <nav className={`navbar ${show ? 'navbar-show' : 'navbar-hide'}`}>
@@ -50,7 +48,7 @@ function Navbar() {
         >
           Generator
         </a>
-         <a 
+        <a 
           href="#shop" 
           className={activeLink === 'shop' ? 'active' : ''} 
           onClick={() => handleLinkClick('shop')}
@@ -63,7 +61,7 @@ function Navbar() {
           onClick={() => handleLinkClick('about')}
         >
           About
-        </a> 
+        </a>
         <a 
           href="#contact" 
           className={activeLink === 'contact' ? 'active' : ''} 

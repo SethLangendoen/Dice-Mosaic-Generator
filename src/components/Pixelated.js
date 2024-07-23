@@ -178,7 +178,7 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
       </div>
 
       {['black', 'white', 'both'].includes(radio) && (
-        <div>
+        <div id = 'diceMosaicContainer'>
           {diceValues.map((row, rowIndex) => ( 
             <div className='diceRow' key={rowIndex} style={{ height: '10px' }}>
               {row.map((dieValue, colIndex) => (
@@ -202,8 +202,8 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
         </div>
       )}
 
-      <p> Black dice used: {blackDiceCount}</p>
-      <p> White dice used: {whiteDiceCount}</p>
+      <p> <img src={diceFiveImage} style ={{width: '12px', height: '12px'}}></img> Black dice used: {blackDiceCount}</p>
+      <p> <img src={whiteDiceFiveImage} style ={{width: '12px', height: '12px'}}></img> White dice used: {whiteDiceCount}</p>
 
 
 
