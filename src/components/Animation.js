@@ -17,7 +17,7 @@ const LottieAnimation = () => {
     return () => anim.destroy();
   }, []); // Empty dependency array ensures useEffect runs only once
 
-  return <div id="lottie-container" style={{display: 'inline-block', width: '500px', height: '200px', marginTop: "100px"}}></div>;
+  return <div id="lottie-container" style={{display: 'inline-block', width: '500px', height: '200px', marginTop: "80px"}}></div>;
 };
 
 export default LottieAnimation;

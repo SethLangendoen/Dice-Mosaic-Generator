@@ -18,7 +18,8 @@ const diceImages = [
 ];
 
 const whiteDiceImages = [
-  whiteDiceOneImage, whiteDiceTwoImage, whiteDiceThreeImage, whiteDiceFourImage, whiteDiceFiveImage, whiteDiceSixImage
+  // whiteDiceOneImage, whiteDiceTwoImage, whiteDiceThreeImage, whiteDiceFourImage, whiteDiceFiveImage, whiteDiceSixImage
+  whiteDiceSixImage, whiteDiceFiveImage, whiteDiceFourImage, whiteDiceThreeImage, whiteDiceTwoImage, whiteDiceOneImage
 ];
 
 const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
@@ -176,6 +177,7 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
         />
         <output htmlFor="brightness">{brightness}</output>
       </div>
+
 
       {['black', 'white', 'both'].includes(radio) && (
         <div id = 'diceMosaicContainer'>

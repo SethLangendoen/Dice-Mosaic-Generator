@@ -5,7 +5,7 @@
 // git branch
 // git checkout master
 // git add .
-// git commit -m "Added generator die counting functionality"     
+// git commit -m "Added many minor bug fixes"
 // git push -u origin master
 
 
@@ -209,10 +209,12 @@ export default function DiceArtHomepage() {
 
 
       </div>
+
+      <div id = 'generatorContainer'> 
       
       {controlsDisplayed && (
 
-        
+        // <div id = 'generatorContainer'>
         <div id='imageControls'>
           {/* <div>
           <input 
@@ -355,6 +357,8 @@ export default function DiceArtHomepage() {
       </div>
       )}
 
+      </div>
+
 
       {/** This is where I will state how many dice of each colour were used.  */}
 
@@ -364,7 +368,7 @@ export default function DiceArtHomepage() {
       </div>
      
 
-        <div data-aos='fade-up' data-aos-offset="100" id = 'donationDiv'>
+        <div data-aos='fade-up' data-aos-offset="100" data-aos-duration = '1500' id = 'donationDiv'>
           <p id="support-message" >Did you find this generator helpful? If so, please support the developer <a href='https://buymeacoffee.com/sethlangendoen' target='_blank'>Buy me a coffee!</a></p>
           <p id = 'contact' >Any other questions or concerns? Email us at <a href="mailto:youremail@example.com" target = '_blank'>youremail@example.com</a></p>
         </div>

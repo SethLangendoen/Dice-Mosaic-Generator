@@ -42,19 +42,13 @@ function Navbar() {
       <img src={twoDiceLogoImage} className="navbar-logo" alt="Logo" />
       <div className={`nav-links ${menuOpen ? 'nav-links-mobile' : ''}`}>
         <a 
-          href="#generator" 
+          href="#title" 
           className={activeLink === 'generator' ? 'active' : ''} 
           onClick={() => handleLinkClick('generator')}
         >
           Generator
         </a>
-        <a 
-          href="#shop" 
-          className={activeLink === 'shop' ? 'active' : ''} 
-          onClick={() => handleLinkClick('shop')}
-        >
-          Shop
-        </a>
+
         <a 
           href="#About" 
           className={activeLink === 'about' ? 'active' : ''} 
@@ -62,6 +56,15 @@ function Navbar() {
         >
           About
         </a>
+
+        <a 
+          href="#shop" 
+          className={activeLink === 'shop' ? 'active' : ''} 
+          onClick={() => handleLinkClick('shop')}
+        >
+          Shop
+        </a>
+
         <a 
           href="#contact" 
           className={activeLink === 'contact' ? 'active' : ''} 
@@ -69,6 +72,7 @@ function Navbar() {
         >
           Contact
         </a>
+
       </div>
       <div className="burger-menu" onClick={handleMenuToggle}>
         <div className="burger-bar"></div>

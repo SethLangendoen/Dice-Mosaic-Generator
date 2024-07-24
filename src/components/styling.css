@@ -48,7 +48,7 @@
 
 #title{
   margin: 10px; 
-  margin-top: 20px; 
+  margin-top: 10px; 
   font-size: 100px; 
   font-family: 'Dancing Script', 'Brush Script MT', cursive;
 }
@@ -77,8 +77,8 @@
 }
 
 #diceSizeSetterContainer{
-  margin: 20px; 
-  margin-bottom: 100px; 
+  padding-bottom: 20px;
+  /* margin-bottom: 100px;  */
 }
 
 
@@ -99,7 +99,7 @@
 /** --------------------------------------------------- Image Uploader controls --------------------------------------------------- */
 
 #imageControls {
-  padding: 0px;
+  padding-top: 75px; 
   border-radius: 10px;
   text-align: center;
   display: flex; 
@@ -148,7 +148,6 @@
 #imageControls label {
   display: block;
   margin: 10px 0;
-  font-weight: bold;
 }
 
 #imageControls input[type="number"] {
@@ -406,6 +405,11 @@ html {
   margin: 0px; 
 } */
 
+#generatorContainer{
+  background-color: rgb(210, 210, 210);
+  /* padding-top: 20px;  */
+  color: black; 
+}
 
 /** --------------------------------------------------- mainParagraph and hoome text styling --------------------------------------------------- */
 
@@ -442,6 +446,9 @@ html {
   display: inline-block; 
 }
 
+
+
+
 #Features .mainText {
   font-size: 20px;
   font-weight: bold;
@@ -467,27 +474,26 @@ html {
 
 /* Styling for the Features section */
 #Features {
-  background-color: #f2f2f2; /* Light gray background */
-  padding: 20px;
+  /* background-color: #f2f2f2; */
   margin-bottom: 30px; /* Space between sections */
-  border-bottom: 2px solid #ccc; /* Line below section */
-  border-radius: 20px;
+  border-bottom: 1px solid black;
+  /* border-radius: 20px; */
 }
 
 #Features h1 {
-  font-size: 28px; /* Larger font size for main headings */
-  color: #333; /* Dark text color */
-  border-bottom: 1px solid #999; /* Line under heading */
+  font-size: 100px; /* Larger font size for main headings */
+  color: black; /* Dark text color */
+  border-bottom: 1px solid black; /* Line under heading */
   padding-bottom: 8px; /* Space below heading */
   margin-bottom: 16px; /* Space below heading */
-  font-family: 'Georgia', sans-serif; /* Example of setting a font-family */
+  font-family: 'Dancing Script', 'Brush Script MT', cursive;
 }
 
 #Features h3 {
-  font-size: 20px; /* Larger font size for subheadings */
-  color: #555; /* Slightly darker text color */
+  font-size: 30px; /* Larger font size for subheadings */
+  color: black; /* Slightly darker text color */
   margin-top: 24px; /* Space above each subheading */
-  font-family: 'Georgia', sans-serif; /* Example of setting a font-family */
+  /* font-family: 'Georgia', sans-serif; Example of setting a font-family */
 }
 
 #Features h3:hover {
@@ -499,6 +505,10 @@ html {
   color: #666; /* Gray text color */
   line-height: 1.6; /* Line height for readability */
   margin-bottom: 16px; /* Space below each paragraph */
+}
+
+#Features > div{
+  padding: 10px 0px; 
 }
 
 
@@ -586,4 +596,56 @@ html {
 
 .preset-thumbnail:hover {
   transform: scale(1.1);
+}
+
+
+/** -------------------------------- shop  -------------------------------- */
+
+#shop{
+  margin-top: 200px; 
+}
+
+#shopTitle{
+  border-bottom: 1px solid white;
+  font-family: 'Dancing Script', 'Brush Script MT', cursive;
+  font-size: 100px; 
+}
+
+/* --------------------------------------- Affiliate Links */
+
+
+#brybellyDiceLink{
+  width: 300px; 
+  height: 300px; 
+}
+
+#brybellyDiceLink img{
+  width: 100px; 
+  height: 100px; 
+}
+
+#shop > div{
+  width: 500px; 
+  display: flex; 
+}
+
+
+/** -------------------------------- data-aos manipulation  -------------------------------- */
+
+.aos-animate[data-aos="fade-right"] {
+  transform: translate3d(100px, 0, 0); /* Adjust the value as needed */
+}
+
+.aos-init[data-aos="fade-right"] {
+  opacity: 0;
+  transform: translate3d(-300px, 0, 0); /* Initial position, adjust the value as needed */
+}
+
+.aos-animate[data-aos="fade-left"] {
+  transform: translate3d(100px, 0, 0); /* Adjust the value as needed */
+}
+
+.aos-init[data-aos="fade-left"] {
+  opacity: 0;
+  transform: translate3d(300px, 0, 0); /* Initial position, adjust the value as needed */
 }

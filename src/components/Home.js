@@ -10,10 +10,8 @@ const HomeText = () => {
 
   return (
     <div id="homePageText">
-      <h1 data-aos="zoom-out">Dice mosaics just got easier</h1>
-      <div>
-        {/* Add your content here */}
-      </div>
+      <h1 data-aos="zoom-out" data-aos-duration = '2000'>Dice mosaics just got easier</h1>
+
     </div>
   );
 }
