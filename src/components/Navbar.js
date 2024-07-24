@@ -39,7 +39,10 @@ function Navbar() {
 
   return (
     <nav className={`navbar ${show ? 'navbar-show' : 'navbar-hide'}`}>
+      <div id = "logoAndNameNavbar" href = 'lottie-container' onClick={() => handleLinkClick('lottie-container')}>
       <img src={twoDiceLogoImage} className="navbar-logo" alt="Logo" />
+      <p>Dice Mosaic Generator</p>
+      </div>
       <div className={`nav-links ${menuOpen ? 'nav-links-mobile' : ''}`}>
         <a 
           href="#title" 
@@ -50,11 +53,11 @@ function Navbar() {
         </a>
 
         <a 
-          href="#About" 
+          href="#About"  // says about cuz this used to be an about section, but now it's a features section...
           className={activeLink === 'about' ? 'active' : ''} 
           onClick={() => handleLinkClick('about')}
         >
-          About
+          Features
         </a>
 
         <a 

@@ -397,6 +397,16 @@ html {
   scroll-behavior: smooth;
 }
 
+#logoAndNameNavbar{
+  display: flex; 
+  flex-direction: vertical; 
+}
+
+#logoAndNameNavbar > p {
+  margin-left: 10px; 
+  font-weight: bold;
+}
+
 /** --------------------------------------------------- mosaicContainerStyling --------------------------------------------------- */
 
 /* #diceMosaicContainer{
@@ -570,8 +580,10 @@ html {
 }
 
 #donationDiv{
-  margin: 100px; 
+  padding: 100px; 
+  background-color: rgb(52, 52, 52);
 }
+
 
 
 /** -------------------------------- preset images -------------------------------- */
@@ -601,33 +613,58 @@ html {
 
 /** -------------------------------- shop  -------------------------------- */
 
-#shop{
-  margin-top: 200px; 
+#shop {
+  width: 70%; 
+  display: inline-block; 
+  margin-bottom: 100px; 
 }
 
-#shopTitle{
+#shopTitle {
   border-bottom: 1px solid white;
   font-family: 'Dancing Script', 'Brush Script MT', cursive;
   font-size: 100px; 
 }
 
-/* --------------------------------------- Affiliate Links */
+/* --------------------------------------- Shop Affiliate Links ----------------------------------- */
 
-
-#brybellyDiceLink{
-  width: 300px; 
-  height: 300px; 
-}
-
-#brybellyDiceLink img{
-  width: 100px; 
-  height: 100px; 
-}
-
-#shop > div{
-  width: 500px; 
+#shop > div {
+  width: 100%; 
   display: flex; 
+  height: auto; 
+  align-items: center; /* Center the items vertically */
+  margin-top: 50px; 
 }
+
+#shop > div > img {
+  width: 200px; 
+  height: 100%; 
+  border-radius: 5px; 
+}
+
+#shop > div > div {
+  margin-left: 50px; 
+  margin-right: 50px; 
+  width: 100%; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; /* Center the content vertically */
+  align-items: center; /* Center the content horizontally */
+}
+
+#shop > div > div > p {
+  margin: 0; /* Remove default margin from paragraphs */
+  font-size: 30px; 
+}
+
+#shop > div > a {
+  width: 100%; 
+  height: 300px; 
+  font-size: 20px; 
+}
+
+
+
+
 
 
 /** -------------------------------- data-aos manipulation  -------------------------------- */
