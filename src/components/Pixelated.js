@@ -33,57 +33,6 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
   var whiteDiceCount = 0; 
 
 
-  useEffect(() => {
-    if (bwImage) {
-      const img = new Image();
-      img.crossOrigin = "Anonymous";
-      img.onload = () => {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d', { willReadFrequently: true });
-        canvas.width = img.width;
-        canvas.height = img.height;
-        ctx.drawImage(img, 0, 0);
-
-        const colors = [];
-        const diceValues = [];
-        const pixelWidth = Math.floor(img.width / numPixelsX);
-        const pixelHeight = Math.floor(img.height / numPixelsY);
-
-        // everytime that this is called we are re-creating the dice art image, therefore 
-        // we need to set the black and white die values to 0 as they will be reset in the double for loop. 
-        // setBlackDiceCount(0); 
-        // setWhiteDiceCount(0); 
-
-        // blackDiceCount = 0; 
-        // whiteDiceCount = 0; 
-
-        
-        for (let y = 0; y < numPixelsY; y++) {
-          const row = [];
-          const diceRow = [];
-          for (let x = 0; x < numPixelsX; x++) {
-            const pixelX = x * pixelWidth;
-            const pixelY = y * pixelHeight;
-            const imageData = ctx.getImageData(pixelX, pixelY, 1, 1);
-            const [r, g, b] = imageData.data;
-            const color = `rgb(${r}, ${g}, ${b})`;
-            row.push(color);
-            if (radio === 'both') {
-              diceRow.push(mapToDieBothIndex(color)); // we need to count the number of white vs black die mapped here. 
-            } else {
-              diceRow.push(mapToDieIndex(color)); // We need to consider the colour type that is matched here. 
-            }
-          }
-          colors.push(row);
-          diceValues.push(diceRow);
-        }
-        // setPixelColors(colors);
-        setDiceValues(diceValues);
-      };
-      img.src = bwImage;
-    }
-  }, [bwImage, numPixelsX, numPixelsY, brightness, radio]);
-
   const mapToDieIndex = useCallback((color) => {
     const palette = ['#000000', '#333333', '#666666', '#999999', '#cccccc', '#ffffff'];
     const redValue = parseInt(color.split(',')[0].slice(4), 10);
@@ -110,6 +59,50 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
     return index;
   }, [brightness]);  // Added brightness to dependency array
   
+  
+
+  useEffect(() => {
+    if (bwImage) {
+      const img = new Image();
+      img.crossOrigin = "Anonymous";
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d', { willReadFrequently: true });
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+
+        const colors = [];
+        const diceValues = [];
+        const pixelWidth = Math.floor(img.width / numPixelsX);
+        const pixelHeight = Math.floor(img.height / numPixelsY);
+
+        
+        for (let y = 0; y < numPixelsY; y++) {
+          const row = [];
+          const diceRow = [];
+          for (let x = 0; x < numPixelsX; x++) {
+            const pixelX = x * pixelWidth;
+            const pixelY = y * pixelHeight;
+            const imageData = ctx.getImageData(pixelX, pixelY, 1, 1);
+            const [r, g, b] = imageData.data;
+            const color = `rgb(${r}, ${g}, ${b})`;
+            row.push(color);
+            if (radio === 'both') {
+              diceRow.push(mapToDieBothIndex(color)); // we need to count the number of white vs black die mapped here. 
+            } else {
+              diceRow.push(mapToDieIndex(color)); // We need to consider the colour type that is matched here. 
+            }
+          }
+          colors.push(row);
+          diceValues.push(diceRow);
+        }
+        // setPixelColors(colors);
+        setDiceValues(diceValues);
+      };
+      img.src = bwImage;
+    }
+  }, [bwImage, numPixelsX, numPixelsY, brightness, radio, mapToDieBothIndex, mapToDieIndex]);
 
 
 
