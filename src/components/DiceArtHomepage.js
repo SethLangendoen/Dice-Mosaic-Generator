@@ -49,10 +49,11 @@ export default function DiceArtHomepage() {
   const [width, setWidth] = useState(1); 
   const [height, setHeight] = useState(1); 
   const [radio, setRadio] = useState('black'); 
-  const [brightness, setBrightness] = useState(1); 
+  // const [brightness, setBrightness] = useState(1); 
   const [diceSize, setDiceSize] = useState(1.6); 
   const [controlsDisplayed, setControlsDisplayed] = useState(false); 
 
+  var brightness = 1; 
 
 
   const handlePresetImageClick = (presetImage) => {
@@ -163,9 +164,9 @@ export default function DiceArtHomepage() {
     setRadio(event.target.value);
   };
 
-  const handleSetBrightness = (event) => {
-	  setBrightness(event.target.value);
-  }
+  // const handleSetBrightness = (event) => {
+	//   setBrightness(event.target.value);
+  // }
 
   const handleDiceSizeChange = (event) => {
     setDiceSize(event.target.value); 
@@ -367,14 +368,13 @@ export default function DiceArtHomepage() {
       <div id = 'aboutBackground'>
         <About />  
       </div>
-
       <Shop /> 
      
 
         <div  id = 'donationDiv'>
           <div data-aos='fade-up' data-aos-offset="100" data-aos-duration = '1500'>
-          <p id="support-message" >Did you find this generator helpful? If so, please support the developer <a href='https://buymeacoffee.com/sethlangendoen' target='_blank'>Buy me a coffee!</a></p>
-          <p id = 'contact' >Any other questions or concerns? Email us at <a href="mailto:dicemosaicgenerator@gmail.com" target = '_blank'>dicemosaicgenerator@gmail.com</a></p>
+          <p id="support-message" >Did you find this generator helpful? If so, please support the developer <a href='https://buymeacoffee.com/sethlangendoen' target='_blank' rel='noopener noreferrer'>Buy me a coffee!</a></p>
+          <p id = 'contact' >Any other questions or concerns? Email us at <a href="mailto:dicemosaicgenerator@gmail.com" target = '_blank' rel='noopener noreferrer'>dicemosaicgenerator@gmail.com</a></p>
           </div>
         </div>
 
