@@ -5,7 +5,7 @@
 // git branch
 // git checkout master
 // git add .
-// git commit -m "Styling and minor bug fixes"
+// git commit -m "Added content to my shop"
 // git push -u origin master
 
 
@@ -15,7 +15,7 @@ import ImageUploader from "./ImageUploader";
 import Shop from "./Shop"; 
 import HomeText from "./Home";
 import Navbar from './Navbar'; 
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import About from './About'; 
 import './styling.css'
 import Animation from './Animation.js'; 
@@ -374,7 +374,7 @@ export default function DiceArtHomepage() {
         <div  id = 'donationDiv'>
           <div data-aos='fade-up' data-aos-offset="100" data-aos-duration = '1500'>
           <p id="support-message" >Did you find this generator helpful? If so, please support the developer <a href='https://buymeacoffee.com/sethlangendoen' target='_blank'>Buy me a coffee!</a></p>
-          <p id = 'contact' >Any other questions or concerns? Email us at <a href="mailto:youremail@example.com" target = '_blank'>youremail@example.com</a></p>
+          <p id = 'contact' >Any other questions or concerns? Email us at <a href="mailto:dicemosaicgenerator@gmail.com" target = '_blank'>dicemosaicgenerator@gmail.com</a></p>
           </div>
         </div>
 

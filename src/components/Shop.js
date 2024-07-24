@@ -11,7 +11,7 @@ export default function Shop(){
 
 			
 			<div id = 'brybellyDiceLink'>
-				<img src={BryBellyDice}></img>
+				<img src={BryBellyDice} alt='dice'></img>
 				<div>
 					<p><a href='https://amzn.to/4cPelIJ'  target='blank'>BryBelly 100 Dice, 16mm</a></p>
 					<p>$22.99</p>
@@ -23,7 +23,7 @@ export default function Shop(){
 
 
 			<div id = 'FEPITODiceLink'>
-				<img src={FepitoDice}></img>
+				<img src={FepitoDice} alt='dice'></img>
 				<div>
 					<p><a href='https://amzn.to/3Sh94le'  target='blank'>FEPITO 100 Pieces Dice Set 16mm</a></p>
 					<p>$17.99</p>
@@ -35,7 +35,7 @@ export default function Shop(){
 			
 
 			<div id = '8mmDiceBlackProduct'>
-				<img src={BlackDice8mm}></img>
+				<img src={BlackDice8mm} alt='dice'></img>
 				<div>
 					<p><a href='https://amzn.to/3WhEMzN'  target='blank'>Dice Set of 100 Pcs Diameter 8mm</a></p>
 					<p>$5.32</p>
