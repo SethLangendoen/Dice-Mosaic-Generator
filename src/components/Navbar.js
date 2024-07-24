@@ -1,28 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './styling.css'; // Ensure this file exists for the styles
-import twoDiceLogoImage from '../Assets/twoDiceNavbar.png'; 
+import twoDiceLogoImage from '../Assets/twoDiceNavbar.png';
 
 function Navbar() {
   const [show, setShow] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState('generator');
-  let lastScrollY = window.pageYOffset;
+  const lastScrollY = useRef(window.pageYOffset);
 
-  const controlNavbar = () => {
-    if (window.pageYOffset > lastScrollY) {
+  const controlNavbar = useCallback(() => {
+    if (window.pageYOffset > lastScrollY.current) {
       setShow(false);
     } else {
       setShow(true);
     }
-    lastScrollY = window.pageYOffset;
-  };
+    lastScrollY.current = window.pageYOffset;
+  }, []);
 
   useEffect(() => {
     window.addEventListener('scroll', controlNavbar);
     return () => {
       window.removeEventListener('scroll', controlNavbar);
     };
-  }, [lastScrollY]);
+  }, [controlNavbar]);
 
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
@@ -39,9 +39,9 @@ function Navbar() {
 
   return (
     <nav className={`navbar ${show ? 'navbar-show' : 'navbar-hide'}`}>
-      <div id = "logoAndNameNavbar" href = 'lottie-container' onClick={() => handleLinkClick('lottie-container')}>
-      <img src={twoDiceLogoImage} className="navbar-logo" alt="Logo" />
-      <p>Dice Mosaic Generator</p>
+      <div id="logoAndNameNavbar" href='lottie-container' onClick={() => handleLinkClick('lottie-container')}>
+        <img src={twoDiceLogoImage} className="navbar-logo" alt="Logo" />
+        <p>Dice Mosaic Generator</p>
       </div>
       <div className={`nav-links ${menuOpen ? 'nav-links-mobile' : ''}`}>
         <a 
@@ -53,7 +53,7 @@ function Navbar() {
         </a>
 
         <a 
-          href="#About"  // says about cuz this used to be an about section, but now it's a features section...
+          href="#About" // says about cuz this used to be an about section, but now it's a features section...
           className={activeLink === 'about' ? 'active' : ''} 
           onClick={() => handleLinkClick('about')}
         >
@@ -75,7 +75,6 @@ function Navbar() {
         >
           Contact
         </a>
-
       </div>
       <div className="burger-menu" onClick={handleMenuToggle}>
         <div className="burger-bar"></div>

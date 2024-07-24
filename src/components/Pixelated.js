@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import diceOneImage from '../Assets/dice-one.png';
 import diceTwoImage from '../Assets/dice-two.png';
 import diceThreeImage from '../Assets/dice-three.png';
@@ -23,7 +23,7 @@ const whiteDiceImages = [
 ];
 
 const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
-  const [pixelColors, setPixelColors] = useState([]);
+  // const [pixelColors, setPixelColors] = useState([]);
   const [brightness, setBrightness] = useState(bright);
   const [diceValues, setDiceValues] = useState([]);
   // const [blackDiceCount, setBlackDiceCount] = useState(0); // used to let the user know how many dice are used in each generation. 
@@ -54,8 +54,8 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
         // setBlackDiceCount(0); 
         // setWhiteDiceCount(0); 
 
-        blackDiceCount = 0; 
-        whiteDiceCount = 0; 
+        // blackDiceCount = 0; 
+        // whiteDiceCount = 0; 
 
         
         for (let y = 0; y < numPixelsY; y++) {
@@ -65,7 +65,7 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
             const pixelX = x * pixelWidth;
             const pixelY = y * pixelHeight;
             const imageData = ctx.getImageData(pixelX, pixelY, 1, 1);
-            const [r, g, b, a] = imageData.data;
+            const [r, g, b] = imageData.data;
             const color = `rgb(${r}, ${g}, ${b})`;
             row.push(color);
             if (radio === 'both') {
@@ -77,51 +77,41 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
           colors.push(row);
           diceValues.push(diceRow);
         }
-        setPixelColors(colors);
+        // setPixelColors(colors);
         setDiceValues(diceValues);
       };
       img.src = bwImage;
     }
   }, [bwImage, numPixelsX, numPixelsY, brightness, radio]);
 
-  const mapToDieIndex = (color) => {
+  const mapToDieIndex = useCallback((color) => {
     const palette = ['#000000', '#333333', '#666666', '#999999', '#cccccc', '#ffffff'];
     const redValue = parseInt(color.split(',')[0].slice(4), 10);
     const rangeSize = Math.ceil((256 - brightness) / palette.length);
-
-
+  
     if (redValue < rangeSize) return 0;
     if (redValue < rangeSize * 2) return 1;
     if (redValue < rangeSize * 3) return 2;
     if (redValue < rangeSize * 4) return 3;
     if (redValue < rangeSize * 5) return 4;
     return 5;
-  };
-
-
-
-
-  const mapToDieBothIndex = (color) => {
-    const paletteSize = 12; // 12 die total, there are 12 possible shades. 
-    const redValue = parseInt(color.split(',')[0].slice(4), 10); // Get the red integer value of the color
-    const adjustedBrightness = (brightness + 100) / 200; // Normalize brightness to range 0-1 //
+  }, [brightness]);  // Added brightness to dependency array
+  
+  const mapToDieBothIndex = useCallback((color) => {
+    const paletteSize = 12;
+    const redValue = parseInt(color.split(',')[0].slice(4), 10);
+    const adjustedBrightness = (brightness + 100) / 200;
     const rangeSize = Math.ceil(256 / paletteSize);
-
-
-    let adjustedRedValue = redValue * adjustedBrightness; // ratio between 0 and 1 that 
-
+  
+    let adjustedRedValue = redValue * adjustedBrightness;
     const index = Math.floor(adjustedRedValue / rangeSize);
-    console.log(index); 
-    // the index that is returned here is a value that is between 0-11. So, if the value is >=s 6, we have a white die. 
-    // if we have a value <6 we have a black die. 
-    // if (index >= 6){
-    //   // setWhiteDiceCount(whiteDiceCount + 1); // increment the die count by 1. 
-    // } else if (index < 6){
-    //   // setBlackDiceCount(blackDiceCount + 1); 
-    // }
-
+    console.log(index);
+  
     return index;
-  };
+  }, [brightness]);  // Added brightness to dependency array
+  
+
+
 
   const handleDieClick = (rowIndex, colIndex) => {
     setDiceValues(prevDiceValues => {
@@ -186,7 +176,7 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
               {row.map((dieValue, colIndex) => (
                 <img
                   src={getDieImage(dieValue)}
-                  alt='Die Image'
+                  alt='Die'
                   key={colIndex}
                   onClick={() => handleDieClick(rowIndex, colIndex)}
                   style={{
@@ -204,8 +194,8 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
         </div>
       )}
 
-      <p> <img src={diceFiveImage} style ={{width: '12px', height: '12px'}}></img> Black dice used: {blackDiceCount}</p>
-      <p> <img src={whiteDiceFiveImage} style ={{width: '12px', height: '12px'}}></img> White dice used: {whiteDiceCount}</p>
+      <p> <img src={diceFiveImage} style ={{width: '12px', height: '12px'}} alt = 'black dice'></img> Black dice used: {blackDiceCount}</p>
+      <p> <img src={whiteDiceFiveImage} style ={{width: '12px', height: '12px'}} alt = 'white dice'></img> White dice used: {whiteDiceCount}</p>
 
 
 
