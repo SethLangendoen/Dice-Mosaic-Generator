@@ -5,7 +5,7 @@
 // git branch
 // git checkout master
 // git add .
-// git commit -m "Added content to my shop"
+// git commit -m "Fixed warnings for deployment"
 // git push -u origin master
 
 
