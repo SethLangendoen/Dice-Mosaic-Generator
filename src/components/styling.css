@@ -23,19 +23,104 @@
   margin: 0; 
 }
 
-/* Everything to do with images:  */
+/* All of this has to do with styling my brightness range slider for different browsers */
+/* General styling for the range input */
 
-/* 
+/* For Edge and other browsers that show the range value */
 
-.imageDiv{
-  width: 200px; 
+/* General styling for the range input */
+#brightness {
+  -webkit-appearance: none; /* Override default appearance */
+  width: 100px;
+  height: 8px;
+  background: #ddd;
+  outline: none;
+  border-radius: 5px;
+  margin: 10px 0;
 }
 
-.image{
- width: 200px; 
+/* WebKit browsers (Chrome, Safari, Edge) */
+#brightness::-webkit-slider-runnable-track {
+  width: 100px;
+  height: 8px;
+  cursor: pointer;
+  background: #ffcc00;
+  border-radius: 5px;
 }
 
- */
+#brightness::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #333;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin-top: -6px; /* Centers the thumb on the track */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Added shadow */
+}
+
+/* Mozilla browsers (Firefox) */
+#brightness::-moz-range-track {
+  width: 100px;
+  height: 8px;
+  cursor: pointer;
+  background: #ffcc00;
+  border-radius: 5px;
+}
+
+#brightness::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #333;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Added shadow */
+}
+
+/* Internet Explorer */
+#brightness::-ms-track {
+  width: 100px;
+  height: 8px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+#brightness::-ms-fill-lower {
+  background: #ffcc00;
+  border-radius: 5px;
+}
+
+#brightness::-ms-fill-upper {
+  background: #ffcc00;
+  border-radius: 5px;
+}
+
+#brightness::-ms-thumb {
+  width: 20px;
+  height: 20px;
+  background: #333;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin-top: -6px; /* Centers the thumb on the track */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Added shadow */
+}
+
+/* Hide the default value tooltip in Edge and other browsers */
+input[type="range"]::-ms-tooltip {
+  display: none;
+}
+
+
+
+
+
+
 
  .images-container {
   display: flex;
@@ -72,7 +157,6 @@
   background-color: #ffcc00;
   border: 2px solid #ffcc00;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   text-align: center;
 }
 
@@ -148,16 +232,28 @@
 #imageControls label {
   display: block;
   margin: 10px 0;
+  
 }
 
 #imageControls input[type="number"] {
   padding: 5px;
-  margin: 5px 0;
-  border: 1px solid #ccc;
+  margin: 0px 0;
+  border-radius: 5px;
+  width: 40px;
+  background-color: #ffcc00;
+  outline: none; 
+  border: none; 
+  /* border: 2px solid black;  */
+}
+
+/* #imageControls input[type="number"]:focus {
+  padding: 5px;
+  margin: 0px 0;
   border-radius: 5px;
   width: 50px;
   background-color: #ffcc00;
-}
+  border: #000000; 
+} */
 
 .radio-group {
   display: flex;
@@ -199,10 +295,10 @@
   color: #666;
 }
 
+
 #diceSizeSetter:focus {
   outline: none;
-  border-color: #ffaa00; /* Slightly darker dice color */
-  box-shadow: 0 0 12px rgba(255, 170, 0, 0.8);
+  /* box-shadow: 0 0 12px rgba(255, 170, 0, 0.8); */
 }
 
 
