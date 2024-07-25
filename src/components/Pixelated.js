@@ -1,17 +1,21 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import diceOneImage from '../Assets/dice-one.png';
-import diceTwoImage from '../Assets/dice-two.png';
-import diceThreeImage from '../Assets/dice-three.png';
-import diceFourImage from '../Assets/dice-four.png';
-import diceFiveImage from '../Assets/dice-five.png';
-import diceSixImage from '../Assets/dice-six.png';
-import whiteDiceOneImage from '../Assets/whitedice-one.png';
-import whiteDiceTwoImage from '../Assets/whitedice-two.png';
-import whiteDiceThreeImage from '../Assets/whitedice-three.png';
-import whiteDiceFourImage from '../Assets/whitedice-four.png';
-import whiteDiceFiveImage from '../Assets/whitedice-five.png';
-import whiteDiceSixImage from '../Assets/whitedice-six.png';
+import diceOneImage from '../Assets/NewDice/BlackDice/1.png';
+import diceTwoImage from '../Assets/NewDice/BlackDice/2.png';
+import diceThreeImage from '../Assets/NewDice/BlackDice/3.png';
+import diceFourImage from '../Assets/NewDice/BlackDice/4.png';
+import diceFiveImage from '../Assets/NewDice/BlackDice/5.png';
+import diceSixImage from '../Assets/NewDice/BlackDice/6.png';
+import whiteDiceOneImage from '../Assets/NewDice/WhiteDice/2.png';
+import whiteDiceTwoImage from '../Assets/NewDice/WhiteDice/3.png';
+import whiteDiceThreeImage from '../Assets/NewDice/WhiteDice/4.png';
+import whiteDiceFourImage from '../Assets/NewDice/WhiteDice/5.png';
+import whiteDiceFiveImage from '../Assets/NewDice/WhiteDice/6.png';
+import whiteDiceSixImage from '../Assets/NewDice/WhiteDice/7.png';
 import './styling.css';
+
+
+
+
 
 
 const diceImages = [

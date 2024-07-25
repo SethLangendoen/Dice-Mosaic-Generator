@@ -21,9 +21,9 @@ import './styling.css'
 import Animation from './Animation.js'; 
 
 // importing dice images for the radio button images. 
-import diceOneImage from '../Assets/dice-one.png';
-import whiteDiceOneImage from '../Assets/whitedice-one.png';
-import blackAndWhiteOneImage from '../Assets/blackAndWhiteDie.png'; 
+import diceOneImage from '../Assets/NewDice/BlackDice/1.png';
+import whiteDiceOneImage from '../Assets/NewDice/WhiteDice/2.png';
+import blackAndWhiteOneImage from '../Assets/NewDice/dualColourOne.png'; 
 
 
 
