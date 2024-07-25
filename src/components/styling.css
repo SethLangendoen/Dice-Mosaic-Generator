@@ -419,6 +419,13 @@ input[type="range"]::-ms-tooltip {
 }
 
 
+/* For generating a png - The PNG generate button */
+
+#generatePNG{
+  margin: 10px;
+}
+
+
 
 /* -------------------------------------------------- styling -------------------------------------------------- */
 
