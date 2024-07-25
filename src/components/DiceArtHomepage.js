@@ -5,7 +5,7 @@
 // git branch
 // git checkout master
 // git add .
-// git commit -m "Sitemap build stuff for SEO"
+// git commit -m "Trim mosaic update"
 // git push -u origin master
 
 
