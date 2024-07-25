@@ -5,7 +5,7 @@
 // git branch
 // git checkout master
 // git add .
-// git commit -m "Fixed warnings for deployment"
+// git commit -m "Sitemap build stuff for SEO"
 // git push -u origin master
 
 
