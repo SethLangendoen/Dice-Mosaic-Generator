@@ -1,12 +1,12 @@
 
 
 // to push changes without getting the permiissions error...
-// git remote set-url origin https://github.com/SethLangendoen/Dice-Mosaic-Generator.git
-// git branch
-// git checkout master
-// git add .
-// git commit -m "Trim mosaic update"
-// git push -u origin master
+git remote set-url origin https://github.com/SethLangendoen/Dice-Mosaic-Generator.git
+git branch
+git checkout master
+git add .
+git commit -m "Favicon Update"
+git push -u origin master
 
 
 
