@@ -116,6 +116,31 @@ input[type="range"]::-ms-tooltip {
   display: none;
 }
 
+/* This is for the trim container, input boxes etc. */ 
+
+#trimDivContainer > input{
+  padding: 5px;
+  margin: 0px 0;
+  border-radius: 5px;
+  width: 40px;
+  background-color: #ffcc00;
+  outline: none; 
+  border: none; 
+  margin-right: 10px; 
+}
+
+#trimDivContainer > label{
+  margin-left: 10px; 
+}
+
+
+
+
+
+
+
+
+
 
 
 

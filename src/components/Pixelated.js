@@ -70,7 +70,7 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
        canvas.width = img.width;
        canvas.height = img.height;
        ctx.drawImage(img, 0, 0);
-
+      
 
        const colors = [];
        const diceValues = [];
@@ -156,7 +156,7 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
        <output htmlFor="brightness">{brightness}</output>
      </div>
     
-     <div>
+     <div id = 'trimDivContainer'>
        <label htmlFor="trim-top">Trim Top </label>
        <input
          type="number"

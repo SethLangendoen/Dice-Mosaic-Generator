@@ -65,7 +65,7 @@ export default function About(){
 					<div data-aos = 'fade-left' data-aos-duration = '2000' data-aos-offset="200">
 						<h3 onClick={() => toggleSection(5)} style={{ cursor: 'pointer' }}>Customization</h3>
 						{expandedSections[5] && (
-						<p>We've implemented a feature so that you can customize each die in the mosaic. Simply click on any dice in the mosaic and it will swap to its successor.</p>
+						<p>We've implemented a feature so that you can customize each die in the mosaic. Simply click on any dice in the mosaic and it will swap to its successor. Be careful, die changes that you made are erased after re-manipulating the mosaic.</p>
 						)}
 					</div>
 				</div>
