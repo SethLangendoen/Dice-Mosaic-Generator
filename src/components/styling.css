@@ -574,6 +574,7 @@ html {
 
 #aboutBackground{
   padding: 100px; 
+  padding-top: 10px;
   background-color: rgb(156, 156, 156);
 }
 
@@ -588,7 +589,7 @@ html {
 
 
 #Features .mainText {
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
   color: #ffcc00;
   width: 80%; /* Default width for larger screens */
@@ -601,7 +602,6 @@ html {
     width: 100%; /* Full width for smaller screens */
   }
 }
-
 
 #CreatingTheArt .mainText {
   font-size: 20px;
@@ -630,7 +630,7 @@ html {
 #Features h3 {
   font-size: 30px; /* Larger font size for subheadings */
   color: black; /* Slightly darker text color */
-  margin-top: 24px; /* Space above each subheading */
+  margin-top: 14px; /* Space above each subheading */
   /* font-family: 'Georgia', sans-serif; Example of setting a font-family */
 }
 
@@ -813,4 +813,78 @@ html {
 .aos-init[data-aos="fade-left"] {
   opacity: 0;
   transform: translate3d(300px, 0, 0); /* Initial position, adjust the value as needed */
+}
+
+
+/* --------------------------- Carousal wheel -------------------------- */ 
+
+
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
+
+
+
+/* ScrollWheel.css */
+.scroll-wheel {
+  width: 80%;
+  margin: 0px auto;
+
+  height: 100%; 
+  align-content: center; 
+} 
+
+.slick-slider{
+  height: 100%; 
+  /* padding: 10%;  */
+  padding-top: 20px; 
+}
+
+.scroll-wheel-item {
+  text-align: center;
+  display: flex; 
+  flex-direction: horizontal; 
+}
+
+.scroll-wheel-item img {
+  display: inline-block; 
+  width: 100%;
+  max-width: 250px;
+  height: 250px; 
+  border-radius: 5px; 
+}
+
+.scroll-wheel-item > h3 > a {
+  display: block; /* Makes the anchor tag occupy the full width of its container */
+  text-decoration: none; /* Removes the default underline from links */
+  color: #000; /* Sets the text color to black */
+  background-color: #f5f5f5; /* Sets a light grey background color */
+  padding: 10px 15px; /* Adds padding inside the link for better spacing */
+  border-radius: 5px; /* Rounds the corners of the link */
+  transition: background-color 0.3s, color 0.3s; /* Adds a smooth transition effect for hover states */
+  
+}
+
+.scroll-wheel-item > h3 >  a:hover {
+  background-color: #ddd; /* Changes the background color on hover */
+  color: #333; /* Changes the text color on hover */
+}
+
+.scroll-wheel-item > h3 > a:focus {
+  outline: 2px solid #0056b3; /* Adds a border outline when the link is focused (for accessibility) */
+  outline-offset: 2px; /* Adds space between the border and the link text */
+}
+
+
+.scroll-wheel-item h3 {
+  margin-top: 10px;
+  font-size: 1.5rem;
+  color: #333;
+  width: 80%; 
+  display: inline-block; 
+}
+
+#scrollWheelContainer{
+  width: 100%; 
+  height: 400px; 
+  background-color: rgb(100, 100, 100);
 }

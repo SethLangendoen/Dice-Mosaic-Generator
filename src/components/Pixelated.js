@@ -129,7 +129,7 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
 
-    const scale = 60; // Adjust scale for higher resolution
+    const scale = 60; // Adjust scale for higher resolution // For Fiver: 20 basic, 40, medium, 70 high
     canvas.width = diceValues[0].length * scale;
     canvas.height = diceValues.length * scale;
 
@@ -230,11 +230,11 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
       <button id = 'generatePNG' onClick={generatePNG}>Generate PNG</button>
 
       <p>
-        <img src={diceFiveImage} style={{ width: '12px', height: '12px' }} alt='black dice' />
+        <img src={diceFiveImage} style={{ width: '12px', height: '12px', marginRight: '5px'}} alt='black dice' />
         Black dice used: {blackDiceCount}
       </p>
       <p>
-        <img src={whiteDiceFiveImage} style={{ width: '12px', height: '12px' }} alt='white dice' />
+        <img src={whiteDiceFiveImage} style={{ width: '12px', height: '12px', marginRight: '5px' }} alt='white dice' />
         White dice used: {whiteDiceCount}
       </p>
     </div>

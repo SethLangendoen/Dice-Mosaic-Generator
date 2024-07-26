@@ -24,7 +24,7 @@ export default function About(){
 			<div id = 'aboutDivs'>
 				<div id = 'Features'>
 					<h1>Features</h1>
-					<p class = 'mainText'>Our dice mosaic generator is simple to use and intuitive. We offer many features that will help you 
+					<p class = 'mainText'>Simple to use and intuitive; We offer many features that will help you 
 						personalize your dice mosaic: 
 					</p>
 					<div data-aos = 'fade-right' data-aos-duration = '2000' data-aos-offset="300">

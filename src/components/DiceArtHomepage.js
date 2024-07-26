@@ -12,6 +12,7 @@
 
 
 import ImageUploader from "./ImageUploader";
+import CarouselWheel from "./CarouselWheel"; 
 import Shop from "./Shop"; 
 import HomeText from "./Home";
 import Navbar from './Navbar'; 
@@ -348,6 +349,7 @@ export default function DiceArtHomepage() {
       brightness={brightness}/>
 
 
+
       {controlsDisplayed && (
         <div id = 'diceSizeSetterContainer'>
         <input id = 'diceSizeSetter' type = 'number' value={diceSize}
@@ -364,6 +366,7 @@ export default function DiceArtHomepage() {
 
       {/** This is where I will state how many dice of each colour were used.  */}
 
+      <CarouselWheel /> 
 
       <div id = 'aboutBackground'>
         <About />  
