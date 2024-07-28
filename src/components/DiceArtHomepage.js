@@ -5,7 +5,7 @@
 // git branch
 // git checkout master
 // git add .
-// git commit -m "Favicon"
+// git commit -m "testing payment system"
 // git push -u origin master
 
 

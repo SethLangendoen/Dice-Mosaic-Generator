@@ -21,10 +21,11 @@ const whiteDiceImages = [
   whiteDiceSixImage, whiteDiceFiveImage, whiteDiceFourImage, whiteDiceThreeImage, whiteDiceTwoImage, whiteDiceOneImage
 ];
 
-const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
+const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright, sessionId }) => {
   const [brightness, setBrightness] = useState(bright);
   const [diceValues, setDiceValues] = useState([]);
   const [trim, setTrim] = useState({ top: 0, bottom: 0, left: 0, right: 0 });
+  const [isPaid, setIsPaid] = useState(false); 
 
   var blackDiceCount = 0;
   var whiteDiceCount = 0;
@@ -50,6 +51,35 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
     const index = Math.floor(adjustedRedValue / rangeSize);
     return index;
   }, [brightness]);
+
+
+  const generatePNG = () => {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+
+    const scale = 60; // Adjust scale for higher resolution // For Fiver: 20 basic, 40, medium, 70 high
+    canvas.width = diceValues[0].length * scale;
+    canvas.height = diceValues.length * scale;
+
+    diceValues.forEach((row, rowIndex) => {
+      row.forEach((dieValue, colIndex) => {
+        const img = new Image();
+        img.src = getDieImage(dieValue);
+        ctx.drawImage(img, colIndex * scale, rowIndex * scale, scale, scale);
+      });
+    });
+
+    canvas.toBlob((blob) => {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'dice-mosaic.png';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    });
+  };
+
 
   useEffect(() => {
     if (bwImage) {
@@ -96,6 +126,37 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
       img.src = bwImage;
     }
   }, [bwImage, numPixelsX, numPixelsY, brightness, radio, mapToDieBothIndex, mapToDieIndex, trim]);
+  // this use effect is to stat polling for payment once the component mounts. 
+  // For now this is inefficient becasue we could really cause this to trigger only when they 
+  // have actually selected the generatepng button. 
+
+
+  useEffect(() => {
+    const checkPaymentStatus = async () => {
+      try {
+        const response = await fetch(`/.netlify/functions/check-payment-status?sessionId=${sessionId}`);
+        const data = await response.json();
+        if (data.status === 'succeeded') {
+          setIsPaid(true);
+          generatePNG(); 
+        }
+      } catch (error) {
+        console.error('Error checking payment status:', error);
+      }
+    };
+
+    const interval = setInterval(() => {
+      checkPaymentStatus();
+    }, 3000); // Poll every 3 seconds
+
+    return () => clearInterval(interval); // Cleanup interval on unmount
+  });
+
+
+
+
+
+
 
   const handleDieClick = (rowIndex, colIndex) => {
     setDiceValues(prevDiceValues => {
@@ -125,32 +186,7 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
     }
   };
 
-  const generatePNG = () => {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
 
-    const scale = 60; // Adjust scale for higher resolution // For Fiver: 20 basic, 40, medium, 70 high
-    canvas.width = diceValues[0].length * scale;
-    canvas.height = diceValues.length * scale;
-
-    diceValues.forEach((row, rowIndex) => {
-      row.forEach((dieValue, colIndex) => {
-        const img = new Image();
-        img.src = getDieImage(dieValue);
-        ctx.drawImage(img, colIndex * scale, rowIndex * scale, scale, scale);
-      });
-    });
-
-    canvas.toBlob((blob) => {
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'dice-mosaic.png';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-    });
-  };
 
   return (
     <div className="diceImageContainer">
@@ -228,6 +264,8 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright }) => {
       )}
 
       <button id = 'generatePNG' onClick={generatePNG}>Generate PNG</button>
+      <button><a href='https://buy.stripe.com/4gw7vM1r72917kc144' target='_blank'    rel='noopener noreferrer' >Testing Payment</a></button>
+      {isPaid && <p>Payment Made! Generating PNG</p>}
 
       <p>
         <img src={diceFiveImage} style={{ width: '12px', height: '12px', marginRight: '5px'}} alt='black dice' />
