@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './styling.css'; 
 import Pixelated from './Pixelated'; // Import the Pixelated component
 
-const ImageUploader = ({ diceX, diceY, selectedImage, radio, brightness}) => { // Destructure props to get diceX and diceY
+const ImageUploader = ({ diceX, diceY, selectedImage, radio, trim, brightness, handleDiceSizeChange, diceSize }) => { // Destructure props to get diceX and diceY
   // const [selectedImage, setSelectedImage] = useState(null);
   const [bwImage, setBwImage] = useState(null);
   const [numPixelsX, setNumPixelsX] = useState(50); // Default value, can be updated using props
@@ -57,23 +57,6 @@ const ImageUploader = ({ diceX, diceY, selectedImage, radio, brightness}) => { /
   return (
     <div className="container">
 
-      {/* <div className="images-container">
-  
-        {selectedImage.src && (
-          <div className = 'imageDiv'>
-            <h2>Selected Image:</h2>
-            <img src={selectedImage.src} alt="Selected" className="image" />
-          </div>
-        )}
-  
-        {bwImage && (
-          <div className = 'imageDiv'>
-            <h2>Black and White Image:</h2>
-            <img src={bwImage} alt="Black and White" className="image" />
-          </div>
-        )}
-      </div> */}
-      
   
       {/* Render Pixelated component only when both numPixelsX and numPixelsY have valid values */}
       {numPixelsX && numPixelsY && bwImage && (
@@ -83,7 +66,13 @@ const ImageUploader = ({ diceX, diceY, selectedImage, radio, brightness}) => { /
             numPixelsX={numPixelsX}
             numPixelsY={numPixelsY}
             radio={radio}
-            bright={brightness}
+            brightness={brightness}
+            trim={trim}
+            handleDiceSizeChange={handleDiceSizeChange}
+            diceSize={diceSize}
+            diceX={diceX}
+            diceY={diceY}
+
           />
         </div>
       )}

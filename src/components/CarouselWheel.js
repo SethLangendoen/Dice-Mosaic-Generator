@@ -16,12 +16,12 @@ const ScrollWheel = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 600,
     slidesToShow: 3, // Default number of slides shown
     slidesToScroll: 1,
     arrows: true, // Optional: Show arrows for navigation
     autoplay: true,
-    autoplaySpeed: 2500,
+    autoplaySpeed: 1500,
     responsive: [
       {
         breakpoint: 1024, // For tablets
@@ -41,6 +41,8 @@ const ScrollWheel = () => {
   };
 
   return (
+    <div id = 'ideaContainer'>
+    <h1 id = 'carouselTitle'>Digital Print Ideas: </h1>
     <div id='scrollWheelContainer'>
       <div className="scroll-wheel">
         <Slider {...settings}>
@@ -52,6 +54,7 @@ const ScrollWheel = () => {
           ))}
         </Slider>
       </div>
+    </div>
     </div>
   );
 };

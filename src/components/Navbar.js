@@ -53,6 +53,14 @@ function Navbar() {
         </a>
 
         <a 
+          href="#parent-how-to-container" // says about cuz this used to be an about section, but now it's a features section...
+          className={activeLink === 'about' ? 'active' : ''} 
+          onClick={() => handleLinkClick('parent-how-to-container')}
+        >
+          Learn the process
+        </a>
+
+        <a 
           href="#About" // says about cuz this used to be an about section, but now it's a features section...
           className={activeLink === 'about' ? 'active' : ''} 
           onClick={() => handleLinkClick('about')}

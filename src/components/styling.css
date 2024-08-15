@@ -14,7 +14,7 @@
 .diceImageContainer {
   justify-content: center;
   align-items: center;
-  width: 100%;
+  /* width: 100%; */
   padding: 10px;
 }
 
@@ -22,6 +22,7 @@
   padding-top: 10px; 
   margin: 0; 
 }
+
 
 /* All of this has to do with styling my brightness range slider for different browsers */
 /* General styling for the range input */
@@ -31,12 +32,13 @@
 /* General styling for the range input */
 #brightness {
   -webkit-appearance: none; /* Override default appearance */
-  width: 100px;
+  width: auto;
   height: 8px;
   background: #ddd;
   outline: none;
   border-radius: 5px;
   margin: 10px 0;
+
 }
 
 /* WebKit browsers (Chrome, Safari, Edge) */
@@ -117,6 +119,10 @@ input[type="range"]::-ms-tooltip {
 }
 
 /* This is for the trim container, input boxes etc. */ 
+#trimDivContainer{
+  display: flex; 
+  flex-direction: row; 
+}
 
 #trimDivContainer > input{
   padding: 5px;
@@ -132,10 +138,24 @@ input[type="range"]::-ms-tooltip {
 #trimDivContainer > label{
   margin-left: 10px; 
 }
+.trimAlignment {
+  display: flex;
+  flex-direction: row; /* Ensures label and input are aligned horizontally */
+  align-items: center; /* Vertically centers the content */
+  margin-right: 20px; /* Adds space between each pair of label and input */
+}
 
+#trimDivContainer > .trimAlignment {
+  margin-bottom: 10px; /* Adds space between each trim control group */
+}
 
+#trimDivContainer label {
+  margin-right: 10px; /* Adds space between label and input */
+}
 
-
+#trimDivContainer input {
+  flex: 1; /* Allows the input to take up available space, if needed */
+}
 
 
 
@@ -168,6 +188,8 @@ input[type="range"]::-ms-tooltip {
 
 
 
+
+
 .imageDiv img{
   max-width: 200px; /* 50% of the viewport width */
   height: auto; /* Automatically adjusts height to maintain aspect ratio */
@@ -186,6 +208,7 @@ input[type="range"]::-ms-tooltip {
 }
 
 #diceSizeSetterContainer{
+  margin: 30px;
   padding-bottom: 20px;
   /* margin-bottom: 100px;  */
 }
@@ -208,8 +231,6 @@ input[type="range"]::-ms-tooltip {
 /** --------------------------------------------------- Image Uploader controls --------------------------------------------------- */
 
 #imageControls {
-  padding-top: 75px; 
-  border-radius: 10px;
   text-align: center;
   display: flex; 
   justify-content: center;
@@ -423,6 +444,12 @@ input[type="range"]::-ms-tooltip {
 
 #generatePNG{
   margin: 10px;
+  border-radius: 10px; 
+}
+
+#toggle-controls{
+  border-radius: 10px; 
+  margin: 5px; 
 }
 
 
@@ -537,11 +564,9 @@ html {
 
 /** --------------------------------------------------- mosaicContainerStyling --------------------------------------------------- */
 
-/* #diceMosaicContainer{
-  background-color: white;
-  padding: 0px; 
-  margin: 0px; 
-} */
+#diceMosaicContainer{
+height:  auto; 
+}
 
 #generatorContainer{
   background-color: rgb(210, 210, 210);
@@ -571,20 +596,64 @@ html {
 
 /* Styling for the overall About component */
 
-
 #aboutBackground{
-  padding: 100px; 
+  /* padding: 100px;  */
   padding-top: 10px;
-  background-color: rgb(156, 156, 156);
+  background-color: rgb(228, 213, 0);
 }
 
 
 #About {
   padding: 20px; /* Adjust padding as needed */
-  width: 70%; 
+  width: 90%; 
   display: inline-block; 
 }
 
+/* For the search container */
+/* src/styling.css */
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.search-container input[type="text"] {
+  padding: 10px 15px;
+  border: 2px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+  font-size: 16px;
+  width: 300px;
+  transition: border-color 0.3s ease;
+}
+
+.search-container input[type="text"]:focus {
+  border-color: #007bff;
+}
+
+.search-container button {
+  padding: 10px 20px;
+  border: 2px solid #007bff;
+  border-radius: 0 4px 4px 0;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.search-container button:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+
+
+#aboutDivs{
+  display: flex; 
+}
 
 
 
@@ -592,7 +661,11 @@ html {
   font-size: 25px;
   font-weight: bold;
   color: #ffcc00;
-  width: 80%; /* Default width for larger screens */
+  text-shadow:
+    -1px -1px 0 black,  /* Top-left shadow */
+    1px -1px 0 black,   /* Top-right shadow */
+    -1px 1px 0 black,   /* Bottom-left shadow */
+    1px 1px 0 black;    /* Bottom-right shadow */  width: 80%; /* Default width for larger screens */
   margin: 0 auto; /* Center the text */
 }
 
@@ -615,6 +688,8 @@ html {
   /* background-color: #f2f2f2; */
   margin-bottom: 30px; /* Space between sections */
   border-bottom: 1px solid black;
+  width: 60%;
+  margin-left: 80px;  
   /* border-radius: 20px; */
 }
 
@@ -675,6 +750,57 @@ html {
   line-height: 1.6; /* Line height for readability */
   margin-bottom: 16px; /* Space below each paragraph */
 }
+
+
+/* styling for accordian faq*/
+
+#faq{
+  width: 30%; 
+
+}
+
+#faq > h2{
+  color: black;
+}
+
+
+/* src/components/Accordion.css */
+.accordion {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%; 
+  margin: 5px;
+
+}
+
+.accordion-item {
+
+  border-bottom: 1px solid #ccc;
+}
+
+.accordion-item:last-child {
+  border-bottom: none;
+}
+
+.accordion-title {
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+  background-color: #e2c835;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  font-size: 16px;
+}
+
+.accordion-content {
+  padding: 10px;
+  background-color: #313131;
+}
+
+
+
+
 
 
 
@@ -824,6 +950,20 @@ html {
 
 
 
+#carouselTitle{
+  color: #ffcc00; 
+  margin: 10px; 
+  margin-top: 10px; 
+  font-size: 100px; 
+  font-family: 'Dancing Script', 'Brush Script MT', cursive;
+}
+
+#ideaContainer{
+  background-color: rgb(100, 100, 100);
+
+}
+
+
 /* ScrollWheel.css */
 .scroll-wheel {
   width: 80%;
@@ -886,5 +1026,441 @@ html {
 #scrollWheelContainer{
   width: 100%; 
   height: 400px; 
-  background-color: rgb(100, 100, 100);
+}
+
+
+/* --------------------------- HowTo -------------------------- */ 
+
+#parent-how-to-container {
+  background-color: rgb(55, 55, 55);
+  /* margin: 100px 0px;  */
+}
+
+/* for the title */
+#parent-how-to-container > h1 {
+  margin: 10px; 
+  font-size: 100px; 
+  font-family: 'Dancing Script', 'Brush Script MT', cursive;}
+
+.how-to-container {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  align-items: center;
+  width: 100%;
+  height: auto; 
+  padding: 20px; /* Padding around the container */
+  /* box-sizing: border-box; */
+}
+
+.item {
+  text-align: center;
+  width: 60%; 
+}
+
+/* video titles */
+.item > h2 {
+  color: #ffcc00;
+}
+
+video {
+  width: 100%;
+  height: auto;
+  border-radius: 10px; /* Optional: Add some styling to the videos */
+  transition: opacity 0.3s ease-in-out;
+
+}
+
+.video.playing {
+  opacity: 1;
+  filter: none;
+}
+
+.video.greyed-out {
+  opacity: 0.3;
+  filter: grayscale(100%);
+}
+
+/* --------------------------- Generator Controls -------------------------- 
+Note! There may be some underlying things here that are being interfered by in the above script!
+*/ 
+
+#chosenPhoto{
+  width: 200px; 
+  height: auto; 
+}
+
+/* Sidebar container */
+#sidebar {
+  position: absolute; /* Position absolute to keep it inside its parent */
+  width: 200px; /* Fixed width for the sidebar */
+  height: 70%; /* Full height of the parent container */
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  overflow-y: auto;
+  z-index: 999; /* Ensure it stays above other content */
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+/* When the sidebar is open */
+#sidebar.open {
+  transform: translateX(0);
+}
+
+/* Other styles remain the same */
+#imageControls {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+#imageControls div {
+  display: flex;
+  flex-direction: column;
+  width: auto; 
+  gap: 10px;
+}
+
+#sidebar > div > #diceColourTypes {
+  display: flex; 
+  flex-direction: row; 
+}
+
+.radio-label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.radio-input {
+  display: none;
+}
+
+.radio-image {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border: 2px solid transparent;
+}
+
+.radio-input:checked + .radio-label .radio-image {
+  border-color: #ffcc00;
+}
+
+/* #trimDivContainer {
+  display: flex;
+  flex-direction: row;
+} */
+
+label {
+  font-size: 14px;
+}
+
+button {
+  background-color: #ffcc00;
+  border: none;
+  padding: 10px;
+  color: #333;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #ffaa00;
+}
+
+
+/* --------------------------- Product List styling -------------------------- */ 
+#bringToLife{
+  margin: 10px; 
+  margin-top: 100px; 
+  font-size: 100px; 
+  font-family: 'Dancing Script', 'Brush Script MT', cursive;
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Dynamic columns */
+  gap: 20px;
+}
+
+@media (min-width: 960px) {
+  .product-list {
+    grid-template-columns: repeat(3, 1fr); /* Maximum 3 columns */
+  }
+}
+
+.product-item {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(230, 230, 230);
+}
+
+.product-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.product-description {
+  flex: 2;
+  margin-right: 20px;
+}
+
+.product-variants {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-variant {
+
+}
+
+.addToCartButton{
+  width: 100%; 
+  margin-top: 20px; 
+  border-radius: 10px 
+}
+
+.product-variant input {
+  padding: 2px; /* Adds space inside the input field for a comfortable feel */
+  border: 2px solid #ddd; /* Light border for a clean look */
+  border-radius: 4px; /* Rounded corners for a softer appearance */
+  font-size: 16px; /* Adequate font size for readability */
+  width: 100%; /* Ensures the input takes full width of its container */
+  box-sizing: border-box; /* Ensures padding and border are included in the width */
+  margin-top: 5px; /* Adds space above the input */
+  transition: border-color 0.3s ease; /* Smooth transition for border color on focus */
+}
+
+.product-variant input:focus {
+  border-color: #ffd000; /* Changes border color when the input is focused */
+  outline: none; /* Removes the default outline to rely on the border color */
+  box-shadow: 0 0 5px rgba(216, 116, 9, 0.5); /* Adds a subtle glow effect on focus */
+}
+
+.product-variant input::placeholder {
+  color: #999; /* Lighter color for the placeholder text */
+  font-style: italic; /* Makes the placeholder text italic for differentiation */
+}
+
+
+
+.product-variant button {
+  margin-top: 5px;
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.product-variant button:hover {
+  background-color: #0056b3;
+}
+
+.product-item > img {
+  max-width: 200px;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+
+/* Carousel for images in each product */ 
+
+/* .carousel-container {
+  position: relative;
+  width: 200px; 
+  height: 200px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.prev-button {
+  left: 0;
+}
+
+.next-button {
+  right: 0;
+}
+
+img {
+  transition: opacity 0.5s ease;
+}
+
+ */
+
+/* --------------------------- Shopping Cart styling -------------------------- */ 
+
+/* src/components/Cart.css */
+.cart-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-items {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-item span {
+  flex: 1;
+}
+
+.cart-item button {
+  padding: 5px 10px;
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cart-item button:hover {
+  background-color: #ff4c4c;
+}
+
+.cart-summary {
+  text-align: right;
+}
+
+.cart-summary h3 {
+  margin: 10px 0;
+  font-weight: normal;
+}
+
+.checkout-button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.checkout-button:hover {
+  background-color: #45a049;
+}
+
+
+/* For the cart icon */ 
+
+/* src/styling.css */
+.cart-icon {
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  background-color: rgb(255, 255, 255);
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.cart-icon .shopping-cart-icon {
+  font-size: 24px;
+  width: 20px; 
+  height: 20px; 
+}
+
+.cart-icon .item-count {
+  margin-left: 2px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 3px 7px;
+  font-size: 12px;
+  text-decoration: none; 
+}
+
+
+/* Shipping info*/ 
+
+
+.shipping-section {
+  margin-top: 20px;
+}
+
+.shipping-description {
+  margin-top: 5px;
+  font-size: 0.9em;
+}
+
+#country-select {
+  margin-top: 10px;
+  padding: 5px;
+  font-size: 1em;
+  color: grey;
+}
+
+.shipping-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  color: grey;
+}
+
+.shipping-description{
+  color: grey; 
+}
+
+.shipping-table th, 
+.shipping-table td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+}
+
+.shipping-table th {
+  background-color: #f8f8f8;
+}
+
+.shipping-table td {
+  font-size: 0.9em;
 }

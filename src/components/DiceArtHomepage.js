@@ -9,22 +9,16 @@
 // git push -u origin master
 
 
-
-
 import ImageUploader from "./ImageUploader";
 import CarouselWheel from "./CarouselWheel"; 
-import Shop from "./Shop"; 
+// import Shop from "./Shop"; 
 import HomeText from "./Home";
 import Navbar from './Navbar'; 
 import {useState } from "react";
 import About from './About'; 
 import './styling.css'
 import Animation from './Animation.js'; 
-
-// importing dice images for the radio button images. 
-import diceOneImage from '../Assets/NewDice/BlackDice/1.png';
-import whiteDiceOneImage from '../Assets/NewDice/WhiteDice/2.png';
-import blackAndWhiteOneImage from '../Assets/NewDice/dualColourOne.png'; 
+import GeneratorControls from "./GeneratorControls";
 
 
 
@@ -32,11 +26,21 @@ import blackAndWhiteOneImage from '../Assets/NewDice/dualColourOne.png';
 import presetImage1 from '../Assets/rubiks.gif';
 import presetImage2 from '../Assets/panda.png'; 
 import presetImage3 from '../Assets/guitar.jpg';
+import presetImage4 from '../Assets/dm/anim.jpg';
+import presetImage5 from '../Assets/dm/tiger.avif';
+import presetImage6 from '../Assets/dm/bird.jpg';
+import HowTo from "./HowTo";
+
+
 
 const presetImages = [
   { src: presetImage1, width: 800, height: 600 },
   { src: presetImage2, width: 800, height: 600 },
-  { src: presetImage3, width: 800, height: 600 }
+  { src: presetImage3, width: 800, height: 600 },
+  { src: presetImage4, width: 800, height: 600 },
+  { src: presetImage5, width: 800, height: 600 },
+  { src: presetImage6, width: 800, height: 600 }
+
 ];
 
 
@@ -50,12 +54,20 @@ export default function DiceArtHomepage() {
   const [width, setWidth] = useState(1); 
   const [height, setHeight] = useState(1); 
   const [radio, setRadio] = useState('black'); 
-  // const [brightness, setBrightness] = useState(1); 
   const [diceSize, setDiceSize] = useState(1.6); 
   const [controlsDisplayed, setControlsDisplayed] = useState(false); 
 
-  var brightness = 1; 
 
+  // these controls are used in pixelated: 
+  const [brightness, setBrightness] = useState(1);
+  const [trim, setTrim] = useState({ top: 0, bottom: 0, left: 0, right: 0 });
+
+  // var brightness = 1; 
+
+  
+
+
+  
 
   const handlePresetImageClick = (presetImage) => {
     setSelectedImage(presetImage);
@@ -76,14 +88,6 @@ export default function DiceArtHomepage() {
 
 
 
-  function handleNumPixelsXChange(event) {
-    setDiceX(event.target.value); // Set the state with the new value of the input field
-  }
-
-  function handleNumPixelsYChange(event) {
-    setDiceY(event.target.value); // Set the state with the new value of the input field
-  }
-
   function handleIncreaseSize() {
     const xyRatio = selectedImage.width / selectedImage.height;
 	console.log(xyRatio); 
@@ -100,7 +104,7 @@ export default function DiceArtHomepage() {
       setDiceX(Math.round(newDiceX));
     }
     
-    if(newDiceY > 30 && newDiceY <130){
+    if(newDiceY > 30 && newDiceY < 130){
       setDiceY(Math.round(newDiceY)); 
     }
   }
@@ -126,6 +130,7 @@ export default function DiceArtHomepage() {
     }
 	
   }
+
 
 
   const handleImageChange = (event) => {
@@ -160,10 +165,6 @@ export default function DiceArtHomepage() {
 
 	}
   };
-  
-  const handleRadioChange = (event) => {
-    setRadio(event.target.value);
-  };
 
   // const handleSetBrightness = (event) => {
 	//   setBrightness(event.target.value);
@@ -186,12 +187,14 @@ export default function DiceArtHomepage() {
 
 
       <div id = 'generator'>
+
+
         <label htmlFor="imageInput" className="imageInputButton">
           <span>Choose Image</span>
           <input 
             id="imageInput" 
             type="file" 
-            accept="image/*" 
+            accept="image/*,image/avif"  
             onChange={handleImageChange} 
           />
         </label>
@@ -217,125 +220,22 @@ export default function DiceArtHomepage() {
       
       {controlsDisplayed && (
 
-        // <div id = 'generatorContainer'>
-        <div id='imageControls'>
-          {/* <div>
-          <input 
-            type="radio" 
-            id="black" 
-            name="color" 
-            value="black" 
-            checked={radio === 'black'} 
-            onChange={handleRadioChange}
-          />
-          <label htmlFor="black">Black
-          
-          </label>
-
-
-          <input 
-            type="radio" 
-            id="white" 
-            name="color" 
-            value="white" 
-            checked={radio === 'white'} 
-            onChange={handleRadioChange}
-          />
-          <label htmlFor="white">White</label>
-
-
-
-
-          <input 
-            type="radio" 
-            id="both" 
-            name="color" 
-            value="both" 
-            checked={radio === 'both'} 
-            onChange={handleRadioChange}
-          />
-          <label htmlFor="both">Both</label>
-          </div>  
-      */}
-
-
       <div>
-        <input
-          type="radio"
-          id="black"
-          name="color"
-          value="black"
-          checked={radio === 'black'}
-          onChange={handleRadioChange}
-          className="radio-input"
+        <GeneratorControls 
+          radio={radio} 
+          setRadio={setRadio}
+          brightness={brightness} 
+          setBrightness={setBrightness} 
+          trim={trim} 
+          setTrim={setTrim}
+          setDiceX={setDiceX} 
+          setDiceY={setDiceY}
+          selectedImage={selectedImage}
+          handleIncreaseSize={handleIncreaseSize}
+          handleDecreaseSize={handleDecreaseSize}
+          diceX={diceX} 
+          diceY={diceY} 
         />
-        <label htmlFor="black" className="radio-label">
-          <img src={diceOneImage} className="radio-image" alt="Black Dice" />
-        </label>
-
-        <input
-          type="radio"
-          id="white"
-          name="color"
-          value="white"
-          checked={radio === 'white'}
-          onChange={handleRadioChange}
-          className="radio-input"
-        />
-        <label htmlFor="white" className="radio-label">
-          <img src={whiteDiceOneImage} className="radio-image" alt="White Dice" />
-        </label>
-
-        <input
-          type="radio"
-          id="both"
-          name="color"
-          value="both"
-          checked={radio === 'both'}
-          onChange={handleRadioChange}
-          className="radio-input"
-        />
-        <label htmlFor="both" className="radio-label">
-          {/* You can use either image or a combination image for "both" */}
-          <img src={blackAndWhiteOneImage} className="radio-image" alt="Both Dice" />
-        </label>
-      </div>
-
-
-      <div>
-        <button onClick={handleIncreaseSize}>Increase size</button>
-        <button onClick={handleDecreaseSize}>Decrease size</button>
-      </div> 
-
-
-
-
-
-
-
-          <div>
-          <label>
-            Number of Dice X:
-            <input
-              type="number"
-              value={Math.round(diceX)}
-              min={30}
-              max={130}
-              onChange={handleNumPixelsXChange}
-            />
-          </label>
-
-          <label>
-            Number of Dice Y:
-            <input
-              type="number"
-              value={Math.round(diceY)}
-              min={30}
-              max={130}
-              onChange={handleNumPixelsYChange}
-            />
-          </label>
-          </div>
 
       </div>
 
@@ -346,34 +246,28 @@ export default function DiceArtHomepage() {
       diceY={diceY} 
       selectedImage={selectedImage} 
       radio={radio} 
-      brightness={brightness}/>
+      trim={trim}
+      brightness={brightness}
+      handleDiceSizeChange={handleDiceSizeChange}
+      diceSize={diceSize}
+      />
 
 
 
-      {controlsDisplayed && (
-        <div id = 'diceSizeSetterContainer'>
-        <input id = 'diceSizeSetter' type = 'number' value={diceSize}
-        onChange={handleDiceSizeChange}
-        placeholder='Die Size'
-        step = '0.1'
-        /> 
-        <p>Dice Image Size: {(diceX * diceSize).toFixed(2)}cm x {(diceY * diceSize).toFixed(2)}cm</p>
-      </div>
-      )}
+
 
       </div>
 
 
-      {/** This is where I will state how many dice of each colour were used.  */}
 
-      <CarouselWheel /> 
-
+      <HowTo />
       <div id = 'aboutBackground'>
         <About />  
       </div>
-      <Shop /> 
-     
+      <CarouselWheel /> 
 
+      
+      
         <div  id = 'donationDiv'>
           <div data-aos='fade-up' data-aos-offset="100" data-aos-duration = '1500'>
           <p id="support-message" >Did you find this generator helpful? If so, please support the developer <a href='https://buymeacoffee.com/sethlangendoen' target='_blank' rel='noopener noreferrer'>Buy me a coffee!</a></p>

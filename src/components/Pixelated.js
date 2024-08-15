@@ -13,6 +13,8 @@ import whiteDiceFiveImage from '../Assets/NewDice/WhiteDice/6.png';
 import whiteDiceSixImage from '../Assets/NewDice/WhiteDice/7.png';
 import './styling.css';
 
+import MosaicShop from './MosaicShop';
+
 const diceImages = [
   diceOneImage, diceTwoImage, diceThreeImage, diceFourImage, diceFiveImage, diceSixImage
 ];
@@ -21,11 +23,11 @@ const whiteDiceImages = [
   whiteDiceSixImage, whiteDiceFiveImage, whiteDiceFourImage, whiteDiceThreeImage, whiteDiceTwoImage, whiteDiceOneImage
 ];
 
-const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright, sessionId }) => {
-  const [brightness, setBrightness] = useState(bright);
+const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, trim, brightness, handleDiceSizeChange, diceX, diceY, diceSize }) => {
+  // const [brightness, setBrightness] = useState(bright);
   const [diceValues, setDiceValues] = useState([]);
-  const [trim, setTrim] = useState({ top: 0, bottom: 0, left: 0, right: 0 });
-  const [isPaid, setIsPaid] = useState(false); 
+  // const [trim, setTrim] = useState({ top: 0, bottom: 0, left: 0, right: 0 });
+  // const [isPaid, setIsPaid] = useState(false); 
 
   var blackDiceCount = 0;
   var whiteDiceCount = 0;
@@ -126,35 +128,6 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright, sessionId }
       img.src = bwImage;
     }
   }, [bwImage, numPixelsX, numPixelsY, brightness, radio, mapToDieBothIndex, mapToDieIndex, trim]);
-  // this use effect is to stat polling for payment once the component mounts. 
-  // For now this is inefficient becasue we could really cause this to trigger only when they 
-  // have actually selected the generatepng button. 
-
-
-  useEffect(() => {
-    const checkPaymentStatus = async () => {
-      try {
-        const response = await fetch(`/.netlify/functions/check-payment-status?sessionId=${sessionId}`);
-        const data = await response.json();
-        if (data.status === 'succeeded') {
-          setIsPaid(true);
-          generatePNG(); 
-        }
-      } catch (error) {
-        console.error('Error checking payment status:', error);
-      }
-    };
-
-    const interval = setInterval(() => {
-      checkPaymentStatus();
-    }, 3000); // Poll every 3 seconds
-
-    return () => clearInterval(interval); // Cleanup interval on unmount
-  });
-
-
-
-
 
 
 
@@ -172,7 +145,7 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright, sessionId }
         blackDiceCount += 1; 
         return diceImages[dieIndex];
       } else {
-        whiteDiceCount += 2; 
+        whiteDiceCount += 1; 
         return whiteDiceImages[dieIndex - 6];
       }
     } else {
@@ -190,53 +163,8 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright, sessionId }
 
   return (
     <div className="diceImageContainer">
-      <div>
-        <label htmlFor="brightness">Brightness </label>
-        <input
-          type="range"
-          id="brightness"
-          min="-100"
-          max="100"
-          value={brightness}
-          onChange={(e) => setBrightness(parseInt(e.target.value))}
-        />
-        <output htmlFor="brightness">{brightness}</output>
-      </div>
-      
-      <div id = 'trimDivContainer'>
-        <label htmlFor="trim-top">Trim Top </label>
-        <input
-          type="number"
-          id="trim-top"
-          min='0'
-          value={trim.top}
-          onChange={(e) => setTrim(prevTrim => ({ ...prevTrim, top: parseInt(e.target.value) }))}
-        />
-        <label htmlFor="trim-bottom">Trim Bottom </label>
-        <input
-          type="number"
-          id="trim-bottom"
-          min='0'
-          value={trim.bottom}
-          onChange={(e) => setTrim(prevTrim => ({ ...prevTrim, bottom: parseInt(e.target.value) }))}
-        />
-        <label htmlFor="trim-left">Trim Left </label>
-        <input
-          type="number"
-          id="trim-left"
-          min='0'
-          value={trim.left}
-          onChange={(e) => setTrim(prevTrim => ({ ...prevTrim, left: parseInt(e.target.value) }))}
-        />
-        <label htmlFor="trim-right">Trim Right </label>
-        <input
-          type="number"
-          id="trim-right"
-          min='0'
-          value={trim.right}
-          onChange={(e) => setTrim(prevTrim => ({ ...prevTrim, right: parseInt(e.target.value) }))}
-        />
-      </div>
+
+
 
       {['black', 'white', 'both'].includes(radio) && (
         <div id='diceMosaicContainer'>
@@ -263,9 +191,6 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright, sessionId }
         </div>
       )}
 
-      <button id = 'generatePNG' onClick={generatePNG}>Generate PNG</button>
-      <button><a href='https://buy.stripe.com/4gw7vM1r72917kc144' target='_blank'    rel='noopener noreferrer' >Testing Payment</a></button>
-      {isPaid && <p>Payment Made! Generating PNG</p>}
 
       <p>
         <img src={diceFiveImage} style={{ width: '12px', height: '12px', marginRight: '5px'}} alt='black dice' />
@@ -275,6 +200,28 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, bright, sessionId }
         <img src={whiteDiceFiveImage} style={{ width: '12px', height: '12px', marginRight: '5px' }} alt='white dice' />
         White dice used: {whiteDiceCount}
       </p>
+
+      {/* <div id = 'diceSizeSetterContainer'>
+        <input id = 'diceSizeSetter' type = 'number' value={diceSize}
+        onChange={handleDiceSizeChange}
+        placeholder='Die Size'
+        step = '0.1'
+        /> 
+        <p>Dice Image Size: {(diceX * diceSize).toFixed(2)}cm x {(diceY * diceSize).toFixed(2)}cm</p>
+        <label for='showDimensions'>Show Dimensions</label>
+        <input id = 'showDimensions' type = 'checkbox' /> 
+      </div> */}
+      
+
+      
+      <button id = 'generatePNG' onClick={generatePNG}>Generate PNG</button>
+       {/* <button><a href='https://buy.stripe.com/4gw7vM1r72917kc144' target='_blank' rel='noopener noreferrer' >Testing Payment</a></button> */}
+      {/* {isPaid && <p>Payment Made! Generating PNG</p>}  */}
+
+
+      <MosaicShop /> 
+
+
     </div>
   );
 };
