@@ -1,78 +1,85 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_PRODUCTS } from './queries/getProducts';
 import { useCart } from './context/CartContext';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // Import carousel styles
 import './styling.css'; 
 
 const ProductList = () => {
   const { data, loading, error } = useQuery(GET_PRODUCTS);
   const { addToCart } = useCart();
-  
-  // State to track quantities for each variant
+
+  // State to track the selected variant and quantity
+  const [selectedVariant, setSelectedVariant] = useState({});
   const [quantities, setQuantities] = useState({});
 
-  // Ref to access the HTML container for image styling
-  const htmlContainerRef = useRef(null);
+  // Extract images from HTML and store them in a state
+  const [images, setImages] = useState({});
+  const [descriptions, setDescriptions] = useState({});
 
   useEffect(() => {
-    // Function to style images
-    const styleImages = () => {
-      const container = htmlContainerRef.current;
-      if (container) {
-        const images = container.querySelectorAll('img');
-        images.forEach(img => {
-          img.style.width = '200px';
-          img.style.height = '200px';
-          img.style.objectFit = 'cover'; // Optional: To ensure images fit within the specified dimensions
-        });
-      }
-    };
+    if (data && data.products && data.products.edges) {
+      const newImages = {};
+      const newDescriptions = {};
+      
+      data.products.edges.forEach(({ node: product }) => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = product.descriptionHtml;
 
-    // Style images after the HTML content is rendered
-    styleImages();
+        // Extract images
+        const imgs = tempDiv.getElementsByTagName('img');
+        newImages[product.id] = Array.from(imgs).map(img => img.src);
+
+        // Remove the image tags from the HTML
+        Array.from(imgs).forEach(img => img.parentNode.removeChild(img));
+        
+        // Store the cleaned HTML
+        newDescriptions[product.id] = tempDiv.innerHTML;
+      });
+
+      setImages(newImages);
+      setDescriptions(newDescriptions);
+    }
   }, [data]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  // Ensure data is defined and has the expected structure
   if (!data || !data.products || !data.products.edges) {
     return <p>No products available.</p>;
   }
 
-  // Handle quantity change for a variant
-  const handleQuantityChange = (variantId, value) => {
+  const handleVariantChange = (productId, variantId) => {
+    setSelectedVariant({
+      ...selectedVariant,
+      [productId]: variantId
+    });
+  };
+
+  const handleQuantityChange = (productId, value) => {
     setQuantities({
       ...quantities,
-      [variantId]: value
+      [productId]: value
     });
   };
 
   const handleAddToCart = (product) => {
-	product.variants.edges.forEach(({ node: variant }) => {
-	  const quantity = quantities[variant.id] || 0;
-	  if (quantity > 0) {
-		for (let i = 0; i < quantity; i++) {
-		  addToCart({ ...product, variant, quantity: 1 }); // Add one item at a time
-		}
-	  }
-	});
-  };
-  
+    const variantId = selectedVariant[product.id];
+    const quantity = quantities[product.id] || 0;
 
+    if (variantId && quantity > 0) {
+      const variant = product.variants.edges.find(({ node }) => node.id === variantId).node;
+      for (let i = 0; i < quantity; i++) {
+        addToCart({ ...product, variant, quantity: 1 }); // Add one item at a time
+      }
+    }
+  };
 
   return (
     <div>
       <h1 id='bringToLife'>Bring Your Mosaic To Life!</h1>
-	  <p>Free shipping on orders over $100</p>
-
-{/* 
-      {data.products.edges.map(({ node }) => (
-		<div>
-			<p>{node.descriptionHtml}</p>
-		</div>
-	  ))} */}
-
+      <p>Free shipping on orders over $100</p>
 
       <div className="product-list">
         {data.products.edges.map(({ node: product }) => (
@@ -80,25 +87,45 @@ const ProductList = () => {
             <h3>{product.title}</h3>
 
             <div className="product-content">
-              <div className="product-description" ref={htmlContainerRef}>
-                <div dangerouslySetInnerHTML={{ __html: product.descriptionHtml }} />
+              <div className="product-carousel">
+                {images[product.id] && images[product.id].length > 0 ? (
+                  <Carousel showThumbs={false} infiniteLoop useKeyboardArrows>
+                    {images[product.id].map((src, index) => (
+                      <div key={index}>
+                        <img src={src} alt={`Product ${index + 1}`} />
+                      </div>
+                    ))}
+                  </Carousel>
+                ) : (
+                  <p>No images available</p>
+                )}
+              </div>
+
+              <div className="product-description">
+                <div dangerouslySetInnerHTML={{ __html: descriptions[product.id] }} />
               </div>
 
               <div className="product-variants">
-                {product.variants.edges.map(({ node: variant }) => (
-                  <div key={variant.id} className="product-variant">
-                    <p class= 'itemQuantityP'>{variant.title} - ${parseFloat(variant.priceV2.amount).toFixed(2)}</p>
-                    <input
-						class="itemQuantityInput"
-                      	type="number"
-                      	min="0"
-                      	value={quantities[variant.id] || ''}
-                      	onChange={(e) => handleQuantityChange(variant.id, parseInt(e.target.value, 10))}
-                    />
-
-                  </div>
-                ))}
-                <button class = 'addToCartButton' onClick={() => handleAddToCart(product)}>
+                <select
+                  value={selectedVariant[product.id] || ''}
+                  onChange={(e) => handleVariantChange(product.id, e.target.value)}
+                  className="variant-select"
+                >
+                  <option value="" disabled>Select an option</option>
+                  {product.variants.edges.map(({ node: variant }) => (
+                    <option key={variant.id} value={variant.id}>
+                      {variant.title} - ${parseFloat(variant.priceV2.amount).toFixed(2)}
+                    </option>
+                  ))}
+                </select>
+                <input
+                  className="itemQuantityInput"
+                  type="number"
+                  min="0"
+                  value={quantities[product.id] || ''}
+                  onChange={(e) => handleQuantityChange(product.id, parseInt(e.target.value, 10))}
+                />
+                <button className='addToCartButton' onClick={() => handleAddToCart(product)}>
                   Add to Cart
                 </button>
               </div>

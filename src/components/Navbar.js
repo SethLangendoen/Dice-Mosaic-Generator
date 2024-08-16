@@ -65,16 +65,16 @@ function Navbar() {
           className={activeLink === 'about' ? 'active' : ''} 
           onClick={() => handleLinkClick('about')}
         >
-          Features
+          FAQ and Features
         </a>
 
-        <a 
+        {/* <a 
           href="#shop" 
           className={activeLink === 'shop' ? 'active' : ''} 
           onClick={() => handleLinkClick('shop')}
         >
           Shop
-        </a>
+        </a> */}
 
         <a 
           href="#contact" 

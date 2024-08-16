@@ -599,7 +599,7 @@ height:  auto;
 #aboutBackground{
   /* padding: 100px;  */
   padding-top: 10px;
-  background-color: rgb(228, 213, 0);
+  background-color: rgb(115, 115, 115);
 }
 
 
@@ -650,9 +650,20 @@ height:  auto;
 }
 
 
+#aboutDivs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
 
-#aboutDivs{
-  display: flex; 
+/* Media query to change to column layout on smaller screens */
+@media (max-width: 768px) { /* Adjust the max-width to your preference */
+  #aboutDivs {
+    flex-direction: column;
+    justify-content: center; /* Align items vertically when in column mode */
+  }
+
 }
 
 
@@ -686,10 +697,9 @@ height:  auto;
 /* Styling for the Features section */
 #Features {
   /* background-color: #f2f2f2; */
-  margin-bottom: 30px; /* Space between sections */
+  padding-bottom: 30px; /* Space between sections */
   border-bottom: 1px solid black;
   width: 60%;
-  margin-left: 80px;  
   /* border-radius: 20px; */
 }
 
@@ -715,7 +725,7 @@ height:  auto;
 
 #Features p {
   font-size: 16px; /* Regular font size for paragraphs */
-  color: #666; /* Gray text color */
+  color: rgb(225, 225, 225); /* Gray text color */
   line-height: 1.6; /* Line height for readability */
   margin-bottom: 16px; /* Space below each paragraph */
 }
@@ -754,10 +764,6 @@ height:  auto;
 
 /* styling for accordian faq*/
 
-#faq{
-  width: 30%; 
-
-}
 
 #faq > h2{
   color: black;
@@ -768,8 +774,8 @@ height:  auto;
 .accordion {
   border: 1px solid #ccc;
   border-radius: 4px;
-  width: 100%; 
   margin: 5px;
+  width: 400px; 
 
 }
 
@@ -956,11 +962,13 @@ height:  auto;
   margin-top: 10px; 
   font-size: 100px; 
   font-family: 'Dancing Script', 'Brush Script MT', cursive;
+  background-color: rgb(100, 100, 100);
+
 }
 
 #ideaContainer{
   background-color: rgb(100, 100, 100);
-
+  margin-top: none; 
 }
 
 
@@ -1033,6 +1041,8 @@ height:  auto;
 
 #parent-how-to-container {
   background-color: rgb(55, 55, 55);
+  padding-bottom: 30px; 
+
   /* margin: 100px 0px;  */
 }
 
@@ -1040,7 +1050,8 @@ height:  auto;
 #parent-how-to-container > h1 {
   margin: 10px; 
   font-size: 100px; 
-  font-family: 'Dancing Script', 'Brush Script MT', cursive;}
+  font-family: 'Dancing Script', 'Brush Script MT', cursive;
+}
 
 .how-to-container {
   display: flex;
@@ -1049,13 +1060,13 @@ height:  auto;
   align-items: center;
   width: 100%;
   height: auto; 
-  padding: 20px; /* Padding around the container */
+  /* padding: 20px; Padding around the container */
   /* box-sizing: border-box; */
 }
 
 .item {
   text-align: center;
-  width: 60%; 
+  width: 80%; 
 }
 
 /* video titles */
@@ -1210,24 +1221,23 @@ button:hover {
 
 .product-content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
 }
 
-.product-description {
-  flex: 2;
-  margin-right: 20px;
-}
 
 .product-variants {
-  flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end; /* Aligns items at the bottom of the container */
 }
 
-.product-variant {
-
+.product-description {
+  max-height: 200px; /* Set an appropriate height */
+  text-overflow: ellipsis; /* Optional: Add ellipsis for overflow text */
 }
+
+
 
 .addToCartButton{
   width: 100%; 
@@ -1235,7 +1245,7 @@ button:hover {
   border-radius: 10px 
 }
 
-.product-variant input {
+.product-variants input {
   padding: 2px; /* Adds space inside the input field for a comfortable feel */
   border: 2px solid #ddd; /* Light border for a clean look */
   border-radius: 4px; /* Rounded corners for a softer appearance */
@@ -1246,15 +1256,33 @@ button:hover {
   transition: border-color 0.3s ease; /* Smooth transition for border color on focus */
 }
 
-.product-variant input:focus {
+.product-variants select {
+  padding: 2px; /* Adds space inside the input field for a comfortable feel */
+  border: 2px solid #ddd; /* Light border for a clean look */
+  border-radius: 4px; /* Rounded corners for a softer appearance */
+  font-size: 16px; /* Adequate font size for readability */
+  width: 100%; /* Ensures the input takes full width of its container */
+  box-sizing: border-box; /* Ensures padding and border are included in the width */
+  margin-top: 5px; /* Adds space above the input */
+  transition: border-color 0.3s ease; /* Smooth transition for border color on focus */
+}
+
+
+.product-variants input:focus {
   border-color: #ffd000; /* Changes border color when the input is focused */
   outline: none; /* Removes the default outline to rely on the border color */
   box-shadow: 0 0 5px rgba(216, 116, 9, 0.5); /* Adds a subtle glow effect on focus */
 }
 
-.product-variant input::placeholder {
+.product-variants input::placeholder {
   color: #999; /* Lighter color for the placeholder text */
   font-style: italic; /* Makes the placeholder text italic for differentiation */
+}
+
+.product-variants select:focus {
+  border-color: #ffd000; /* Changes border color when the input is focused */
+  outline: none; /* Removes the default outline to rely on the border color */
+  box-shadow: 0 0 5px rgba(216, 116, 9, 0.5); /* Adds a subtle glow effect on focus */
 }
 
 

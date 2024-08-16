@@ -29,23 +29,19 @@ const faqGeneral = [
   },
   {
     title: 'How long does shipping take?',
-    content: 'Shipping usually takes between 5-10 business days.',
+    content: 'Shipping usually takes between 10-25 business days.',
   },
   {
     title: 'Do you offer international shipping?',
-    content: 'Yes, we offer international shipping to select countries.',
+    content: 'No, we do not offer international shipping.',
   },
   {
     title: 'What payment methods do you accept?',
-    content: 'We accept credit cards, PayPal, and bank transfers.',
+    content: 'We accept credit and debit cards, PayPal and Google pay',
   },
   {
     title: 'Is my payment information secure?',
     content: 'Yes, we use industry-standard encryption to ensure your payment information is secure.',
-  },
-  {
-    title: 'Can I change my order after it has been placed?',
-    content: 'Yes, you can change your order within 24 hours of placing it by contacting our customer service team.',
   },
   {
     title: 'What should I do if I receive a damaged item?',
@@ -53,23 +49,16 @@ const faqGeneral = [
   },
   {
     title: 'How do I cancel my order?',
-    content: 'You can cancel your order within 24 hours of placing it by reaching out to our customer support team.',
-  },
-  {
-    title: 'Do you offer gift wrapping?',
-    content: 'Yes, we offer gift wrapping services for a small additional fee. You can select this option during checkout.',
+    content: 'You can cancel your order within 24 hours of placing it by reaching out to us via email.',
   },
   {
     title: 'Can I use multiple discount codes on one order?',
     content: 'No, only one discount code can be applied per order.',
   },
-  {
-    title: 'What should I do if I forget my account password?',
-    content: 'If you forget your password, you can reset it by clicking the "Forgot Password" link on the login page and following the instructions.',
-  },
+
   {
     title: 'How can I contact customer support?',
-    content: 'You can contact our customer support team via email, phone, or live chat during our business hours.',
+    content: 'You can contact our customer support team via email, found at the bottom of the website.',
   },
   {
     title: 'Do you offer bulk purchasing options?',

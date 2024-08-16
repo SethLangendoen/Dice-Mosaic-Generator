@@ -5,7 +5,7 @@
 // git branch
 // git checkout master
 // git add .
-// git commit -m "testing payment system"
+// git commit -m "added products and styling"
 // git push -u origin master
 
 

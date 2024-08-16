@@ -7,8 +7,8 @@ import './styling.css'; // Ensure you have a CSS file for styles
 // import generatePhotoDemo from '../Assets/HowToVideos/vid3.mp4'; 
 
 import selectPhotoDemo from '../Assets/HowToVideos/selectPhotoDemo.mov'
-import editMosaicDemo from '../Assets/HowToVideos/editMosaicDemo.mov'
-import generateAndPay from '../Assets/HowToVideos/generateAndPay.mov'
+import editMosaicDemo from '../Assets/HowToVideos/customizeMosaics.mov'
+import generateAndPay from '../Assets/HowToVideos/generateAndCheckout.mov'
 
 
 
@@ -72,7 +72,7 @@ export default function HowTo() {
           ></video>
         </div>
         <div className="item">
-          <h2>3. Generate the digital mosaic</h2>
+          <h2>3. Generate, shop and checkout</h2>
           <video
             ref={el => (videoRefs.current[2] = el)}
             className={`video ${isPlaying[2] ? 'playing' : 'greyed-out'}`}
