@@ -52,7 +52,7 @@ export default function HowTo() {
       <h1>The Process</h1>
       <div className="how-to-container">
         <div className="item">
-          <h2>1. Choose a photo to dicify</h2>
+          <h2 className ='titleHowTo'>1. Choose a photo to dicify</h2>
           <video
             ref={el => (videoRefs.current[0] = el)}
             className={`video ${isPlaying[0] ? 'playing' : 'greyed-out'}`}
@@ -62,7 +62,7 @@ export default function HowTo() {
           ></video>
         </div>
         <div className="item">
-          <h2>2. Customize it to your liking</h2>
+          <h2 className ='titleHowTo'>2. Customize it to your liking</h2>
           <video
             ref={el => (videoRefs.current[1] = el)}
             className={`video ${isPlaying[1] ? 'playing' : 'greyed-out'}`}
@@ -72,7 +72,7 @@ export default function HowTo() {
           ></video>
         </div>
         <div className="item">
-          <h2>3. Generate, shop and checkout</h2>
+          <h2 className ='titleHowTo'>3. Generate, shop and checkout</h2>
           <video
             ref={el => (videoRefs.current[2] = el)}
             className={`video ${isPlaying[2] ? 'playing' : 'greyed-out'}`}

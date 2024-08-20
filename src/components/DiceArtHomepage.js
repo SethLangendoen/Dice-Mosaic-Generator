@@ -260,7 +260,7 @@ export default function DiceArtHomepage() {
 
 
 
-      {/* <HowTo /> */}
+      <HowTo />
       <div id = 'aboutBackground'>
         <About />  
       </div>

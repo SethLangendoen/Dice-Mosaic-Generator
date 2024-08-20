@@ -599,7 +599,7 @@ height:  auto;
 #aboutBackground{
   /* padding: 100px;  */
   padding-top: 10px;
-  background-color: rgb(115, 115, 115);
+  background-color: rgb(178, 178, 178);;
 }
 
 
@@ -1074,6 +1074,13 @@ height:  auto;
   color: #ffcc00;
 }
 
+.titleHowTo{
+  transition: opacity 0.3s ease-in-out;
+
+}
+
+
+
 video {
   width: 100%;
   height: auto;
@@ -1218,7 +1225,7 @@ button:hover {
   flex-direction: column;
   background-color: rgb(230, 230, 230);
 }
-
+.how-to-container
 .product-content {
   display: flex;
   flex-direction: column;
