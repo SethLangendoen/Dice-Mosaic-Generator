@@ -29,6 +29,14 @@ import presetImage3 from '../Assets/guitar.jpg';
 import presetImage4 from '../Assets/dm/anim.jpg';
 import presetImage5 from '../Assets/dm/tiger.avif';
 import presetImage6 from '../Assets/dm/bird.jpg';
+import presetImage7 from '../Assets/dm/aiFrog.png'
+import presetImage8 from '../Assets/dm/aiCat.png'
+import presetImage9 from '../Assets/dm/aiEye.png'
+import presetImage10 from '../Assets/dm/aiBird2.png'
+import presetImage11 from '../Assets/dm/aiCow.jpeg'
+import presetImage12 from '../Assets/dm/butterfly.jpg'
+
+
 import HowTo from "./HowTo";
 
 
@@ -39,7 +47,14 @@ const presetImages = [
   { src: presetImage3, width: 800, height: 600 },
   { src: presetImage4, width: 800, height: 600 },
   { src: presetImage5, width: 800, height: 600 },
-  { src: presetImage6, width: 800, height: 600 }
+  { src: presetImage6, width: 800, height: 600 },
+  { src: presetImage7, width: 800, height: 600 },
+  { src: presetImage8, width: 800, height: 600 },
+  { src: presetImage9, width: 800, height: 600 },
+  { src: presetImage10, width: 800, height: 600 },
+  { src: presetImage11, width: 800, height: 600 },
+  { src: presetImage12, width: 800, height: 600 }
+
 
 ];
 

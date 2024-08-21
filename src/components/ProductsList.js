@@ -14,6 +14,9 @@ const ProductList = () => {
   const [selectedVariant, setSelectedVariant] = useState({});
   const [quantities, setQuantities] = useState({});
 
+  // State for error messages
+  const [errorMessages, setErrorMessages] = useState({});
+
   // Extract images from HTML and store them in a state
   const [images, setImages] = useState({});
   const [descriptions, setDescriptions] = useState({});
@@ -55,6 +58,12 @@ const ProductList = () => {
       ...selectedVariant,
       [productId]: variantId
     });
+
+    // Clear error message when a variant is selected
+    setErrorMessages(prevMessages => ({
+      ...prevMessages,
+      [productId]: prevMessages[productId] ? '' : ''
+    }));
   };
 
   const handleQuantityChange = (productId, value) => {
@@ -62,18 +71,43 @@ const ProductList = () => {
       ...quantities,
       [productId]: value
     });
+
+    // Clear error message when a quantity is entered
+    setErrorMessages(prevMessages => ({
+      ...prevMessages,
+      [productId]: prevMessages[productId] ? '' : ''
+    }));
   };
 
   const handleAddToCart = (product) => {
     const variantId = selectedVariant[product.id];
     const quantity = quantities[product.id] || 0;
 
-    if (variantId && quantity > 0) {
-      const variant = product.variants.edges.find(({ node }) => node.id === variantId).node;
-      for (let i = 0; i < quantity; i++) {
-        addToCart({ ...product, variant, quantity: 1 }); // Add one item at a time
-      }
+    if (!variantId) {
+      setErrorMessages(prevMessages => ({
+        ...prevMessages,
+        [product.id]: 'Please select a variant.'
+      }));
+      return;
     }
+
+    if (quantity <= 0) {
+      setErrorMessages(prevMessages => ({
+        ...prevMessages,
+        [product.id]: 'Please enter a quantity greater than 0.'
+      }));
+      return;
+    }
+
+    const variant = product.variants.edges.find(({ node }) => node.id === variantId).node;
+    for (let i = 0; i < quantity; i++) {
+      addToCart({ ...product, variant, quantity: 1 }); // Add one item at a time
+    }
+    // Clear error message upon successful addition
+    setErrorMessages(prevMessages => ({
+      ...prevMessages,
+      [product.id]: ''
+    }));
   };
 
   return (
@@ -106,6 +140,9 @@ const ProductList = () => {
               </div>
 
               <div className="product-variants">
+                {errorMessages[product.id] && (
+                  <p className="error-message">{errorMessages[product.id]}</p>
+                )}
                 <select
                   value={selectedVariant[product.id] || ''}
                   onChange={(e) => handleVariantChange(product.id, e.target.value)}
@@ -120,6 +157,7 @@ const ProductList = () => {
                 </select>
                 <input
                   className="itemQuantityInput"
+                  placeholder='select quantity'
                   type="number"
                   min="0"
                   value={quantities[product.id] || ''}
