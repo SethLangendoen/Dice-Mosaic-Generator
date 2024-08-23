@@ -5,7 +5,7 @@
 // git branch
 // git checkout master
 // git add .
-// git commit -m "added products and styling"
+// git commit -m "mobile styling fixes"
 // git push -u origin master
 
 
@@ -38,6 +38,7 @@ import presetImage12 from '../Assets/dm/butterfly.jpg'
 
 
 import HowTo from "./HowTo";
+import MosaicExamples from "./MosaicExamples";
 
 
 
@@ -279,6 +280,7 @@ export default function DiceArtHomepage() {
       <div id = 'aboutBackground'>
         <About />  
       </div>
+      <MosaicExamples />
       <CarouselWheel /> 
 
       
@@ -288,6 +290,9 @@ export default function DiceArtHomepage() {
           <p id="support-message" >Did you find this generator helpful? If so, please support the developer <a href='https://buymeacoffee.com/sethlangendoen' target='_blank' rel='noopener noreferrer'>Buy me a coffee!</a></p>
           <p id = 'contact' >Any other questions or concerns? Email us at <a href="mailto:dicemosaicgenerator@gmail.com" target = '_blank' rel='noopener noreferrer'>dicemosaicgenerator@gmail.com</a></p>
           </div>
+
+
+          {/* <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@dicemosaicgenerator.com" data-unique-id="dicemosaicgenerator.com" data-embed-type="creator" style={{maxWidth: "780px", minWidth: "288px"}} > <section> <a target="_blank" href="https://www.tiktok.com/@dicemosaicgenerator.com?refer=creator_embed">@dicemosaicgenerator.com</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script> */}
         </div>
 
 

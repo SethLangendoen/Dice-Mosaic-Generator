@@ -190,13 +190,31 @@ input[type="range"]::-ms-tooltip {
 
  /** Website Title **/
 
-#title{
-  margin: 10px; 
-  margin-top: 10px; 
-  font-size: 100px; 
+
+#title {
+  margin: 10px;
+  margin-top: 10px;
+  font-size: 100px;
   font-family: 'Dancing Script', 'Brush Script MT', cursive;
 }
 
+@media (max-width: 600px) {
+  #title {
+    font-size: 80px; /* Smaller font size for medium screens */
+  }
+}
+
+@media (max-width: 500px) {
+  #title {
+    font-size: 60px; /* Even smaller font size for smaller screens */
+  }
+}
+
+@media (max-width: 400px) {
+  #title {
+    font-size: 50px; /* Smallest font size for very small screens */
+  }
+}
 
 
 
@@ -580,12 +598,16 @@ html {
 
 #diceMosaicContainer{
 height:  auto; 
-}
+/* overflow-x: auto;
+width: 2000px; */ 
+} 
+
 
 #generatorContainer{
   background-color: rgb(210, 210, 210);
   /* padding-top: 20px;  */
   color: black; 
+  overflow-x: auto;
 }
 
 /** --------------------------------------------------- mainParagraph and hoome text styling --------------------------------------------------- */
@@ -725,6 +747,27 @@ height:  auto;
   margin-bottom: 16px; /* Space below heading */
   font-family: 'Dancing Script', 'Brush Script MT', cursive;
 }
+
+@media (max-width: 600px) {
+  #Features h1 {
+    font-size: 80px; /* Smaller font size for medium screens */
+  }
+}
+
+@media (max-width: 500px) {
+  #Features h1 {
+    font-size: 70px; /* Even smaller font size for smaller screens */
+  }
+}
+
+@media (max-width: 400px) {
+  #Features h1 {
+    font-size: 60px; /* Smallest font size for very small screens */
+  }
+}
+
+
+
 
 #Features h3 {
   font-size: 30px; /* Larger font size for subheadings */
@@ -1535,4 +1578,14 @@ img {
 
 .shipping-table td {
   font-size: 0.9em;
+}
+
+
+/* ------------------------- featured mosaics ------------------------- */ 
+
+#featuredMosaics{
+  margin-top: 10px;
+  font-size: 100px;
+  font-family: 'Dancing Script', 'Brush Script MT', cursive;
+  color: black; 
 }
