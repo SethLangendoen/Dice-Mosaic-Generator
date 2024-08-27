@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <url>
+    <loc>https://www.dicemosaicgenerator.com/</loc>
+    <image:image>
+      <image:loc>https://www.yoursite.com/Assets/MosaicExamples/wolf.png</image:loc>
+      <image:caption>Wolf Dice Mosaic</image:caption>
+      <image:title>Wolf Dice Mosaic</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.dicemosaicgenerator.com/Assets/MosaicExamples/kobe.png</image:loc>
+      <image:caption>Kobe Bryant Dice Mosaic</image:caption>
+      <image:title>Kobe Bryant Dice Mosaic</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.dicemosaicgenerator.com/Assets/MosaicExamples/eye.png</image:loc>
+      <image:caption>Eye Dice Mosaic</image:caption>
+      <image:title>Eye Dice Mosaic</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.dicemosaicgenerator.com/Assets/MosaicExamples/bikini.png</image:loc>
+      <image:caption>Bikini Dice Mosaic</image:caption>
+      <image:title>Bikini Dice Mosaic</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.dicemosaicgenerator.com/Assets/MosaicExamples/shmoo.png</image:loc>
+      <image:caption>Shmoo Dice Mosaic</image:caption>
+      <image:title>Shmoo Dice Mosaic</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.dicemosaicgenerator.com/Assets/MosaicExamples/jackpot.png</image:loc>
+      <image:caption>Jackpot Dice Mosaic</image:caption>
+      <image:title>Jackpot Dice Mosaic</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.dicemosaicgenerator.com/Assets/MosaicExamples/monopoly.png</image:loc>
+      <image:caption>Monopoly Dice Mosaic</image:caption>
+      <image:title>Monopoly Dice Mosaic</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.dicemosaicgenerator.com/Assets/MosaicExamples/keanuReeves.png</image:loc>
+      <image:caption>Keanu Reeves Dice Mosaic</image:caption>
+      <image:title>Keanu Reeves Dice Mosaic</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.dicemosaicgenerator.com/Assets/MosaicExamples/mrBeast.png</image:loc>
+      <image:caption>Mr. Beast Dice Mosaic</image:caption>
+      <image:title>Mr. Beast Dice Mosaic</image:title>
+    </image:image>
+  </url>
+  
+</urlset>
