@@ -42,6 +42,7 @@ import MosaicExamples from "./MosaicExamples";
 import MosaicShop from "./MosaicShop";
 import BlogComponent from "./blog/blogComponent";
 import DiceFall from "./DiceFall";
+// import ParticlesComponent from './ParticlesComponent';
 
 
 const presetImages = [
@@ -197,7 +198,6 @@ export default function DiceArtHomepage() {
       <Navbar/>
 
       <DiceFall >
-      {/* <Animation /> */}
 
 
       <h1 id="title">Dice Mosaic Generator</h1>
@@ -295,7 +295,7 @@ export default function DiceArtHomepage() {
       
         <div  id = 'donationDiv'>
           <div data-aos='fade-up' data-aos-offset="100" data-aos-duration = '1500'>
-          <p id="support-message" >Did you find this generator helpful? If so, please support the developer <a href='https://buymeacoffee.com/sethlangendoen' target='_blank' rel='noopener noreferrer'>Buy me a coffee!</a></p>
+          <p id="support-message" >This website offers free access for you to create, customize and download your digital artwork. If you found this tool helpful please consider supporting the developer, it is greatly appreciated! <a href='https://buymeacoffee.com/sethlangendoen' target='_blank' rel='noopener noreferrer'>Buy me a coffee</a></p>
           <p id = 'contact' >Any other questions or concerns? Email us at <a href="mailto:dicemosaicgenerator@gmail.com" target = '_blank' rel='noopener noreferrer'>dicemosaicgenerator@gmail.com</a></p>
           </div>
 

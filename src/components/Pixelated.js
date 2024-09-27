@@ -218,6 +218,21 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, trim, brightness, h
       {/* {isPaid && <p>Payment Made! Generating PNG</p>}  */}
 
 
+      <div class="mosaic-container" data-aos="zoom-in" data-aos-duration = '1500' data-aos-offset="400">
+        <h1 class="mosaic-heading">Your Mosaic is looking Great!</h1>
+        <p id="mosaic-description">
+          Dice mosaics are an awesome project to keep you entertained and harness your inner creativity! Impress your friends, make a personable gift, or just spend some valuable time putting it together with the family. When you are finished, hang it on your wall to show off your amazing skills!
+        </p>
+        <h2>What's next?</h2>
+        <ul id = 'whatsNextListItems'>
+          <li>Save your customized mosaic as a png to use for the creation process</li>
+          <li>Use our dice counter to check how many dice you will need for the project</li>
+          <li>Head over to our shop where you can purchase the dice in bulk</li>
+          <li>Read our blog for all information regarding dice mosaics</li>
+        </ul>
+      </div>
+
+
 
     </div>
   );

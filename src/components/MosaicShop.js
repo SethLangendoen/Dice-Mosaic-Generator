@@ -5,7 +5,6 @@ import ProductList from './ProductsList'
 export default function MosaicShop(){
 	return(
 		<div>
-
 			<ProductList /> 
 			<Cart /> 	
 
