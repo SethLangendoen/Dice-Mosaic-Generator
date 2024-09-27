@@ -53,28 +53,44 @@ function Navbar() {
         </a>
 
         <a 
-          href="#parent-how-to-container" // says about cuz this used to be an about section, but now it's a features section...
-          className={activeLink === 'about' ? 'active' : ''} 
-          onClick={() => handleLinkClick('parent-how-to-container')}
-        >
-          Learn the process
-        </a>
-
-        <a 
-          href="#About" // says about cuz this used to be an about section, but now it's a features section...
-          className={activeLink === 'about' ? 'active' : ''} 
-          onClick={() => handleLinkClick('about')}
-        >
-          FAQ and Features
-        </a>
-
-        {/* <a 
-          href="#shop" 
+          href="#bringToLife" 
           className={activeLink === 'shop' ? 'active' : ''} 
           onClick={() => handleLinkClick('shop')}
         >
           Shop
-        </a> */}
+        </a>
+
+        <a 
+          href="#parent-how-to-container" // says about cuz this used to be an about section, but now it's a features section...
+          className={activeLink === 'about' ? 'active' : ''} 
+          onClick={() => handleLinkClick('parent-how-to-container')}
+        >
+          Process
+        </a>
+
+        <a 
+          href="#blog" // says about cuz this used to be an about section, but now it's a features section...
+          className={activeLink === 'blog' ? 'active' : ''} 
+          onClick={() => handleLinkClick('blog')}
+        >
+          Blog
+        </a>
+
+        <a 
+          href="#featuredMosaics" // says about cuz this used to be an about section, but now it's a features section...
+          className={activeLink === 'featuredMosaics' ? 'active' : ''} 
+          onClick={() => handleLinkClick('featuredMosaics')}
+        >
+          Featured Mosaics
+        </a>
+
+        <a 
+          href="#About" // says about cuz this used to be an about section, but now it's a features section...
+          className={activeLink === 'faq' ? 'active' : ''} 
+          onClick={() => handleLinkClick('faq')}
+        >
+          FAQ
+        </a>
 
         <a 
           href="#contact" 

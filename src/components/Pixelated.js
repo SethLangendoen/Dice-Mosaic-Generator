@@ -219,8 +219,6 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, trim, brightness, h
       {/* {isPaid && <p>Payment Made! Generating PNG</p>}  */}
 
 
-      <MosaicShop /> 
-
 
     </div>
   );

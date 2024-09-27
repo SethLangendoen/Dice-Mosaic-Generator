@@ -126,7 +126,7 @@ const ProductList = () => {
                   <Carousel showThumbs={false} infiniteLoop useKeyboardArrows>
                     {images[product.id].map((src, index) => (
                       <div key={index}>
-                        <img src={src} alt={`Product ${index + 1}`} />
+                        <img className='productImages' src={src} alt={`Product ${index + 1}`} />
                       </div>
                     ))}
                   </Carousel>

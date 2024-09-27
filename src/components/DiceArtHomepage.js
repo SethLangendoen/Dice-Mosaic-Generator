@@ -17,7 +17,7 @@ import Navbar from './Navbar';
 import {useState } from "react";
 import About from './About'; 
 import './styling.css'
-import Animation from './Animation.js'; 
+// import Animation from './Animation.js'; 
 import GeneratorControls from "./GeneratorControls";
 
 
@@ -39,7 +39,9 @@ import presetImage12 from '../Assets/dm/butterfly.jpg'
 
 import HowTo from "./HowTo";
 import MosaicExamples from "./MosaicExamples";
-
+import MosaicShop from "./MosaicShop";
+import BlogComponent from "./blog/blogComponent";
+import DiceFall from "./DiceFall";
 
 
 const presetImages = [
@@ -192,10 +194,11 @@ export default function DiceArtHomepage() {
 
   return (
     <div>
-
-      <Animation />
-
       <Navbar/>
+
+      <DiceFall >
+      {/* <Animation /> */}
+
 
       <h1 id="title">Dice Mosaic Generator</h1>
 
@@ -231,6 +234,8 @@ export default function DiceArtHomepage() {
 
 
       </div>
+
+      </DiceFall>
 
       <div id = 'generatorContainer'> 
       
@@ -274,13 +279,16 @@ export default function DiceArtHomepage() {
 
       </div>
 
+      <MosaicShop /> 
+
 
 
       <HowTo />
+      <BlogComponent />
+      <MosaicExamples />
       <div id = 'aboutBackground'>
         <About />  
       </div>
-      <MosaicExamples />
       <CarouselWheel /> 
 
       

@@ -1,6 +1,9 @@
 import BryBellyDice from '../Assets/100Dice.jpg'
 import FepitoDice from '../Assets/Fepito100Dice.jpg'
 import BlackDice8mm from '../Assets/50BlackDice8mm.jpg'
+import './styling.css'; 
+
+
 export default function Shop(){
 
 	return(

@@ -29,7 +29,7 @@ export default function MosaicExamples() {
 
   return (
     <div style={styles.outerContainer}>
-      <h1 style={styles.title}>Featured Mosaics</h1>
+      <h1 id = 'featuredMosaics' style={styles.title}>Featured Mosaics</h1>
 
       <div style={styles.container}>
         {mosaics.map((mosaic, index) => (
