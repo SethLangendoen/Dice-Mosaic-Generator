@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import die1 from '../Assets/NewDice/BlackDice/1.png';
 import die2 from '../Assets/NewDice/BlackDice/2.png';
 import die3 from '../Assets/NewDice/BlackDice/3.png';
@@ -36,7 +36,7 @@ const DiceFall = ({ children }) => {
   };
 
   // Function to add a new die at a random position with random size and speed
-  const addRandomDie = (containerWidth) => {
+  const addRandomDie = useCallback((containerWidth) => {
     const randomDice = diceImages[Math.floor(Math.random() * diceImages.length)];
     const newDie = {
       id: Date.now(),
@@ -47,20 +47,20 @@ const DiceFall = ({ children }) => {
       speed: getRandomSpeed() // Set random speed
     };
     setDice((prevDice) => [...prevDice, newDie]);
-  };
+  }, []); // No dependencies since it doesn’t rely on any external state
 
   useEffect(() => {
     const container = document.getElementById('diceFall');
     const containerWidth = container.clientWidth; // Get the width of the container
 
-    // Add a new die every 50 milliseconds
+    // Add a new die every 800 milliseconds
     const interval = setInterval(() => {
       addRandomDie(containerWidth);
     }, 800); // Change this interval as needed
 
     // Clean up the interval on unmount
     return () => clearInterval(interval);
-  }, []);
+  }, [addRandomDie]); // Add addRandomDie to the dependency array
 
   useEffect(() => {
     // Fade out and remove dice after 2 seconds

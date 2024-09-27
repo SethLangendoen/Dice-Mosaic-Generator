@@ -13,7 +13,6 @@ import whiteDiceFiveImage from '../Assets/NewDice/WhiteDice/6.png';
 import whiteDiceSixImage from '../Assets/NewDice/WhiteDice/7.png';
 import './styling.css';
 
-import MosaicShop from './MosaicShop';
 
 const diceImages = [
   diceOneImage, diceTwoImage, diceThreeImage, diceFourImage, diceFiveImage, diceSixImage

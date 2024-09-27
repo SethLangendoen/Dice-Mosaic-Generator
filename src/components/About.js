@@ -1,5 +1,4 @@
 import './styling.css'
-import { useState } from 'react';
 import Accordion from './accordian';
 
 
@@ -8,15 +7,15 @@ export default function About(){
 
 	
 
-	const [expandedSections, setExpandedSections] = useState([false, false, false, false, false, false]);
+	// const [expandedSections, setExpandedSections] = useState([false, false, false, false, false, false]);
 
-	const toggleSection = (index) => {
-	  setExpandedSections((prevSections) => {
-		const newSections = [...prevSections];
-		newSections[index] = !newSections[index];
-		return newSections;
-	  });
-	};
+	// const toggleSection = (index) => {
+	//   setExpandedSections((prevSections) => {
+	// 	const newSections = [...prevSections];
+	// 	newSections[index] = !newSections[index];
+	// 	return newSections;
+	//   });
+	// };
 
 const faqGeneral = [
   {
