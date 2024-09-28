@@ -43,23 +43,6 @@ const faqGeneral = [
     content: 'Yes, we use industry-standard encryption to ensure your payment information is secure.',
   },
   {
-    title: 'What should I do if I receive a damaged item?',
-    content: 'If you receive a damaged item, please contact us immediately with photos of the damage, and we will arrange for a replacement or refund.',
-  },
-  {
-    title: 'How do I cancel my order?',
-    content: 'You can cancel your order within 24 hours of placing it by reaching out to us via email.',
-  },
-  {
-    title: 'Can I use multiple discount codes on one order?',
-    content: 'No, only one discount code can be applied per order.',
-  },
-
-  {
-    title: 'How can I contact customer support?',
-    content: 'You can contact our customer support team via email, found at the bottom of the website.',
-  },
-  {
     title: 'Do you offer bulk purchasing options?',
     content: 'Yes, we offer discounts for bulk purchases. Please contact our sales team for more information.',
   },

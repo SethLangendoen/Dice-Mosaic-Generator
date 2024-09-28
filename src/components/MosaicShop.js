@@ -4,7 +4,7 @@ import ProductList from './ProductsList'
 
 export default function MosaicShop(){
 	return(
-		<div>
+		<div id = 'mosaicShop'>
 			<ProductList /> 
 			<Cart /> 	
 

@@ -5,19 +5,15 @@
 // git branch
 // git checkout master
 // git add .
-// git commit -m "mobile styling fixes"
+// git commit -m "structure update"
 // git push -u origin master
 
 
 import ImageUploader from "./ImageUploader";
-import CarouselWheel from "./CarouselWheel"; 
-// import Shop from "./Shop"; 
 import HomeText from "./Home";
-import Navbar from './Navbar'; 
 import {useState } from "react";
 import About from './About'; 
 import './styling.css'
-// import Animation from './Animation.js'; 
 import GeneratorControls from "./GeneratorControls";
 
 
@@ -195,7 +191,7 @@ export default function DiceArtHomepage() {
 
   return (
     <div>
-      <Navbar/>
+      {/* <Navbar/> */}
 
       <DiceFall >
 
@@ -285,17 +281,16 @@ export default function DiceArtHomepage() {
 
       <HowTo />
       <BlogComponent />
-      <MosaicExamples />
-      <div id = 'aboutBackground'>
-        <About />  
-      </div>
-      <CarouselWheel /> 
 
-      
+      <MosaicExamples />
+
+        <div id = 'aboutBackground'>
+          <About />  
+        </div>
       
         <div  id = 'donationDiv'>
           <div data-aos='fade-up' data-aos-offset="100" data-aos-duration = '1500'>
-          <p id="support-message" >This website offers free access for you to create, customize and download your digital artwork. If you found this tool helpful please consider supporting the developer, it is greatly appreciated! <a href='https://buymeacoffee.com/sethlangendoen' target='_blank' rel='noopener noreferrer'>Buy me a coffee</a></p>
+          <p id="support-message" > If you found this tool helpful please consider supporting the developer, it is greatly appreciated! <a href='https://buymeacoffee.com/sethlangendoen' target='_blank' rel='noopener noreferrer'>Buy me a coffee</a></p>
           <p id = 'contact' >Any other questions or concerns? Email us at <a href="mailto:dicemosaicgenerator@gmail.com" target = '_blank' rel='noopener noreferrer'>dicemosaicgenerator@gmail.com</a></p>
           </div>
 

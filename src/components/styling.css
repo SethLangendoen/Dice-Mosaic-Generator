@@ -153,23 +153,33 @@ input[type="range"]::-ms-tooltip {
   margin-left: 10px; 
 }
 .trimAlignment {
-  display: flex;
-  flex-direction: row; /* Ensures label and input are aligned horizontally */
-  align-items: center; /* Vertically centers the content */
-  margin-right: 20px; /* Adds space between each pair of label and input */
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Center items vertically */
+  margin-bottom: 1rem; /* Add space below the input if needed */
 }
 
-#trimDivContainer > .trimAlignment {
-  margin-bottom: 10px; /* Adds space between each trim control group */
+.trimAlignment label {
+  margin-right: 0.5rem; /* Space between label and input */
+  /* You can adjust this spacing as needed */
 }
 
-#trimDivContainer label {
-  margin-right: 10px; /* Adds space between label and input */
+
+#trim-bottom {
+  width: 100%;
 }
 
-#trimDivContainer input {
-  flex: 1; /* Allows the input to take up available space, if needed */
-}
+
+/* #trimDivContainer > .trimAlignment {
+  margin-bottom: 10px; 
+} */
+
+/* #trimDivContainer label {
+  margin-right: 10px; 
+} */
+
+/* #trimDivContainer input {
+  flex: 1; 
+} */
 
 
 
@@ -200,6 +210,28 @@ input[type="range"]::-ms-tooltip {
 
  } */
 
+ #theProcess {
+  margin: 0px;
+  /* margin-top: 200px; */
+  font-size: 100px;
+  color: #ffffff; 
+  font-family: 'Dancing Script', 'Brush Script MT', cursive;
+  text-shadow: 6px 6px 4px rgb(0, 0, 0); 
+  ; 
+ }
+
+ #carouselTitle{
+  color: #ffcc00; 
+  /* margin: 10px;  */
+  margin-top: 0px; 
+  font-size: 100px;
+  color: black; 
+  font-family: 'Dancing Script', 'Brush Script MT', cursive;
+  text-shadow: 6px 6px 4px white; 
+  padding: 0px; 
+  margin: 0px; 
+}
+
 #title {
   margin: 5px;
   margin-top: 200px;
@@ -207,6 +239,14 @@ input[type="range"]::-ms-tooltip {
   color: black; 
   font-family: 'Dancing Script', 'Brush Script MT', cursive;
   text-shadow: 6px 6px 4px white; 
+}
+
+
+#featuredMosaics{
+  font-size: 100px;
+  color: black; 
+  font-family: 'Dancing Script', 'Brush Script MT', cursive;
+  text-shadow: 6px 6px 4px #ffCC02; 
 }
 
 @media (max-width: 600px) {
@@ -274,19 +314,19 @@ input[type="range"]::-ms-tooltip {
 /** --------------------------------------------------- Image Uploader controls --------------------------------------------------- */
 
 #imageControls {
-  text-align: center;
+  /* text-align: center;
   display: flex; 
   justify-content: center;
   flex-direction: column;
-  align-items: center; /* Ensures child elements stretch to fill the width */
+  align-items: center; Ensures child elements stretch to fill the width */
 }
 
 #imageControls > div {
   padding: 0px; 
-  width: 400px; 
+  /* width: 400px;  */
   display: flex; 
   flex-direction: row;
-  align-items: stretch; /* Ensures child elements stretch to fill the width */
+  /* align-items: stretch; Ensures child elements stretch to fill the width */
   gap: 10px; /* Adjust the gap between each div */
 }
 
@@ -488,6 +528,13 @@ input[type="range"]::-ms-tooltip {
 #generatePNG{
   margin: 10px;
   border-radius: 10px; 
+}
+
+#mosaicShop{
+  background-color: rgb(100, 100, 100);
+  margin: 0px;
+  padding-bottom: 60px;
+
 }
 
 .mosaic-container {
@@ -738,6 +785,7 @@ width: 2000px; */
   flex-direction: column; /* Stack items vertically */
   align-items: center; /* Center items horizontally */
   justify-content: center; /* Center items vertically */
+  background-color: rgb(109, 109, 109);
 }
 
 
@@ -920,27 +968,35 @@ width: 2000px; */
 
 
 #faq > h2{
-  font-size: 75px;
+
+  font-size: 100px;
   color: black; 
   font-family: 'Dancing Script', 'Brush Script MT', cursive;
-
+  text-shadow: 6px 6px 4px #FFAA02; 
+  margin: 0px; 
+  margin-bottom: 30px; 
   /* text-shadow: 6px 6px 4px white;  */
+}
+
+#faq {
+  background-color: none;
 }
 
 
 /* src/components/Accordion.css */
 .accordion {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin: 15px;
+  /* border: 1px solid #ccc; */
+  /* border-radius: 4px; */
+  margin: 0px auto;
   width: 800px; 
+  background-color: transparent;
+
 
 }
 
 .accordion-item {
-  background-color: white;
-  border-bottom: 1px solid #ccc;
-  padding: 10px; 
+  /* border-bottom: 1px solid #ccc; */
+  border-radius: 4px;
 }
 
 .accordion-item:last-child {
@@ -951,8 +1007,8 @@ width: 2000px; */
   width: 100%;
   padding: 10px;
   text-align: left;
-  background-color: #ffffff;
-  border-bottom: 1px solid black;
+  /* background-color: #ffffff; */
+  border-bottom: 3px solid black;
   cursor: pointer;
   outline: none;
   font-size: 20px;
@@ -1142,19 +1198,18 @@ width: 2000px; */
 
 
 
-#carouselTitle{
-  color: #ffcc00; 
-  margin: 10px; 
-  margin-top: 10px; 
-  font-size: 100px; 
-  font-family: 'Dancing Script', 'Brush Script MT', cursive;
-  background-color: rgb(100, 100, 100);
 
-}
 
 #ideaContainer{
   background-color: rgb(100, 100, 100);
   margin-top: none; 
+}
+
+#ideaContainerFM{
+  background-color: rgb(178, 178, 178);
+  margin-top: none; 
+  padding-bottom: 60px; 
+  height: auto; 
 }
 
 
@@ -1163,7 +1218,7 @@ width: 2000px; */
   width: 80%;
   margin: 0px auto;
 
-  height: 100%; 
+  height: 60vh; 
   align-content: center; 
 } 
 
@@ -1185,6 +1240,24 @@ width: 2000px; */
   max-width: 250px;
   height: 250px; 
   border-radius: 5px; 
+}
+
+.scroll-wheel-item-FM {
+  text-align: center;
+  display: flex; 
+  flex-direction: horizontal; 
+  /* height: 90%;  */
+
+}
+
+.scroll-wheel-item-FM img {
+  display: inline-block; 
+  /* max-height: 90%;  */
+  height: 400px; 
+  width: auto; 
+  max-width: 700px; 
+  border-radius: 5px; 
+  margin: 10px; 
 }
 
 .scroll-wheel-item > h3 > a {
@@ -1219,7 +1292,6 @@ width: 2000px; */
 
 #scrollWheelContainer{
   width: 100%; 
-  height: 400px; 
 }
 
 
@@ -1228,13 +1300,13 @@ width: 2000px; */
 #parent-how-to-container {
   background-color: rgb(55, 55, 55);
   padding-bottom: 30px; 
-
+  padding-top: 30px; 
   /* margin: 100px 0px;  */
 }
 
 /* for the title */
 #parent-how-to-container > h1 {
-  margin: 10px; 
+  margin: 0px; 
   font-size: 100px; 
   font-family: 'Dancing Script', 'Brush Script MT', cursive;
 }
@@ -1335,6 +1407,15 @@ Note! There may be some underlying things here that are being interfered by in t
   flex-direction: row; 
 }
 
+#sidebar > div > .trimAlignment {
+  display: flex; 
+  flex-direction: row;
+}
+
+#sidebar > div > .trimAlignment > input {
+  width: 60%; 
+}
+
 .radio-label {
   display: inline-flex;
   align-items: center;
@@ -1383,11 +1464,13 @@ button:hover {
 
 /* --------------------------- Product List styling -------------------------- */ 
 #bringToLife{
-  margin: 10px; 
-  margin-top: 100px; 
-  font-size: 100px; 
+  margin: 0px;
+  /* margin-top: 200px; */
+  font-size: 100px;
+  padding-top: 100px; 
+  color: #ffcc00; 
   font-family: 'Dancing Script', 'Brush Script MT', cursive;
-  color: black; 
+  text-shadow: 6px 6px 4px rgb(0, 0, 0); 
 }
 
 .product-list {
@@ -1420,7 +1503,8 @@ button:hover {
   flex-direction: column;
   background-color: rgb(230, 230, 230);
   transition: transform 0.5s ease; /* Change duration to 0.5 seconds */
-
+  width: 350px; 
+  /* height: 400px;  */
 }
 
 .product-item:hover {
@@ -1434,6 +1518,7 @@ button:hover {
   flex-direction: column;
   flex-wrap: wrap;
   /* height: 100%;  */
+  /* max-width: 200px; */
 }
 
 
@@ -1708,28 +1793,20 @@ img {
 
 /* ------------------------- featured mosaics ------------------------- */ 
 
-#featuredMosaics{
-  margin-top: 10px;
-  font-size: 100px;
-  font-family: 'Dancing Script', 'Brush Script MT', cursive;
-  color: black; 
-}
 
 /* styling all blogs ------------------------------------ */
 
 /* blog list styling */ 
 
 .blog-list {
-  width: 80%;
-  padding-left: 20px;
-  padding-right: 20px; 
+  width: 70%;
   /* background-color: #; */
   /* border-right: 5px solid #ddd; */
   color: black; 
-  margin: 20px;
-  margin-top: 0px; 
-  margin-right: 0px; 
-  height: 690px; 
+  margin: 0px auto;
+  /* margin-top: 0px; 
+  margin-right: 0px;  */
+  height: 550px; 
   overflow-y: scroll;
 }
 
@@ -1813,12 +1890,12 @@ img {
 
 
 .blog-display {
-  width: 75%;
-  height: 620px; /* Fixed height */
+  width: 100%;
+  height: 77vh; /* Fixed height */
   padding: 40px;
   background-color: white;
   border-radius: 10px;
-  margin: 20px;
+  margin-right: 50px;
   margin-top: 20px;
   box-shadow:  0px 4px 20px rgba(0, 0, 0, 0.2);
   overflow-y: scroll; /* Always show scrollbar */
@@ -1897,11 +1974,13 @@ img {
 
 .blog-container {
   display: flex;
-  margin-top: 20px;
+  /* margin-top: 100px; */
+  padding-top: 60px; 
   flex-direction: column;
-  height: 110vh;
+  height: 100vh;
   width: auto;
   background-color: white;
+  position: fixed; 
 }
 
 .search-bar {
@@ -1910,7 +1989,7 @@ img {
   padding-bottom: 10px; 
   /* background-color: #8a1d1d; */
   border-bottom: 5px solid rgb(241, 241, 241);
-  width: 90%; 
+  width: 70%; 
   margin: 20px auto; 
   
   /* display: flex;
@@ -1932,3 +2011,7 @@ img {
   width: 100%;
   height: 100%;
 }
+
+
+/* featured mosaics carousel*/
+

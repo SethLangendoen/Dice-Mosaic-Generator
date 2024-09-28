@@ -12,7 +12,9 @@ export default function GeneratorControls({
   diceX, diceY, setDiceX, setDiceY,
   selectedImage,
   handleIncreaseSize,
-  handleDecreaseSize
+  handleDecreaseSize,
+  // contrast,
+  // handleContrastChange,
 }) {
   const [isOpen, setIsOpen] = useState(true);
 
@@ -124,7 +126,16 @@ export default function GeneratorControls({
             <output htmlFor="brightness">{brightness}</output>
           </div>
           
-          <div id='trimDivContainer'>
+            {/* <input
+              type="range"
+              min="0"
+              max="2"
+              step="0.01"
+              value={contrast}
+              onChange={handleContrastChange}
+            />
+            <p>Contrast: {contrast}</p> */}
+          
 			<div class = 'trimAlignment'>
 				<label htmlFor="trim-top">Trim Top </label>
 				<input
@@ -138,7 +149,7 @@ export default function GeneratorControls({
 			</div>
 
 			<div class = 'trimAlignment'>
-            <label htmlFor="trim-bottom">Trim Bottom </label>
+      <label htmlFor="trim-bottom">Trim Bottom </label>
             <input
               type="number"
               id="trim-bottom"
@@ -169,7 +180,6 @@ export default function GeneratorControls({
               onChange={(e) => setTrim(prevTrim => ({ ...prevTrim, right: parseInt(e.target.value) }))}
             />
 			</div>
-          </div>
         </div>
       </div>
     </>

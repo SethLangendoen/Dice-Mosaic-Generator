@@ -49,7 +49,7 @@ export default function HowTo() {
 
   return (
     <div id='parent-how-to-container'>
-      <h1>The Process</h1>
+      <h1 id = 'theProcess'>The Process</h1>
       <div className="how-to-container">
         <div className="item">
           <h2 className ='titleHowTo'>1. Choose a photo to dicify</h2>

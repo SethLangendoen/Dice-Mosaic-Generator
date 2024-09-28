@@ -27,6 +27,14 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, trim, brightness, h
   const [diceValues, setDiceValues] = useState([]);
   // const [trim, setTrim] = useState({ top: 0, bottom: 0, left: 0, right: 0 });
   // const [isPaid, setIsPaid] = useState(false); 
+  // Add state to store contrast value
+// const [contrast, setContrast] = useState(1);
+
+// Slider component to control contrast
+// const handleContrastChange = (e) => {
+//   setContrast(e.target.value);
+// };
+
 
   var blackDiceCount = 0;
   var whiteDiceCount = 0;
@@ -43,15 +51,39 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, trim, brightness, h
     return 5;
   }, [brightness]);
 
+
+
+
+
   const mapToDieBothIndex = useCallback((color) => {
     const paletteSize = 12;
-    const redValue = parseInt(color.split(',')[0].slice(4), 10);
-    const adjustedBrightness = (brightness + 100) / 200;
+    const redValue = parseInt(color.split(',')[0].slice(4), 10); // Extract red channel value
+  
+    // Adjust brightness scaling: -100 -> black, +100 -> white
+    let adjustedRedValue;
+    if (brightness >= 0) {
+      adjustedRedValue = redValue + (255 - redValue) * (brightness / 100);
+    } else {
+      adjustedRedValue = redValue + (redValue) * (brightness / 100);
+    }
+  
+    // Ensure the value is clamped between 0 and 255
+    adjustedRedValue = Math.max(0, Math.min(255, adjustedRedValue));
+  
+    // Calculate index based on the adjusted red value
     const rangeSize = Math.ceil(256 / paletteSize);
-    let adjustedRedValue = redValue * adjustedBrightness;
     const index = Math.floor(adjustedRedValue / rangeSize);
+  
     return index;
   }, [brightness]);
+  
+
+
+
+
+
+
+
 
 
   const generatePNG = () => {
@@ -92,17 +124,17 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, trim, brightness, h
         canvas.width = img.width;
         canvas.height = img.height;
         ctx.drawImage(img, 0, 0);
-
+  
         const colors = [];
         const diceValues = [];
         const pixelWidth = Math.floor(img.width / numPixelsX);
         const pixelHeight = Math.floor(img.height / numPixelsY);
-
+  
         const startX = trim.left;
         const startY = trim.top;
         const endX = numPixelsX - trim.right;
         const endY = numPixelsY - trim.bottom;
-
+  
         for (let y = startY; y < endY; y++) {
           const row = [];
           const diceRow = [];
@@ -127,8 +159,7 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, trim, brightness, h
       img.src = bwImage;
     }
   }, [bwImage, numPixelsX, numPixelsY, brightness, radio, mapToDieBothIndex, mapToDieIndex, trim]);
-
-
+  
 
   const handleDieClick = (rowIndex, colIndex) => {
     setDiceValues(prevDiceValues => {
@@ -218,17 +249,17 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, trim, brightness, h
       {/* {isPaid && <p>Payment Made! Generating PNG</p>}  */}
 
 
-      <div class="mosaic-container" data-aos="zoom-in" data-aos-duration = '1500' data-aos-offset="400">
+      <div class="mosaic-container" data-aos="zoom-in" data-aos-duration = '750' data-aos-offset="800">
         <h1 class="mosaic-heading">Your Mosaic is looking Great!</h1>
         <p id="mosaic-description">
-          Dice mosaics are an awesome project to keep you entertained and harness your inner creativity! Impress your friends, make a personable gift, or just spend some valuable time putting it together with the family. When you are finished, hang it on your wall to show off your amazing skills!
+          Dice mosaics are an awesome project to keep you entertained and harness your inner creativity! Impress your friends, make a personable gift, or spend some valuable time putting one together with the family. When you are finished, hang it on your wall to show off your amazing skills!
         </p>
         <h2>What's next?</h2>
         <ul id = 'whatsNextListItems'>
           <li>Save your customized mosaic as a png to use for the creation process</li>
           <li>Use our dice counter to check how many dice you will need for the project</li>
           <li>Head over to our shop where you can purchase the dice in bulk</li>
-          <li>Read our blog for all information regarding dice mosaics</li>
+          <li>Read our blog for tips and tricks about how to create dice mosaics</li>
         </ul>
       </div>
 
