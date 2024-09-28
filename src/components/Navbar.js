@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { useLocation } from 'react-router-dom'; // Import useLocation
+import { useLocation, Link } from 'react-router-dom'; // Import Link from react-router-dom
 import './styling.css'; // Ensure this file exists for the styles
 import twoDiceLogoImage from '../Assets/twoDiceNavbar.png';
 
@@ -48,7 +48,6 @@ function Navbar() {
   const getActiveLink = () => {
     if (location.pathname === '/blog') return 'blog'; // Active if on the blog page
     if (location.pathname === '/') {
-      // Check if the section matches any IDs in the home page
       const hash = location.hash.replace('#', ''); // Remove the '#' for ID matching
       return hash ? hash : 'generator'; // Return the hash or default to 'generator'
     }
@@ -64,61 +63,61 @@ function Navbar() {
         <p>Dice Mosaic Generator</p>
       </div>
       <div className={`nav-links ${menuOpen ? 'nav-links-mobile' : ''}`}>
-        <a 
-          href="/blog" 
+        <Link 
+          to="/blog" 
           className={activeLink === 'blog' ? 'active' : ''} 
           onClick={() => handleLinkClick('blog')}
         >
           Blog
-        </a>
+        </Link>
 
-        <a 
-          href="/#title" 
+        <Link 
+          to="/#title" 
           className={activeLink === 'title' ? 'active' : ''} 
           onClick={() => handleLinkClick('title')}
         >
           Generator
-        </a>
+        </Link>
 
-        <a 
-          href="/#bringToLife" 
+        <Link 
+          to="/#bringToLife" 
           className={activeLink === 'shop' ? 'active' : ''} 
           onClick={() => handleLinkClick('bringToLife')}
         >
           Shop
-        </a>
+        </Link>
 
-        <a 
-          href="/#parent-how-to-container" 
+        <Link 
+          to="/#parent-how-to-container" 
           className={activeLink === 'about' ? 'active' : ''} 
           onClick={() => handleLinkClick('parent-how-to-container')}
         >
           Process
-        </a>
+        </Link>
 
-        <a 
-          href="/#ideaContainerFM" 
+        <Link 
+          to="/#ideaContainerFM" 
           className={activeLink === 'featuredMosaics' ? 'active' : ''} 
           onClick={() => handleLinkClick('ideaContainerFM')}
         >
           Featured Mosaics
-        </a>
+        </Link>
 
-        <a 
-          href="/#About" 
+        <Link 
+          to="/#About" 
           className={activeLink === 'faq' ? 'active' : ''} 
           onClick={() => handleLinkClick('About')}
         >
           FAQ
-        </a>
+        </Link>
 
-        <a 
-          href="/#contact" 
+        <Link 
+          to="/#contact" 
           className={activeLink === 'contact' ? 'active' : ''} 
           onClick={() => handleLinkClick('contact')}
         >
           Contact
-        </a>
+        </Link>
       </div>
       <div className="burger-menu" onClick={handleMenuToggle}>
         <div className="burger-bar"></div>
