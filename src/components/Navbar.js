@@ -40,6 +40,13 @@ function Navbar() {
     }
   }, [location.pathname]);
 
+  useEffect(() => {
+    if(location.pathname === '/blog' || location.pathname === '/shop'){
+      window.scrollTo({ top: 0, behavior: 'smooth' });  // This will ensure smooth scrolling to the top when navigating
+    }
+  }, [location.pathname]);
+
+
   const handleMenuToggle = () => setMenuOpen(!menuOpen);
   const handleDropdownToggle = () => setDropdownOpen(!dropdownOpen);
 
