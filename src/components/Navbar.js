@@ -4,7 +4,7 @@ import './styling.css';
 import twoDiceLogoImage from '../Assets/twoDiceNavbar.png';
 
 const NAV_LINKS = [
-  { to: '/#parent-how-to-container', label: 'Process', id: 'parent-how-to-container' },
+  // { to: '/#parent-how-to-container', label: 'Process', id: 'parent-how-to-container' },
   { to: '/#ideaContainerFM', label: 'Featured Mosaics', id: 'ideaContainerFM' },
   { to: '/#About', label: 'FAQ', id: 'About' },
   { to: '/#contact', label: 'Contact', id: 'contact' },

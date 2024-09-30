@@ -21,7 +21,7 @@ const BlogComponent = () => {
   };
 
   return (
-    <div id = 'blog' className="blog-container">
+    <div id = 'blog' className="blog-container" class = "slide-in">
 
       <div className="blog-content">
 		<div>

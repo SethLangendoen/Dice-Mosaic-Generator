@@ -214,17 +214,31 @@ input[type="range"]::-ms-tooltip {
   ; 
  }
 
- #carouselTitle{
-  color: #ffcc00; 
-  /* margin: 10px;  */
-  margin-top: 0px; 
+ #carouselTitle {
+  color: black;
   font-size: 100px;
-  color: black; 
   font-family: 'Dancing Script', 'Brush Script MT', cursive;
-  text-shadow: 6px 6px 4px white; 
-  padding: 0px; 
-  margin: 0px; 
+  text-shadow: 6px 6px 4px white;
+  padding: 0px;
+  margin: 0px;
 }
+
+/* Media query for tablets and smaller screens */
+@media (max-width: 900px) {
+  #carouselTitle {
+    font-size: 70px; /* Reduce font size for medium-sized screens */
+    text-shadow: 4px 4px 3px white; /* Adjust text shadow for smaller size */
+  }
+}
+
+/* Media query for mobile screens */
+@media (max-width: 600px) {
+  #carouselTitle {
+    font-size: 50px; /* Further reduce font size for mobile devices */
+    text-shadow: 3px 3px 2px white; /* Adjust text shadow for mobile */
+  }
+}
+
 
 #title {
   margin: 5px;
@@ -1083,23 +1097,60 @@ padding: 0px;
   /* text-shadow: 6px 6px 4px white;  */
 }
 
+
+/* Media query for tablets and smaller screens */
+@media (max-width: 900px) {
+  #faq > h2 {
+    font-size: 70px; /* Reduce font size for medium-sized screens */
+    text-shadow: 4px 4px 3px #FFAA02; /* Adjust text shadow for smaller size */
+  }
+}
+
+/* Media query for mobile screens */
+@media (max-width: 600px) {
+  #faq > h2 {
+    font-size: 50px; /* Further reduce font size for mobile devices */
+    text-shadow: 3px 3px 2px #FFAA02; /* Adjust text shadow for mobile */
+  }
+}
+
+
+
+
+
+
+
 #faq {
   background-color: none;
   width: auto; 
 }
 
 
-/* src/components/Accordion.css */
 .accordion {
-  /* border: 1px solid #ccc; */
-  /* border-radius: 4px; */
-  margin: 0px auto;
-  width: auto; 
-  max-width: 800px; 
-  background-color: transparent;
-
-
+  margin: 0 auto; /* Center the accordion horizontally */
+  width: 100%; /* Make the accordion take the full width of its container */
+  max-width: 800px; /* Limit the width for larger screens */
+  background-color: transparent; /* Keep the background transparent */
+  box-sizing: border-box; /* Include padding and borders in the width */
+  padding: 20px; /* Add padding for spacing */
 }
+
+/* Media query for smaller screens */
+@media (max-width: 900px) {
+  .accordion {
+    padding: 15px; /* Reduce padding for medium screens */
+    max-width: 90%; /* Reduce the accordion width to fit smaller screens */
+  }
+}
+
+/* Media query for mobile screens */
+@media (max-width: 600px) {
+  .accordion {
+    padding: 10px; /* Further reduce padding for mobile screens */
+    max-width: 60%; /* Make it take the full width on small screens */
+  }
+}
+
 
 .accordion-item {
   /* border-bottom: 1px solid #ccc; */
@@ -1176,12 +1227,31 @@ padding: 0px;
   justify-content: center;
   align-items: center;
   margin: 20px auto; /* Center horizontally using margin auto */
-  width: 700px; /* Set the desired width for the container */
-  height: 100%; /* Make sure the container takes full height of parent */
+  width: 100%; /* Set the container to be responsive to screen width */
+  max-width: 700px; /* Limit the maximum width for larger screens */
+  height: 100%; /* Ensure the container takes full height of parent */
   box-sizing: border-box; /* Ensure padding and borders are included in width */
   position: relative; /* Allow the container to be positioned within the parent */
-  margin-bottom: 0px
+  margin-bottom: 0px;
 }
+
+/* Media query for smaller screens */
+@media (max-width: 900px) {
+  .preset-images {
+    width: 90%; /* Reduce the container width on smaller screens */
+  }
+  .preset-images img {
+    width: calc(33.33% - 20px); /* Ensure three images per row */
+  }
+}
+
+/* Media query for very small screens, like mobile */
+@media (max-width: 600px) {
+  .preset-images img {
+    width: calc(50% - 20px); /* Two images per row for small screens */
+  }
+}
+
 
 #contact a {
   color: #ffcc00; 

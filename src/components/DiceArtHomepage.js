@@ -34,7 +34,7 @@ import presetImage12 from '../Assets/dm/butterfly.jpg'
 
 
 
-import HowTo from "./HowTo";
+// import HowTo from "./HowTo";
 import MosaicExamples from "./MosaicExamples";
 import DiceFall from "./DiceFall";
 // import ParticlesComponent from './ParticlesComponent';
@@ -278,7 +278,7 @@ export default function DiceArtHomepage() {
 
 
 
-      <HowTo />
+      {/* <HowTo /> */}
       {/* <BlogComponent /> */}
 
       <MosaicExamples />
