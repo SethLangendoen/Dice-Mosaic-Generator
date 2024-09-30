@@ -39,9 +39,11 @@ export default function GeneratorControls({
       <button onClick={toggleSidebar} id = 'toggle-controls' className="toggle-button">
         {isOpen ? 'Close' : 'Open'} Controls
       </button>
+
       <div id="sidebar" className={isOpen ? 'open' : ''}>
-        <div id="imageControls">
+      <div id="imageControls">
 			<p>Selected photo</p>
+
 		  <img id = 'chosenPhoto' src = {selectedImage.src} alt = 'selected'></img>
           <div id = 'diceColourTypes'>
             <input
@@ -90,6 +92,19 @@ export default function GeneratorControls({
           </div> 
 
           <div>
+            <label htmlFor="brightness">Brightness </label>
+            <input
+              type="range"
+              id="brightness"
+              min="-100"
+              max="100"
+              value={brightness}
+              onChange={(e) => setBrightness(parseInt(e.target.value))}
+            />
+            <output htmlFor="brightness">{brightness}</output>
+          </div>
+
+          <div>
             <label>
               Number of Dice X:
               <input
@@ -111,19 +126,6 @@ export default function GeneratorControls({
                 onChange={handleNumPixelsYChange}
               />
             </label>
-          </div>
-
-          <div>
-            <label htmlFor="brightness">Brightness </label>
-            <input
-              type="range"
-              id="brightness"
-              min="-100"
-              max="100"
-              value={brightness}
-              onChange={(e) => setBrightness(parseInt(e.target.value))}
-            />
-            <output htmlFor="brightness">{brightness}</output>
           </div>
           
             {/* <input

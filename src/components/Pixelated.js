@@ -22,9 +22,10 @@ const whiteDiceImages = [
   whiteDiceSixImage, whiteDiceFiveImage, whiteDiceFourImage, whiteDiceThreeImage, whiteDiceTwoImage, whiteDiceOneImage
 ];
 
-const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, trim, brightness, handleDiceSizeChange, diceX, diceY, diceSize }) => {
+const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, trim, brightness, handleDiceSizeChange, diceX, diceY }) => {
   // const [brightness, setBrightness] = useState(bright);
   const [diceValues, setDiceValues] = useState([]);
+  const [diceSize, setDiceSize] = useState(1.6); 
   // const [trim, setTrim] = useState({ top: 0, bottom: 0, left: 0, right: 0 });
   // const [isPaid, setIsPaid] = useState(false); 
   // Add state to store contrast value
@@ -187,8 +188,18 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, trim, brightness, h
 
       return radio === 'white' ? whiteDiceImages[dieIndex] : diceImages[dieIndex];
     }
+  
   };
 
+
+  const handleDiceSize = useCallback((size) => {
+    setDiceSize(size); // save the dimensions. 
+  }, [])
+
+  useEffect(() => {
+    handleDiceSize(diceSize); 
+
+  }, [numPixelsX, numPixelsY, diceSize, handleDiceSize])
 
 
   return (
@@ -222,31 +233,48 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, trim, brightness, h
       )}
 
 
+      <div id = 'mosaicSummaryDiv'>
+      <h3 >Mosaic Summary</h3>
+      <div>Dice Size <input type = 'number' step = '0.1' min = '0.5' max ='3' value = {diceSize} onChange={(e => handleDiceSize(e.target.value))}></input> mm</div>
+      <p>Width: <strong>{(diceSize * (numPixelsX - trim.left - trim.right)).toFixed(2)} cm</strong></p>
+      <p>Height: <strong>{(diceSize * (numPixelsY - trim.top - trim.bottom)).toFixed(2)} cm </strong></p>
+      <p>
+        Estimated Time: 
+        <strong>
+          {Math.floor(((((numPixelsX - trim.left - trim.right) * (numPixelsY - trim.top - trim.bottom)) * 7) / 3600) + 1)} hours, 
+           {' ' + Math.round(((((((numPixelsX - trim.left - trim.right) * (numPixelsY - trim.top - trim.bottom)) * 7) / 3600) + 1) % 1) * 60)} minutes
+        </strong>
+      </p> 
+      <p> 
+        Estimated Cost: 
+        <strong className = 'costBlur'>
+          {'$' + (((numPixelsX - trim.left - trim.right) * (numPixelsY - trim.top - trim.bottom)) * (0.015 * ((Number(diceSize) + 0.5)))).toFixed(2)}
+          </strong> <div id = 'visitShop'> <a id = 'shopLink' href = '/shop'> See Shop</a></div>
+      </p>
+      <p> 
+        Monetary value: 
+        <strong className = 'costBlur'>
+          {'$' + (((numPixelsX - trim.left - trim.right) * (numPixelsY - trim.top - trim.bottom)) * (0.015 * ((Number(diceSize) + 0.5)))*7.3).toFixed(2)}
+        </strong> <div id = 'visitBlog'> <a id = 'blogLink' href = '/blog'> See Blog</a></div>
+      </p>
+
+      
+
+
       <p>
         <img src={diceFiveImage} style={{ width: '12px', height: '12px', marginRight: '5px'}} alt='black dice' />
-        Black dice used: {blackDiceCount}
+        Black Dice: <strong>{blackDiceCount}</strong>
       </p>
       <p>
         <img src={whiteDiceFiveImage} style={{ width: '12px', height: '12px', marginRight: '5px' }} alt='white dice' />
-        White dice used: {whiteDiceCount}
+        White dice: <strong>{whiteDiceCount}</strong>
       </p>
-
-      {/* <div id = 'diceSizeSetterContainer'>
-        <input id = 'diceSizeSetter' type = 'number' value={diceSize}
-        onChange={handleDiceSizeChange}
-        placeholder='Die Size'
-        step = '0.1'
-        /> 
-        <p>Dice Image Size: {(diceX * diceSize).toFixed(2)}cm x {(diceY * diceSize).toFixed(2)}cm</p>
-        <label for='showDimensions'>Show Dimensions</label>
-        <input id = 'showDimensions' type = 'checkbox' /> 
-      </div> */}
-      
-
       
       <button id = 'generatePNG' onClick={generatePNG}>Generate PNG</button>
-       {/* <button><a href='https://buy.stripe.com/4gw7vM1r72917kc144' target='_blank' rel='noopener noreferrer' >Testing Payment</a></button> */}
-      {/* {isPaid && <p>Payment Made! Generating PNG</p>}  */}
+
+      </div>
+
+
 
 
       <div class="mosaic-container" data-aos="zoom-in" data-aos-duration = '750' data-aos-offset="800">
@@ -254,12 +282,12 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, trim, brightness, h
         <p id="mosaic-description">
           Dice mosaics are an awesome project to keep you entertained and harness your inner creativity! Impress your friends, make a personable gift, or spend some valuable time putting one together with the family. When you are finished, hang it on your wall to show off your amazing skills!
         </p>
-        <h2>What's next?</h2>
+        <h2 id = 'nowWhat'>Now what?</h2>
         <ul id = 'whatsNextListItems'>
-          <li>Save your customized mosaic as a png to use for the creation process</li>
-          <li>Use our dice counter to check how many dice you will need for the project</li>
-          <li>Head over to our shop where you can purchase the dice in bulk</li>
-          <li>Read our blog for tips and tricks about how to create dice mosaics</li>
+          <li>Save your customized dice art as a png for <strong>free!</strong></li>
+          <li>Use our <strong>dice counter</strong> to check how many dice you will need for the project</li>
+          <li>Head over to our <strong>shop</strong> where you can purchase the dice in bulk</li>
+          <li>Read our <strong>blog</strong> for tips and tricks about how to create dice mosaics</li>
         </ul>
       </div>
 

@@ -1,13 +1,22 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { useLocation, Link } from 'react-router-dom'; // Import Link from react-router-dom
-import './styling.css'; // Ensure this file exists for the styles
+import { useLocation, Link } from 'react-router-dom';
+import './styling.css';
 import twoDiceLogoImage from '../Assets/twoDiceNavbar.png';
+
+const NAV_LINKS = [
+  { to: '/#parent-how-to-container', label: 'Process', id: 'parent-how-to-container' },
+  { to: '/#ideaContainerFM', label: 'Featured Mosaics', id: 'ideaContainerFM' },
+  { to: '/#About', label: 'FAQ', id: 'About' },
+  { to: '/#contact', label: 'Contact', id: 'contact' },
+
+];
 
 function Navbar() {
   const [show, setShow] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const lastScrollY = useRef(window.pageYOffset);
-  const location = useLocation(); // Get the current location
+  const location = useLocation();
 
   const controlNavbar = useCallback(() => {
     if (window.pageYOffset > lastScrollY.current) {
@@ -26,35 +35,33 @@ function Navbar() {
   }, [controlNavbar]);
 
   useEffect(() => {
-    // Scroll to the top when navigating to the home page
     if (location.pathname === '/') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [location.pathname]);
 
-  const handleMenuToggle = () => {
-    setMenuOpen(!menuOpen);
-  };
+  const handleMenuToggle = () => setMenuOpen(!menuOpen);
+  const handleDropdownToggle = () => setDropdownOpen(!dropdownOpen);
 
-  const handleLinkClick = (section) => {
-    const element = document.getElementById(section);
+  const handleLinkClick = (id) => {
+    const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-    setMenuOpen(false); // Close menu after click
+    setMenuOpen(false);
+    setDropdownOpen(false);
   };
 
-  // Determine the active link based on the current location
   const getActiveLink = () => {
-    if (location.pathname === '/blog') return 'blog'; // Active if on the blog page
+    if (location.pathname === '/blog') return 'blog';
     if (location.pathname === '/') {
-      const hash = location.hash.replace('#', ''); // Remove the '#' for ID matching
-      return hash ? hash : 'generator'; // Return the hash or default to 'generator'
+      const hash = location.hash.replace('#', '');
+      return hash ? hash : 'generator';
     }
-    return 'generator'; // Default if no active link found
+    return 'generator';
   };
 
-  const activeLink = getActiveLink(); // Get the active link
+  const activeLink = getActiveLink();
 
   return (
     <nav className={`navbar ${show ? 'navbar-show' : 'navbar-hide'}`}>
@@ -62,7 +69,39 @@ function Navbar() {
         <img src={twoDiceLogoImage} className="navbar-logo" alt="Logo" />
         <p>Dice Mosaic Generator</p>
       </div>
+
+
+
       <div className={`nav-links ${menuOpen ? 'nav-links-mobile' : ''}`}>
+        
+        <div className="dropdown">
+          <button className={`dropdown-toggle ${dropdownOpen ? 'active' : ''}`} onClick={handleDropdownToggle}>
+            Home
+          </button>
+          {dropdownOpen && (
+            <div className="dropdown-menu">
+              {NAV_LINKS.map(({ to, label, id }) => (
+                <Link 
+                  key={id} 
+                  to={to} 
+                  onClick={() => handleLinkClick(id)}
+                >
+                  {label}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <Link 
+          to="/shop" 
+          className={activeLink === 'shop' ? 'active' : ''} 
+          onClick={() => handleLinkClick('shop')}
+        >
+          Shop
+        </Link>
+
+
         <Link 
           to="/blog" 
           className={activeLink === 'blog' ? 'active' : ''} 
@@ -71,55 +110,8 @@ function Navbar() {
           Blog
         </Link>
 
-        <Link 
-          to="/#title" 
-          className={activeLink === 'title' ? 'active' : ''} 
-          onClick={() => handleLinkClick('title')}
-        >
-          Generator
-        </Link>
-
-        <Link 
-          to="/#bringToLife" 
-          className={activeLink === 'shop' ? 'active' : ''} 
-          onClick={() => handleLinkClick('bringToLife')}
-        >
-          Shop
-        </Link>
-
-        <Link 
-          to="/#parent-how-to-container" 
-          className={activeLink === 'about' ? 'active' : ''} 
-          onClick={() => handleLinkClick('parent-how-to-container')}
-        >
-          Process
-        </Link>
-
-        <Link 
-          to="/#ideaContainerFM" 
-          className={activeLink === 'featuredMosaics' ? 'active' : ''} 
-          onClick={() => handleLinkClick('ideaContainerFM')}
-        >
-          Featured Mosaics
-        </Link>
-
-        <Link 
-          to="/#About" 
-          className={activeLink === 'faq' ? 'active' : ''} 
-          onClick={() => handleLinkClick('About')}
-        >
-          FAQ
-        </Link>
-
-        <Link 
-          to="/#contact" 
-          className={activeLink === 'contact' ? 'active' : ''} 
-          onClick={() => handleLinkClick('contact')}
-        >
-          Contact
-        </Link>
       </div>
-      <div className="burger-menu" onClick={handleMenuToggle}>
+      <div className="burger-menu" onClick={handleMenuToggle} aria-label="Toggle navigation menu">
         <div className="burger-bar"></div>
         <div className="burger-bar"></div>
         <div className="burger-bar"></div>

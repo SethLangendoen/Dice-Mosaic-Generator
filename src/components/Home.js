@@ -10,8 +10,7 @@ const HomeText = () => {
 
   return (
     <div id="homePageText">
-      <h1 className = 'slogan' data-aos="zoom-out" data-aos-duration = '2000'>"Transform ordinary dice into extraordinary, personalized art pieces!"
-</h1>
+      <h1 className = 'slogan' data-aos="zoom-out" data-aos-duration = '2000'>We've helped over <strong>200</strong> customers create dice art projects! </h1>
 
       {/* <h1 className = 'intro' data-aos="zoom-in" data-aos-duration="400"  data-aos-anchor-placement="center-center">Create something unique</h1>
       <h1 className = 'intro' data-aos="zoom-in" data-aos-duration="400" data-aos-anchor-placement="center-center">impress your friends</h1>

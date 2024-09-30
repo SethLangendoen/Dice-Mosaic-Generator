@@ -6,6 +6,9 @@ import { CartProvider } from './components/context/CartContext' // Import CartPr
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import BlogComponent from './components/blog/blogComponent';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import MosaicShop from './components/MosaicShop';
 
 
 function App() {
@@ -19,6 +22,7 @@ function App() {
         <Routes>
             <Route path="/" element={<DiceArtHomepage /> }/>
             <Route path="/blog" element={<BlogComponent />} />
+            <Route path="/shop" element={<MosaicShop />} />
 
 
         </Routes>

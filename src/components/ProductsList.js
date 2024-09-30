@@ -46,6 +46,11 @@ const ProductList = () => {
     }
   }, [data]);
 
+
+
+
+  
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
@@ -112,13 +117,13 @@ const ProductList = () => {
 
   return (
     <div>
-      <h1 id='bringToLife'>Bring Your Mosaic To Life!</h1>
+      <h1 id='bringToLife' >Bring Your Mosaic To Life!</h1>
       <p>Free shipping on orders over $100</p>
 
       <div className="product-list">
         {data.products.edges.map(({ node: product }) => (
           <div key={product.id} className="product-item">
-            <h3>{product.title}</h3>
+            {/* <h3>{product.title}</h3> */}
 
             <div className="product-content">
               <div className="product-carousel">

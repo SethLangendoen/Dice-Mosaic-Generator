@@ -19,63 +19,38 @@ const diceImages = [die1, die2, die3, die4, die5, die6, dieW1, dieW2, dieW3, die
 const DiceFall = ({ children }) => {
   const [dice, setDice] = useState([]);
 
-  // Function to generate a random x position
-  const getRandomXPosition = (containerWidth) => {
-    const randomPosition = Math.random() * (containerWidth - 50); // Adjust based on dice width (50px as an example)
-    return randomPosition;
-  };
+  const getRandomXPosition = (containerWidth) => Math.random() * (containerWidth - 50);
+  const getRandomSize = () => Math.random() * (3 - 1) + 1;
+  const getRandomSpeed = () => Math.random() * (5 - 3) + 3;
 
-  // Function to generate a random size for the dice
-  const getRandomSize = () => {
-    return Math.random() * (3 - 1) + 1; // Random size between 1% to 3%
-  };
-
-  // Function to generate a random falling speed
-  const getRandomSpeed = () => {
-    return Math.random() * (5 - 3) + 3; // Random speed between 2s to 4s
-  };
-
-  // Function to add a new die at a random position with random size and speed
   const addRandomDie = useCallback((containerWidth) => {
     const randomDice = diceImages[Math.floor(Math.random() * diceImages.length)];
     const newDie = {
       id: Date.now(),
       src: randomDice,
       xPos: getRandomXPosition(containerWidth),
-      opacity: 1, // Set initial opacity
-      size: getRandomSize(), // Set random size
-      speed: getRandomSpeed() // Set random speed
+      opacity: 1,
+      size: getRandomSize(),
+      speed: getRandomSpeed(),
     };
     setDice((prevDice) => [...prevDice, newDie]);
-  }, []); // No dependencies since it doesn’t rely on any external state
+
+    // Remove the die after 10 seconds
+    setTimeout(() => {
+      setDice((prevDice) => prevDice.filter((die) => die.id !== newDie.id));
+    }, 10000); // 10 seconds timeout for removal
+  }, []);
 
   useEffect(() => {
     const container = document.getElementById('diceFall');
-    const containerWidth = container.clientWidth; // Get the width of the container
+    const containerWidth = container.clientWidth;
 
-    // Add a new die every 800 milliseconds
     const interval = setInterval(() => {
       addRandomDie(containerWidth);
-    }, 800); // Change this interval as needed
+    }, 800);
 
-    // Clean up the interval on unmount
     return () => clearInterval(interval);
-  }, [addRandomDie]); // Add addRandomDie to the dependency array
-
-  useEffect(() => {
-    // Fade out and remove dice after 2 seconds
-    const fadeOutDice = () => {
-      setDice((prevDice) => 
-        prevDice.map((die) => ({ ...die, opacity: 0 }))
-      );
-    };
-
-    const timer = setTimeout(() => {
-      fadeOutDice();
-    }, 2000); // Fade out after 2 seconds
-
-    return () => clearTimeout(timer); // Clear the timer on unmount
-  }, [dice]);
+  }, [addRandomDie]);
 
   return (
     <div
@@ -85,7 +60,7 @@ const DiceFall = ({ children }) => {
         width: '100%',
         height: '100%',
         overflow: 'hidden',
-        top: 0,
+        top: -100,
         left: 0,
         zIndex: 0,
       }}
@@ -99,12 +74,12 @@ const DiceFall = ({ children }) => {
           style={{
             left: `${die.xPos}px`,
             position: 'absolute',
-            width: `${die.size}rem`, // Set width based on random size
+            width: `${die.size}rem`,
             height: 'auto',
-            opacity: die.opacity, // Set opacity for fade effect
-            animation: `fall ${die.speed}s ease-in forwards`, // Use random speed for animation
+            opacity: die.opacity,
+            animation: `fall ${die.speed}s ease-in forwards`,
             zIndex: 1,
-            top: `0px`, // Start from the top
+            top: `0px`,
           }}
         />
       ))}

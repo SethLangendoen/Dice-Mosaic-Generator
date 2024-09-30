@@ -57,7 +57,7 @@ const faqGeneral = [
 		<div id = 'About' >
 
 				<div id = 'faq'>
-					<h2>Frequently Asked Questions</h2>
+					<h2 >Frequenty Asked</h2>
 					<Accordion items={faqGeneral} />
 
 				</div>

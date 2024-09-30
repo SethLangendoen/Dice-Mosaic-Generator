@@ -33,10 +33,9 @@ import presetImage11 from '../Assets/dm/aiCow.jpeg'
 import presetImage12 from '../Assets/dm/butterfly.jpg'
 
 
+
 import HowTo from "./HowTo";
 import MosaicExamples from "./MosaicExamples";
-import MosaicShop from "./MosaicShop";
-import BlogComponent from "./blog/blogComponent";
 import DiceFall from "./DiceFall";
 // import ParticlesComponent from './ParticlesComponent';
 
@@ -191,7 +190,7 @@ export default function DiceArtHomepage() {
 
   return (
     <div>
-      {/* <Navbar/> */}
+
 
       <DiceFall >
 
@@ -275,12 +274,12 @@ export default function DiceArtHomepage() {
 
       </div>
 
-      <MosaicShop /> 
+      {/* <MosaicShop />  */}
 
 
 
       <HowTo />
-      <BlogComponent />
+      {/* <BlogComponent /> */}
 
       <MosaicExamples />
 
