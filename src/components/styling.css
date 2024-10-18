@@ -215,12 +215,12 @@ input[type="range"]::-ms-tooltip {
  }
 
  #carouselTitle {
-  color: black;
-  font-size: 100px;
+  margin: 0px; 
+  font-size: 150px;
+  color: black; 
+  font-weight: bold; 
   font-family: 'Dancing Script', 'Brush Script MT', cursive;
-  text-shadow: 6px 6px 4px white;
-  padding: 0px;
-  margin: 0px;
+  text-shadow: 6px 3px 2px white; 
 }
 
 /* Media query for tablets and smaller screens */
@@ -258,10 +258,13 @@ input[type="range"]::-ms-tooltip {
 
 
 #featuredMosaics{
-  font-size: 100px;
+  margin: 5px;
+  margin-top: 200px;
+  font-size: 150px;
   color: black; 
+  font-weight: bold; 
   font-family: 'Dancing Script', 'Brush Script MT', cursive;
-  text-shadow: 6px 6px 4px #ffCC02; 
+  text-shadow: 6px 3px 2px white;   
 }
 
 @media (max-width: 600px) {
@@ -553,7 +556,8 @@ input[type="range"]::-ms-tooltip {
 
 #mosaicSummaryDiv {
 margin-top: 30px; 
-width: 40%; 
+width: 80%; 
+max-width: 700px; 
 /* background-color: rgb(163, 163, 163); */
 display: inline-block; 
 padding: 10px;
@@ -737,10 +741,10 @@ font-size: 20px;
   border-bottom: 2px solid #000000;
 }
 
-.nav-links a.active {
+/* .nav-links a.active {
   border-bottom: 2px solid #ffCC02;
 
-}
+} */
 
 /* Burger menu */
 .burger-menu {
@@ -1087,14 +1091,12 @@ padding: 0px;
 
 
 #faq > h2{
-
-  font-size: 100px;
-  color: black; 
-  font-family: 'Dancing Script', 'Brush Script MT', cursive;
-  text-shadow: 6px 6px 4px #FFAA02; 
   margin: 0px; 
-  margin-bottom: 30px; 
-  /* text-shadow: 6px 6px 4px white;  */
+  font-size: 150px;
+  color: black; 
+  font-weight: bold; 
+  font-family: 'Dancing Script', 'Brush Script MT', cursive;
+  text-shadow: 6px 3px 2px white; 
 }
 
 
@@ -1155,6 +1157,7 @@ padding: 0px;
 .accordion-item {
   /* border-bottom: 1px solid #ccc; */
   border-radius: 4px;
+  margin: 0px; 
 }
 
 .accordion-item:last-child {
@@ -1163,7 +1166,7 @@ padding: 0px;
 
 .accordion-title {
   width: 100%;
-  padding: 10px;
+  padding: 15px;
   text-align: left;
   /* background-color: #ffffff; */
   border-bottom: 3px solid black;
@@ -1398,7 +1401,7 @@ padding: 0px;
 /* ScrollWheel.css */
 .scroll-wheel {
   display: inline-block; /* Keep items in a single line */
-  animation: scroll-right 25s linear infinite; /* Adjust speed here */
+  animation: scroll-right 22s linear infinite; /* Adjust speed here */
 } 
 
 .scroll-wheel-2 {
@@ -1406,9 +1409,9 @@ padding: 0px;
   animation: scroll-right-2 15s linear infinite; /* Adjust speed here */
 } 
 
-.scroll-wheel.reverse {
-  animation: scroll-reverse 25s linear infinite; /* Animation for reverse scrolling */
-}
+/* .scroll-wheel.reverse {
+  animation: scroll-reverse 25s linear infinite; 
+} */
 
 
 
@@ -2322,5 +2325,277 @@ img {
 
 .review strong {
   color: #007BFF; /* Optional: highlight the reviewer names */
+}
+
+
+
+/* --------------- fr the process ----------------- */ 
+
+#alignProcessAndArrows{
+  display: flex; 
+  flex-direction: row;  
+  width: 100%; 
+  align-items: center;
+  justify-content: center;
+}
+
+#alignProcessAndArrows > button{
+  border-radius: 50%;
+  width: 50px; 
+  height: 50px; 
+  margin: 50px; 
+}
+
+
+
+/* Container for the steps and description */
+.step-manager-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  /* margin-top: 75px;  */
+  /* height: 80vh; */
+}
+
+.step-manager-container h1 {
+  margin: 0px; 
+  font-size: 150px;
+  color: black; 
+  font-weight: bold; 
+  font-family: 'Dancing Script', 'Brush Script MT', cursive;
+  text-shadow: 6px 3px 2px white;  
+}
+
+#theProcessTitle{
+    margin: 0px; 
+  font-size: 150px;
+  color: black; 
+  font-weight: bold; 
+  font-family: 'Dancing Script', 'Brush Script MT', cursive;
+  text-shadow: 6px 3px 2px white;  
+}
+ 
+
+.process-container{
+  background-color: rgb(55, 107, 196);
+  height: auto; 
+  min-height: 100vh;
+}
+
+.process-container h1{
+  position: relative; 
+  margin: 0px; 
+  font-size: 150px;
+  color: black; 
+  font-weight: bold; 
+  font-family: 'Dancing Script', 'Brush Script MT', cursive;
+  text-shadow: 6px 3px 2px white; 
+}
+
+/* Description and Image styling */
+/* .description-container {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+} */
+
+@media (max-width: 900px) {
+  #theProcessTitle {
+    font-size: 80px; /* Smaller font size for medium screens */
+  }
+}
+
+@media (max-width: 500px) {
+  #theProcessTitle {
+    font-size: 60px; /* Even smaller font size for smaller screens */
+  }
+}
+
+@media (max-width: 400px) {
+  #theProcessTitle {
+    font-size: 40px; /* Smallest font size for very small screens */
+  }
+}
+
+
+
+/* Newly added css */ 
+/* Default styling for larger screens */
+.description-container {
+  flex: 2;
+  display: flex;
+  flex-direction: row; /* Align content horizontally */
+  align-items: center;
+  justify-content: center;
+}
+
+.description-content {
+  display: flex;
+  flex-direction: row; /* Horizontally align image and text */
+  align-items: center;
+  justify-content: center;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+.image-container {
+  max-width: 50%;
+  margin: 10px; 
+
+}
+
+/* Styling for smaller screens */
+@media (max-width: 1100px) {
+  .description-content {
+    flex-direction: column; /* Change to vertical alignment */
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .image-container img {
+    max-width: 80%; /* Reduce image size for smaller screens */
+  }
+
+  .text-container h2, 
+  .text-container p {
+    text-align: center;
+    font-size: 1.2rem; /* Adjust font size */
+  }
+}
+
+/* Styling for very small screens (mobile devices) */
+@media (max-width: 700px) {
+  .description-container {
+    flex-direction: column;
+  }
+
+  .image-container img {
+    max-width: 100%;
+  }
+
+  .text-container h2, 
+  .text-container p {
+    font-size: 1rem; /* Further adjust font size for smaller devices */
+  }
+}
+
+/* newly added css finished */ 
+
+
+.description-content {
+  display: flex;
+  align-items: center;
+}
+
+/* .image-container {
+  flex: 1;
+  margin-right: 20px;
+
+}
+
+.image-container img {
+  width: 500px;
+  border-radius: 10px;
+  max-height: 400px; 
+}
+
+.text-container {
+  flex: 2;
+  text-align: left;
+  padding-left: 20px; 
+  border-left: 1px solid black; 
+}
+
+.text-container h2 {
+  font-size: 30px;
+  margin-bottom: 10px;
+} */
+
+.text-container p {
+  font-size: 25px;
+  width: 400px; 
+}
+
+/* Steps on the right side */
+.steps-container {
+  /* flex: 1; */
+  margin-left: 50px; 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+@media (max-width: 600px) {
+  .step-manager-container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .steps-container{
+    display: flex; 
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .step {
+    margin: 20px; 
+  }
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  transition: opacity 0.3s ease;
+}
+
+.step-number {
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.step-title {
+  font-size: 16px;
+}
+
+/* Faded out (completed) steps */
+.step-completed {
+  opacity: 0.4;
+}
+
+/* Process controls */
+.process-controls {
+  position: relative; 
+  margin-top: auto;
+  text-align: center;
+}
+
+/* Process controls */
+.process-controls button {
+  border-radius: 50%;
+  width: 50px; 
+  height: 50px; 
+}
+
+
+button {
+  background-color: #333;
+  color: white;
+  border: none;
+  /* padding: 10px 20px; */
+  cursor: pointer;
+  /* margin: 0 10px; */
+}
+
+button:disabled {
+  background-color: #888;
+  cursor: not-allowed;
 }
 

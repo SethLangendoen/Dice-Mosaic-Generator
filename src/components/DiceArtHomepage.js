@@ -34,9 +34,9 @@ import presetImage12 from '../Assets/dm/butterfly.jpg'
 
 
 
-// import HowTo from "./HowTo";
 import MosaicExamples from "./MosaicExamples";
 import DiceFall from "./DiceFall";
+import Process from "./TheProcess/Process";
 // import ParticlesComponent from './ParticlesComponent';
 
 
@@ -278,7 +278,7 @@ export default function DiceArtHomepage() {
 
 
 
-      {/* <HowTo /> */}
+      <Process />
       {/* <BlogComponent /> */}
 
       <MosaicExamples />
@@ -290,7 +290,7 @@ export default function DiceArtHomepage() {
         <div  id = 'donationDiv'>
           <div data-aos='fade-up' data-aos-offset="100" data-aos-duration = '1500'>
           <p id="support-message" > If you found this tool helpful please consider supporting the developer, it is greatly appreciated! <a href='https://buymeacoffee.com/sethlangendoen' target='_blank' rel='noopener noreferrer'>Buy me a coffee</a></p>
-          <p id = 'contact' >Any other questions or concerns? Email us at <a href="mailto:dicemosaicgenerator@gmail.com" target = '_blank' rel='noopener noreferrer'>dicemosaicgenerator@gmail.com</a></p>
+          <p id = 'contact' >For business enquiries, questions, or concerns email us at <a href="mailto:dicemosaicgenerator@gmail.com" target = '_blank' rel='noopener noreferrer'>dicemosaicgenerator@gmail.com</a></p>
           </div>
 
 

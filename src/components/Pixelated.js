@@ -277,7 +277,7 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, trim, brightness, h
 
 
 
-      <div class="mosaic-container" data-aos="zoom-in" data-aos-duration = '750' data-aos-offset="800">
+      <div class="mosaic-container" data-aos="zoom-in" data-aos-duration = '750' data-aos-offset="400">
         <h1 class="mosaic-heading">Your Mosaic is looking Great!</h1>
         <p id="mosaic-description">
           Dice mosaics are an awesome project to keep you entertained and harness your inner creativity! Impress your friends, make a personable gift, or spend some valuable time putting one together with the family. When you are finished, hang it on your wall to show off your amazing skills!

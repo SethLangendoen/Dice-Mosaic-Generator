@@ -18,6 +18,7 @@ const cars = [
   { src: require('../Assets/MosaicExamples/car2.png'), title: 'classic car' },
   { src: require('../Assets/MosaicExamples/dice.png'), title: 'die made of dice' },
   { src: require('../Assets/MosaicExamples/tree.png'), title: 'tree made of dice' },
+  { src: require('../Assets/MosaicExamples/anime.png'), title: 'anime made of dice' },
 
 ]
 
@@ -29,6 +30,7 @@ const ScrollWheel = () => {
       {/* First scrolling belt (left) */}
       <div id='scrollWheelContainer'>
         <div className="scroll-wheel">
+
           {images.map((image, index) => (
             <div key={index} className="scroll-wheel-item-FM">
               <img src={image.src} alt={image.title} />
@@ -40,6 +42,7 @@ const ScrollWheel = () => {
               <img src={image.src} alt={image.title} />
             </div>
           ))}
+          
         </div>
       </div>
 

@@ -3,18 +3,18 @@ import { useLocation, Link } from 'react-router-dom';
 import './styling.css';
 import twoDiceLogoImage from '../Assets/twoDiceNavbar.png';
 
-const NAV_LINKS = [
-  // { to: '/#parent-how-to-container', label: 'Process', id: 'parent-how-to-container' },
-  { to: '/#ideaContainerFM', label: 'Featured Mosaics', id: 'ideaContainerFM' },
-  { to: '/#About', label: 'FAQ', id: 'About' },
-  { to: '/#contact', label: 'Contact', id: 'contact' },
+// const NAV_LINKS = [
+//   // { to: '/#parent-how-to-container', label: 'Process', id: 'parent-how-to-container' },
+//   { to: '/#ideaContainerFM', label: 'Featured Mosaics', id: 'ideaContainerFM' },
+//   { to: '/#About', label: 'FAQ', id: 'About' },
+//   { to: '/#contact', label: 'Contact', id: 'contact' },
 
-];
+// ];
 
 function Navbar() {
   const [show, setShow] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  // const [dropdownOpen, setDropdownOpen] = useState(false);
   const lastScrollY = useRef(window.pageYOffset);
   const location = useLocation();
 
@@ -48,7 +48,7 @@ function Navbar() {
 
 
   const handleMenuToggle = () => setMenuOpen(!menuOpen);
-  const handleDropdownToggle = () => setDropdownOpen(!dropdownOpen);
+  // const handleDropdownToggle = () => setDropdownOpen(!dropdownOpen);
 
   const handleLinkClick = (id) => {
     const element = document.getElementById(id);
@@ -56,7 +56,7 @@ function Navbar() {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
     setMenuOpen(false);
-    setDropdownOpen(false);
+    // setDropdownOpen(false);
   };
 
   const getActiveLink = () => {
@@ -81,24 +81,13 @@ function Navbar() {
 
       <div className={`nav-links ${menuOpen ? 'nav-links-mobile' : ''}`}>
         
-        <div className="dropdown">
-          <button className={`dropdown-toggle ${dropdownOpen ? 'active' : ''}`} onClick={handleDropdownToggle}>
-            Home
-          </button>
-          {dropdownOpen && (
-            <div className="dropdown-menu">
-              {NAV_LINKS.map(({ to, label, id }) => (
-                <Link 
-                  key={id} 
-                  to={to} 
-                  onClick={() => handleLinkClick(id)}
-                >
-                  {label}
-                </Link>
-              ))}
-            </div>
-          )}
-        </div>
+      <Link 
+          to="/" 
+          className={activeLink === 'home' ? 'active' : ''} 
+          onClick={() => handleLinkClick('home')}
+        >
+          home
+        </Link>
 
         <Link 
           to="/shop" 
