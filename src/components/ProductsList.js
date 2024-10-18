@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
+import { Helmet } from 'react-helmet';  // Import Helmet for injecting head elements
 import { GET_PRODUCTS } from './queries/getProducts';
 import { useCart } from './context/CartContext';
 import { Carousel } from 'react-responsive-carousel';
@@ -47,6 +48,24 @@ const ProductList = () => {
   }, [data]);
 
 
+
+  const generateProductJsonLd = (product) => {
+    return {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": product.title,
+      "description": product.description,
+      "image": images[product.id] ? images[product.id][0] : '',
+      "sku": product.variants.edges[0]?.node.sku || '',
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": product.variants.edges[0]?.node.priceV2.currencyCode || 'USD',
+        "price": parseFloat(product.variants.edges[0]?.node.priceV2.amount).toFixed(2),
+        "availability": "https://schema.org/InStock",
+        "url": `https://yourstore.com/product/${product.id}`
+      }
+    };
+  };
 
 
   
@@ -123,7 +142,11 @@ const ProductList = () => {
       <div className="product-list">
         {data.products.edges.map(({ node: product }) => (
           <div key={product.id} className="product-item">
-            {/* <h3>{product.title}</h3> */}
+            <Helmet>
+              <script type="application/ld+json">
+                {JSON.stringify(generateProductJsonLd(product))}
+              </script>
+            </Helmet>
 
             <div className="product-content">
               <div className="product-carousel">

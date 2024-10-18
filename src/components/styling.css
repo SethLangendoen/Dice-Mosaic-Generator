@@ -1750,6 +1750,8 @@ button:hover {
   max-height: 200px; /* Set an appropriate height */
   text-overflow: ellipsis; /* Optional: Add ellipsis for overflow text */
   text-align: left;
+  overflow-y: scroll;
+
 }
 
 

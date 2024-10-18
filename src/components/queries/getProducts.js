@@ -3,13 +3,13 @@ import { gql } from '@apollo/client';
 
 export const GET_PRODUCTS = gql`
   query {
-    products(first: 10) {
+    products(first: 20) {
       edges {
         node {
           id
           title
           descriptionHtml
-          variants(first: 10) {
+          variants(first: 15) {
             edges {
               node {
                 id
