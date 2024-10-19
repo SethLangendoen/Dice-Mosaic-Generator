@@ -12,7 +12,7 @@ import { Helmet } from "react-helmet-async"; // Optional if you're using react-h
 
 import ImageUploader from "./ImageUploader";
 import HomeText from "./Home";
-import {useState } from "react";
+import {useState, useEffect } from "react";
 import About from './About'; 
 import './styling.css'
 import GeneratorControls from "./GeneratorControls";
