@@ -8,6 +8,7 @@
 // git commit -m "structure update"
 // git push -u origin master
 
+import { Helmet } from "react-helmet-async"; // Optional if you're using react-helmet
 
 import ImageUploader from "./ImageUploader";
 import HomeText from "./Home";
@@ -80,6 +81,29 @@ export default function DiceArtHomepage() {
 
   
 
+  useEffect(() => {
+    // Function to load the Google Analytics script
+    const loadGoogleAnalytics = () => {
+      // Create the script element
+      const script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=G-B3MKBFTVXS";
+      
+      // Add the script to the document head
+      document.head.appendChild(script);
+
+      // Initialize Google Analytics
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-B3MKBFTVXS");
+    };
+
+    // Call the function to load Google Analytics
+    loadGoogleAnalytics();
+  }, []); // Empty array ensures this effect runs only once
 
   
 
@@ -297,6 +321,12 @@ export default function DiceArtHomepage() {
           {/* <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@dicemosaicgenerator.com" data-unique-id="dicemosaicgenerator.com" data-embed-type="creator" style={{maxWidth: "780px", minWidth: "288px"}} > <section> <a target="_blank" href="https://www.tiktok.com/@dicemosaicgenerator.com?refer=creator_embed">@dicemosaicgenerator.com</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script> */}
         </div>
 
+        <Helmet>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-B3MKBFTVXS"
+        ></script>
+        </Helmet>
 
 
     </div>
