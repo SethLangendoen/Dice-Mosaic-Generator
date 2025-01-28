@@ -48,7 +48,9 @@ function App() {
           <CartProvider>
             <Routes>
               <Route path="/" element={<DiceArtHomepage />} />
-              <Route path="/blog" element={<BlogComponent />} />
+              {/* <Route path="/blog" element={<BlogComponent />} /> */}
+              <Route path="/blog/:title" element={<BlogComponent />} />
+              {/* <Route path="/blog/:id" element={<BlogDisplay />} /> */}
               <Route path="/shop" element={<MosaicShop />} />
             </Routes>
           </CartProvider>

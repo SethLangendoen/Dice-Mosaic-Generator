@@ -41,7 +41,7 @@ function Navbar() {
   }, [location.pathname]);
 
   useEffect(() => {
-    if(location.pathname === '/blog' || location.pathname === '/shop'){
+    if(location.pathname === '/blog/how-to-create-stunning-art-with-a-dice-mosaic-generator' || location.pathname === '/shop'){
       window.scrollTo({ top: 0, behavior: 'smooth' });  // This will ensure smooth scrolling to the top when navigating
     }
   }, [location.pathname]);
@@ -89,17 +89,17 @@ function Navbar() {
           home
         </Link>
 
-        <Link 
+        {/* <Link 
           to="/shop" 
           className={activeLink === 'shop' ? 'active' : ''} 
           onClick={() => handleLinkClick('shop')}
         >
           Shop
-        </Link>
+        </Link> */}
 
 
         <Link 
-          to="/blog" 
+          to="/blog/how-to-create-stunning-art-with-a-dice-mosaic-generator" 
           className={activeLink === 'blog' ? 'active' : ''} 
           onClick={() => handleLinkClick('blog')}
         >
@@ -109,7 +109,7 @@ function Navbar() {
       </div>
       <div className="burger-menu" onClick={handleMenuToggle} aria-label="Toggle navigation menu">
         <div className="burger-bar"></div>
-        <div className="burger-bar"></div>
+        {/* <div className="burger-bar"></div> */}
         <div className="burger-bar"></div>
       </div>
     </nav>

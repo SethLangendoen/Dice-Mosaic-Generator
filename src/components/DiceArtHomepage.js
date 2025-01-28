@@ -12,7 +12,7 @@
 import ImageUploader from "./ImageUploader";
 import HomeText from "./Home";
 import {useState } from "react";
-import About from './About'; 
+// import About from './About'; 
 import './styling.css'
 import GeneratorControls from "./GeneratorControls";
 
@@ -36,7 +36,7 @@ import presetImage12 from '../Assets/dm/butterfly.jpg'
 
 import MosaicExamples from "./MosaicExamples";
 import DiceFall from "./DiceFall";
-import Process from "./TheProcess/Process";
+// import Process from "./TheProcess/Process";
 // import ParticlesComponent from './ParticlesComponent';
 
 
@@ -278,15 +278,15 @@ export default function DiceArtHomepage() {
 
 
 
-      <Process />
+      {/* <Process /> */}
       {/* <BlogComponent /> */}
 
       <MosaicExamples />
 
-        <div id = 'aboutBackground'>
+        {/* <div id = 'aboutBackground'>
           <About />  
         </div>
-      
+       */}
         <div  id = 'donationDiv'>
           <div data-aos='fade-up' data-aos-offset="100" data-aos-duration = '1500'>
           <p id="support-message" > If you found this tool helpful please consider supporting the developer, it is greatly appreciated! <a href='https://buymeacoffee.com/sethlangendoen' target='_blank' rel='noopener noreferrer'>Buy me a coffee</a></p>

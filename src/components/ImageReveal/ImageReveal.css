@@ -1,0 +1,27 @@
+.image-container {
+	position: relative;
+	min-width: 100%; /* Adjust width as needed */
+	/* margin: 0 auto; */
+	/* overflow: hidden; */
+	display: flex;
+
+
+  }
+  
+  .bottom-image,
+  .top-image {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+
+	width: 600px;
+	height: 700px;
+	object-fit: cover;
+  }
+  
+  .top-image {
+	clip-path: inset(0 0 0 0); /* Start fully covering the bottom image */
+	transition: clip-path 0.1s ease; /* Smooth transition effect */
+
+  }
+  

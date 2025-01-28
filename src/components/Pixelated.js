@@ -245,12 +245,12 @@ const Pixelated = ({ bwImage, numPixelsX, numPixelsY, radio, trim, brightness, h
            {' ' + Math.round(((((((numPixelsX - trim.left - trim.right) * (numPixelsY - trim.top - trim.bottom)) * 7) / 3600) + 1) % 1) * 60)} minutes
         </strong>
       </p> 
-      <p> 
+      {/* <p> 
         Estimated Cost: 
         <strong className = 'costBlur'>
           {'$' + (((numPixelsX - trim.left - trim.right) * (numPixelsY - trim.top - trim.bottom)) * (0.015 * ((Number(diceSize) + 0.5)))).toFixed(2)}
           </strong> <div id = 'visitShop'> <a id = 'shopLink' href = '/shop'> See Shop</a></div>
-      </p>
+      </p> */}
       <p> 
         Monetary value: 
         <strong className = 'costBlur'>
